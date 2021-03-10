@@ -162,11 +162,11 @@
 		<div>
 			<h2 class="intro-text">Hi 👋</h2>
 			<br>
-			<p class="intro-text">We need you to point us to the data folder, please</p>
+			<p class="intro-text">We need you to point us to the data folder 👇</p>
 		</div>
 		<br>
 		<div>
-			<button class="load-btn" on:click={loadData}>Take me to your data!</button>
+			<button class="load-btn" on:click={loadData}>Take me to the data!</button>
 		</div>
 	</div>
 </div>
@@ -186,7 +186,8 @@
 		<div class="form">
 			<FormTemplate onSubmit={() => (scrollToTop())} {fields} />
 		</div>
-	</div>	
+	</div>
+	<div></div>	
 </main>
 {/if}
 	
@@ -207,7 +208,7 @@ h1.logo {
 	color: #ffc800;
 	font-family: 'Bodoni Moda', serif;
 	font-weight: 900;
-	font-size: 100px;
+	font-size: 90px;
 	text-align: right;
 	padding-right: 20px;
 }
