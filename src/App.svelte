@@ -173,11 +173,16 @@
 <!-- <pre><code>{JSON.stringify(result, 0, 2)}</code></pre> -->
 {:else if $videoSource=='done'}
 <div>
+	<div class="header">
+		<h1 class="logo">Echobase</h1>
+		<p class="logo-sub">by APIL</p>
+	</div>
 	<h2 class="outro-text">You're all done!</h2>
 	<h2 class="outro-text">🍾</h2>
 	<Confetti characters={[ '🎊', '🥳', '🎉']}/>
 </div>
 {:else}
+<h1 class="logo-sm">Echobase</h1>
 <main class="main">
 	<div class="videoPlayer">
 		<VideoPlayer {$videoSource} />
@@ -210,6 +215,15 @@ h1.logo {
 	font-size: 90px;
 	text-align: right;
 	padding-right: 20px;
+}
+
+
+h1.logo-sm {
+	color: #ffc800;
+	font-family: 'Bodoni Moda', serif;
+	font-weight: 600;
+	font-size: 70px;
+	text-align: right;
 }
 
 h2.intro-text {
