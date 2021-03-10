@@ -2517,11 +2517,9 @@ var app = (function () {
     function create_else_block$1(ctx) {
     	let main;
     	let div0;
-    	let t0;
+    	let t;
     	let div2;
     	let div1;
-    	let t1;
-    	let div3;
     	let current;
 
     	const videoplayer = new VideoPlayer_component({
@@ -2542,20 +2540,16 @@ var app = (function () {
     			main = element("main");
     			div0 = element("div");
     			create_component(videoplayer.$$.fragment);
-    			t0 = space();
+    			t = space();
     			div2 = element("div");
     			div1 = element("div");
     			create_component(formtemplate.$$.fragment);
-    			t1 = space();
-    			div3 = element("div");
     			attr_dev(div0, "class", "videoPlayer svelte-1lpz13o");
     			add_location(div0, file$7, 181, 1, 4633);
     			attr_dev(div1, "class", "form svelte-1lpz13o");
     			add_location(div1, file$7, 185, 2, 4746);
     			attr_dev(div2, "class", "form-div svelte-1lpz13o");
     			add_location(div2, file$7, 184, 1, 4704);
-    			attr_dev(div3, "class", "svelte-1lpz13o");
-    			add_location(div3, file$7, 189, 1, 4849);
     			attr_dev(main, "class", "main svelte-1lpz13o");
     			add_location(main, file$7, 180, 0, 4611);
     		},
@@ -2563,13 +2557,11 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, div0);
     			mount_component(videoplayer, div0, null);
-    			append_dev(main, t0);
+    			append_dev(main, t);
     			append_dev(main, div2);
     			append_dev(div2, div1);
     			mount_component(formtemplate, div1, null);
     			/*div2_binding*/ ctx[8](div2);
-    			append_dev(main, t1);
-    			append_dev(main, div3);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -2674,81 +2666,106 @@ var app = (function () {
     	return block;
     }
 
-    // (159:0) {#if $videoSource === ''}
+    // (155:0) {#if $videoSource === ''}
     function create_if_block$2(ctx) {
-    	let div3;
-    	let div2;
     	let div0;
-    	let h2;
+    	let h1;
     	let t1;
-    	let br0;
-    	let t2;
-    	let p;
-    	let t4;
-    	let br1;
-    	let t5;
+    	let p0;
+    	let t3;
+    	let div4;
+    	let div3;
     	let div1;
+    	let h2;
+    	let t5;
+    	let br0;
+    	let t6;
+    	let p1;
+    	let t8;
+    	let br1;
+    	let t9;
+    	let div2;
     	let button;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			div3 = element("div");
-    			div2 = element("div");
     			div0 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Echobase";
+    			t1 = space();
+    			p0 = element("p");
+    			p0.textContent = "by APIL";
+    			t3 = space();
+    			div4 = element("div");
+    			div3 = element("div");
+    			div1 = element("div");
     			h2 = element("h2");
     			h2.textContent = "Hi 👋";
-    			t1 = space();
-    			br0 = element("br");
-    			t2 = space();
-    			p = element("p");
-    			p.textContent = "We need you to point us to the data folder 👇";
-    			t4 = space();
-    			br1 = element("br");
     			t5 = space();
-    			div1 = element("div");
+    			br0 = element("br");
+    			t6 = space();
+    			p1 = element("p");
+    			p1.textContent = "We need you to point us to the data folder 👇";
+    			t8 = space();
+    			br1 = element("br");
+    			t9 = space();
+    			div2 = element("div");
     			button = element("button");
     			button.textContent = "Take me to the data!";
+    			attr_dev(h1, "class", "logo svelte-1lpz13o");
+    			add_location(h1, file$7, 156, 1, 3970);
+    			attr_dev(p0, "class", "logo-sub svelte-1lpz13o");
+    			add_location(p0, file$7, 157, 1, 4003);
+    			attr_dev(div0, "class", "header svelte-1lpz13o");
+    			add_location(div0, file$7, 155, 0, 3947);
     			attr_dev(h2, "class", "intro-text svelte-1lpz13o");
     			add_location(h2, file$7, 162, 3, 4109);
     			attr_dev(br0, "class", "svelte-1lpz13o");
     			add_location(br0, file$7, 163, 3, 4147);
-    			attr_dev(p, "class", "intro-text svelte-1lpz13o");
-    			add_location(p, file$7, 164, 3, 4156);
-    			attr_dev(div0, "class", "svelte-1lpz13o");
-    			add_location(div0, file$7, 161, 2, 4099);
+    			attr_dev(p1, "class", "intro-text svelte-1lpz13o");
+    			add_location(p1, file$7, 164, 3, 4156);
+    			attr_dev(div1, "class", "svelte-1lpz13o");
+    			add_location(div1, file$7, 161, 2, 4099);
     			attr_dev(br1, "class", "svelte-1lpz13o");
     			add_location(br1, file$7, 166, 2, 4241);
     			attr_dev(button, "class", "load-btn svelte-1lpz13o");
     			add_location(button, file$7, 168, 3, 4259);
-    			attr_dev(div1, "class", "svelte-1lpz13o");
-    			add_location(div1, file$7, 167, 2, 4249);
-    			attr_dev(div2, "class", "startup-child svelte-1lpz13o");
-    			add_location(div2, file$7, 160, 1, 4068);
-    			attr_dev(div3, "class", "startup svelte-1lpz13o");
-    			add_location(div3, file$7, 159, 0, 4044);
+    			attr_dev(div2, "class", "svelte-1lpz13o");
+    			add_location(div2, file$7, 167, 2, 4249);
+    			attr_dev(div3, "class", "startup-child svelte-1lpz13o");
+    			add_location(div3, file$7, 160, 1, 4068);
+    			attr_dev(div4, "class", "startup svelte-1lpz13o");
+    			add_location(div4, file$7, 159, 0, 4044);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div3, anchor);
-    			append_dev(div3, div2);
-    			append_dev(div2, div0);
-    			append_dev(div0, h2);
+    			insert_dev(target, div0, anchor);
+    			append_dev(div0, h1);
     			append_dev(div0, t1);
-    			append_dev(div0, br0);
-    			append_dev(div0, t2);
-    			append_dev(div0, p);
-    			append_dev(div2, t4);
-    			append_dev(div2, br1);
-    			append_dev(div2, t5);
-    			append_dev(div2, div1);
-    			append_dev(div1, button);
+    			append_dev(div0, p0);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div3);
+    			append_dev(div3, div1);
+    			append_dev(div1, h2);
+    			append_dev(div1, t5);
+    			append_dev(div1, br0);
+    			append_dev(div1, t6);
+    			append_dev(div1, p1);
+    			append_dev(div3, t8);
+    			append_dev(div3, br1);
+    			append_dev(div3, t9);
+    			append_dev(div3, div2);
+    			append_dev(div2, button);
     			dispose = listen_dev(button, "click", /*loadData*/ ctx[3], false, false, false);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div3);
+    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(div4);
     			dispose();
     		}
     	};
@@ -2757,7 +2774,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(159:0) {#if $videoSource === ''}",
+    		source: "(155:0) {#if $videoSource === ''}",
     		ctx
     	});
 
@@ -2765,11 +2782,6 @@ var app = (function () {
     }
 
     function create_fragment$7(ctx) {
-    	let div_1;
-    	let h1;
-    	let t1;
-    	let p;
-    	let t3;
     	let current_block_type_index;
     	let if_block;
     	let if_block_anchor;
@@ -2788,31 +2800,13 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div_1 = element("div");
-    			h1 = element("h1");
-    			h1.textContent = "Echobase";
-    			t1 = space();
-    			p = element("p");
-    			p.textContent = "by APIL";
-    			t3 = space();
     			if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(h1, "class", "logo svelte-1lpz13o");
-    			add_location(h1, file$7, 155, 1, 3943);
-    			attr_dev(p, "class", "logo-sub svelte-1lpz13o");
-    			add_location(p, file$7, 156, 1, 3976);
-    			attr_dev(div_1, "class", "header svelte-1lpz13o");
-    			add_location(div_1, file$7, 154, 0, 3920);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div_1, anchor);
-    			append_dev(div_1, h1);
-    			append_dev(div_1, t1);
-    			append_dev(div_1, p);
-    			insert_dev(target, t3, anchor);
     			if_blocks[current_block_type_index].m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     			current = true;
@@ -2852,8 +2846,6 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div_1);
-    			if (detaching) detach_dev(t3);
     			if_blocks[current_block_type_index].d(detaching);
     			if (detaching) detach_dev(if_block_anchor);
     		}

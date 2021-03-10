@@ -152,11 +152,11 @@
     }
 </script>
 
+{#if $videoSource === ''}
 <div class="header">
 	<h1 class="logo">Echobase</h1>
 	<p class="logo-sub">by APIL</p>
 </div>
-{#if $videoSource === ''}
 <div class="startup">
 	<div class="startup-child">
 		<div>
@@ -186,8 +186,7 @@
 		<div class="form">
 			<FormTemplate onSubmit={() => (scrollToTop())} {fields} />
 		</div>
-	</div>
-	<div></div>	
+	</div>	
 </main>
 {/if}
 	

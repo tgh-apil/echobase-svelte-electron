@@ -17,11 +17,9 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    height: 720,
-    width: 1280,
+    height: 1080,
+    width: 1920,
     fullscreen: true,
-    titleBarStyle: 'hidden',
-    // fullscreen: true,
     webPreferences: {
       enableRemoteModule: true,
       nodeIntegration: true
