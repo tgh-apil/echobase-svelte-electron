@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-	background: #0d0521;
+	background: #02021a;
 	color: #fafafa;
 	margin: 0;
 	padding: 8px;
@@ -42,22 +42,23 @@ input[type="range"] {
 
 h3 {
 	font-size: 20px;
-	color: #ffc800;
+	color: #ffe070;
 	font-family: 'IBM Plex Sans';
 	font-weight: 300;
 }
 
 button {
-	color: #fafafa;
+	color: #ffe070;
 	background-color: transparent;
-	border: 1.5px solid #5549b3;
-	font-size: 24px;
+	border: 1.5px solid #ffe070;
+	font-size: 30px;
 	outline: none;
 	font-weight: 900;
 }
 
 button:hover {
-	border: 1.5px solid #ffc800;
+	color: #fff0b8;
+	border: 1.5px solid #fff0b8;
 }
 
 button:disabled {

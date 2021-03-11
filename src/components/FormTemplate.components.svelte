@@ -34,7 +34,7 @@
 
 <form on:submit|preventDefault={() => handleSubmit(fields)}>
     <div class="formOptions">
-        <h2>Just a couple of questions...</h2>
+        <h2>Just a couple of questions:</h2>
         {#each fields as field}
             {#if field.type === 'radio'}
                 <RadioButtonGroup bind:group={field.value} label={field.label} options={field.options} id={field.id}/>
@@ -54,7 +54,7 @@
 
 <style>
     h2 {
-        color: #5549b3;
+        color: #fafafa;
         margin-top: 0px;
         font-size: 30px;
         font-family:  'IBM Plex Sans', sans-serif;

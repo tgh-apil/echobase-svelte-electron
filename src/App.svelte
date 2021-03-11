@@ -212,7 +212,7 @@ h1.logo {
 	color: #ffc800;
 	font-family: 'Bodoni Moda', serif;
 	font-weight: 900;
-	font-size: 90px;
+	font-size: 70px;
 	text-align: right;
 	padding-right: 20px;
 }
@@ -235,7 +235,7 @@ h2.intro-text {
 }
 
 h2.outro-text {
-	color: #fff;
+	color: #fafafa;
 	font-family: 'Bodoni Moda', serif;
 	font-weight: 900;
 	font-size: 75px;
@@ -282,7 +282,7 @@ p.logo-sub {
 	text-align: right;
 	font-family: 'IBM Plex Sans', sans-seirf;
 	font-size: 24px;
-	color: #808080;
+	color: #444444;
 	padding-right: 20px;
 	padding-top: 0px;
 	padding-bottom: 30px;
@@ -291,10 +291,10 @@ p.logo-sub {
 button.load-btn {
 	font-family: 'Bodoni Moda', serif;
 	font-size: 40px;
-	color: #5549b3;
+	color: #fafafa;
 	border-radius: 10px;
 	border-width: 2px;
-	border-color: #5549b3;
+	border-color: #fafafa;
 	padding: 20px 20px;
 }
 
