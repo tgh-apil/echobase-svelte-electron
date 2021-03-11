@@ -291,10 +291,10 @@ p.logo-sub {
 button.load-btn {
 	font-family: 'Bodoni Moda', serif;
 	font-size: 40px;
-	color: #fafafa;
+	color: #6984ba;
 	border-radius: 10px;
 	border-width: 2px;
-	border-color: #fafafa;
+	border-color: #6984ba;
 	padding: 20px 20px;
 }
 

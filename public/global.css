@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-	background: #02021a;
+	background-image: linear-gradient(#1f2841, #000);
 	color: #fafafa;
 	margin: 0;
 	padding: 8px;
@@ -48,17 +48,17 @@ h3 {
 }
 
 button {
-	color: #ffe070;
+	color: #6984ba;
 	background-color: transparent;
-	border: 1.5px solid #ffe070;
+	border: 1.5px solid #6984ba;
 	font-size: 30px;
 	outline: none;
 	font-weight: 900;
 }
 
 button:hover {
-	color: #fafafa;
-	border: 1.5px solid #fafafa;
+	color: #ffc800;
+	border: 1.5px solid #ffc800;
 }
 
 button:disabled {
