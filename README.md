@@ -29,9 +29,9 @@ Root
 ```
 
 ### 🤖 Tech
-Frameowrk: [Svelte](svelte.dev)\
+[Svelte](svelte.dev)\
 [Electron](https://www.electronjs.org/)\
-Tensorflow 2 + opencv to determine clip depth\
+Tensorflow 2 + opencv to determine clip depth
 
 ### 👩‍💻 To Use
 1. Get dependancies: `npm install`
