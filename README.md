@@ -31,11 +31,22 @@ Root
 ### 🤖 Tech
 Frameowrk: [Svelte](svelte.dev)\
 [Electron](https://www.electronjs.org/)
+Tensorflow 2 + opencv to determine clip depth
 
 ### 👩‍💻 To Use
 1. Get dependancies: `npm install`
 2. Run dev to edit live: `npm start`
 3. Make for your platform: `npm run make`
+
+### 🐍 Deep learning thing
+If you want to use the digit recognition we're using to gauge depth, you'll need to have these installed on your system:\
+
+- python 3.8x
+- Tensorflow 2
+- opencv
+
+
+If you don't want these, remove lines `10` and `33` from `FormTemplate.components.svelte`
 
 ### 💻 Starter templtae 
 [Electron Forge + Svelte Starter](https://github.com/codediodeio/electron-forge-svelte)

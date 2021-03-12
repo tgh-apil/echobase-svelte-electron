@@ -5,6 +5,8 @@
     import TextArea from './TextArea.component.svelte';
     import { nextClip } from '../NextClip.svelte';
     import { videoSource, rootDirectory } from '../stores';
+
+    // comment this out if you dont wan't to run python scripts
     import launchPy from '../pythonScripts';
 
     const fs = window.require('fs');
@@ -25,7 +27,9 @@
         fs.readdir($rootDirectory + '/storage', (err, files) => {
             let currentFile = files[0] + '.json';
             let filePath = $rootDirectory + '/data/' + currentFile;
-            console.log(files[0]);
+
+            // comment this line out if you don't want to run the python scripts
+            // for machine learning + digit recognition
             launchPy(files[0], $rootDirectory);
             
             fs.writeFile(filePath, convertedData, (err) => {
