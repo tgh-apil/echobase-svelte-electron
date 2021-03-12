@@ -19,9 +19,13 @@ Root
 |   video_4.mp4
 |    ...
 |
+└───image_recognition
+|   saved_model
+|   
 └───done
 |   video_1.mp4
 |   video_2.mp4
+|
 |
 └───data
 |   video_1.json
