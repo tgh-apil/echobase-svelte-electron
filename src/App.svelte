@@ -5,7 +5,7 @@
 	import Confetti from './components/Confetti.component.svelte';
 	const { dialog } = require('electron').remote;
 	const fs = window.require('fs');
-	
+
 	// form options
 	let fields = [
 		{

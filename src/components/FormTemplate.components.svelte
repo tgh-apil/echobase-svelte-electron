@@ -3,13 +3,16 @@
     import SelectGroup from './SelectGroup.component.svelte';
     import TextInput from './TextInput.component.svelte';
     import TextArea from './TextArea.component.svelte';
-    import {nextClip} from '../NextClip.svelte';
-    import { rootDirectory } from '../stores';
+    import { nextClip } from '../NextClip.svelte';
+    import { videoSource, rootDirectory } from '../stores';
+    import launchPy from '../pythonScripts';
+
     const fs = window.require('fs');
 
     export let fields;
     export let onSubmit;
 
+    // I know this is the wrong way to do this, but importing Path does not work for some stupid reason
     let storagePath = $rootDirectory + '/storage/';
     let donePath = $rootDirectory + '/done/';
     
@@ -20,13 +23,18 @@
         let convertedData = JSON.stringify(data, 0, 2);
 
         fs.readdir($rootDirectory + '/storage', (err, files) => {
-            let fileName = $rootDirectory + '/data/' + files[0] + '.json';
-            fs.writeFile(fileName, convertedData, (err) => {
+            let currentFile = files[0] + '.json';
+            let filePath = $rootDirectory + '/data/' + currentFile;
+            console.log(files[0]);
+            launchPy(files[0], $rootDirectory);
+            
+            fs.writeFile(filePath, convertedData, (err) => {
                 if (err) throw err;
-                console.log(`saved file ${files[0]}`);
+                console.log(`saved file ${currentFile}`);
             })
         })
     }
+
     // When submitting, turn our fields representation into a JSON body
     const handleSubmit = () => onSubmit(saveData(fieldsToObject(fields)), nextClip(storagePath, donePath));
 
