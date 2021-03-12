@@ -26,10 +26,10 @@ Root
 |   video_1.mp4
 |   video_2.mp4
 |
-|
 └───data
 |   video_1.json
 |   video_2.json
+|
 ```
 
 ### 🤖 Tech
