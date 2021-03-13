@@ -43,11 +43,15 @@ Tensorflow 2 + opencv to determine clip depth
 3. Make for your platform: `npm run make`
 
 ### 🐍 Deep learning thing
-If you want to use the digit recognition we're using to gauge depth, you'll need to have these installed on your system:\
+If you want to use the digit recognition we're using to gauge depth, you'll need to have these installed on your system:
 
 - python 3.8x
 - Tensorflow 2
 - opencv
+- numpy
+
+
+**Note**: the system is *really* bad at classifying the number 7 correctly.
 
 
 If you don't want these, remove lines `10` and `33` from `FormTemplate.components.svelte`
