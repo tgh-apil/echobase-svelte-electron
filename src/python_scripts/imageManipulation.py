@@ -69,9 +69,6 @@ img_file_paths = [roi_tens_file_path, roi_ones_file_path, roi_decimal_file_path]
 
 for i, image in enumerate(imgs):
     image = cv2.resize(image, dim, interpolation=cv2.INTER_AREA)
-    # roi_ones = cv2.resize(roi_ones, dim, interpolation=cv2.INTER_AREA)
-    # roi_decimal = cv2.resize(roi_decimal, dim, interpolation=cv2.INTER_AREA)
-
     image = cv2.copyMakeBorder(
         image, 
         y_padding, 
