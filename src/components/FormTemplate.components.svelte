@@ -3,13 +3,18 @@
     import SelectGroup from './SelectGroup.component.svelte';
     import TextInput from './TextInput.component.svelte';
     import TextArea from './TextArea.component.svelte';
-    import {nextClip} from '../NextClip.svelte';
-    import { rootDirectory } from '../stores';
+    import { nextClip } from '../NextClip.svelte';
+    import { videoSource, rootDirectory } from '../stores';
+
+    // comment this out if you dont wan't to run python scripts
+    import launchPy from '../pythonScripts';
+
     const fs = window.require('fs');
 
     export let fields;
     export let onSubmit;
 
+    // I know this is the wrong way to do this, but importing Path does not work for some stupid reason
     let storagePath = $rootDirectory + '/storage/';
     let donePath = $rootDirectory + '/done/';
     
@@ -20,13 +25,20 @@
         let convertedData = JSON.stringify(data, 0, 2);
 
         fs.readdir($rootDirectory + '/storage', (err, files) => {
-            let fileName = $rootDirectory + '/data/' + files[0] + '.json';
-            fs.writeFile(fileName, convertedData, (err) => {
+            let currentFile = files[0] + '.json';
+            let filePath = $rootDirectory + '/data/' + currentFile;
+
+            // comment this line out if you don't want to run the python scripts
+            // for machine learning + digit recognition
+            launchPy(files[0], $rootDirectory);
+            
+            fs.writeFile(filePath, convertedData, (err) => {
                 if (err) throw err;
-                console.log(`saved file ${files[0]}`);
+                console.log(`saved file ${currentFile}`);
             })
         })
     }
+
     // When submitting, turn our fields representation into a JSON body
     const handleSubmit = () => onSubmit(saveData(fieldsToObject(fields)), nextClip(storagePath, donePath));
 
@@ -34,7 +46,7 @@
 
 <form on:submit|preventDefault={() => handleSubmit(fields)}>
     <div class="formOptions">
-        <h2>Just a couple of questions...</h2>
+        <h2>Just a couple of questions:</h2>
         {#each fields as field}
             {#if field.type === 'radio'}
                 <RadioButtonGroup bind:group={field.value} label={field.label} options={field.options} id={field.id}/>
@@ -54,7 +66,7 @@
 
 <style>
     h2 {
-        color: #5549b3;
+        color: #fafafa;
         margin-top: 0px;
         font-size: 30px;
         font-family:  'IBM Plex Sans', sans-serif;

@@ -19,6 +19,9 @@ Root
 |   video_4.mp4
 |    ...
 |
+└───image_recognition
+|   saved_model
+|   
 └───done
 |   video_1.mp4
 |   video_2.mp4
@@ -26,16 +29,32 @@ Root
 └───data
 |   video_1.json
 |   video_2.json
+|
 ```
 
 ### 🤖 Tech
-Frameowrk: [Svelte](svelte.dev)\
-[Electron](https://www.electronjs.org/)
+[Svelte](svelte.dev)\
+[Electron](https://www.electronjs.org/)\
+Tensorflow 2 + opencv to determine clip depth
 
 ### 👩‍💻 To Use
 1. Get dependancies: `npm install`
 2. Run dev to edit live: `npm start`
 3. Make for your platform: `npm run make`
+
+### 🐍 Deep learning thing
+If you want to use the digit recognition we're using to gauge depth, you'll need to have these installed on your system:
+
+- python 3.8x
+- Tensorflow 2
+- opencv
+- numpy
+
+
+**Note**: the system is *really* bad at classifying the number 7 correctly.
+
+
+If you don't want these, remove lines `10` and `33` from `FormTemplate.components.svelte`
 
 ### 💻 Starter templtae 
 [Electron Forge + Svelte Starter](https://github.com/codediodeio/electron-forge-svelte)

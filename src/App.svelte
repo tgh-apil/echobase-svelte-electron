@@ -5,7 +5,7 @@
 	import Confetti from './components/Confetti.component.svelte';
 	const { dialog } = require('electron').remote;
 	const fs = window.require('fs');
-	
+
 	// form options
 	let fields = [
 		{
@@ -173,11 +173,16 @@
 <!-- <pre><code>{JSON.stringify(result, 0, 2)}</code></pre> -->
 {:else if $videoSource=='done'}
 <div>
+	<div class="header">
+		<h1 class="logo">Echobase</h1>
+		<p class="logo-sub">by APIL</p>
+	</div>
 	<h2 class="outro-text">You're all done!</h2>
 	<h2 class="outro-text">🍾</h2>
 	<Confetti characters={[ '🎊', '🥳', '🎉']}/>
 </div>
 {:else}
+<h1 class="logo-sm">Echobase</h1>
 <main class="main">
 	<div class="videoPlayer">
 		<VideoPlayer {$videoSource} />
@@ -207,9 +212,18 @@ h1.logo {
 	color: #ffc800;
 	font-family: 'Bodoni Moda', serif;
 	font-weight: 900;
-	font-size: 90px;
+	font-size: 70px;
 	text-align: right;
 	padding-right: 20px;
+}
+
+
+h1.logo-sm {
+	color: #ffc800;
+	font-family: 'Bodoni Moda', serif;
+	font-weight: 600;
+	font-size: 70px;
+	text-align: right;
 }
 
 h2.intro-text {
@@ -221,7 +235,7 @@ h2.intro-text {
 }
 
 h2.outro-text {
-	color: #fff;
+	color: #fafafa;
 	font-family: 'Bodoni Moda', serif;
 	font-weight: 900;
 	font-size: 75px;
@@ -268,7 +282,7 @@ p.logo-sub {
 	text-align: right;
 	font-family: 'IBM Plex Sans', sans-seirf;
 	font-size: 24px;
-	color: #808080;
+	color: #444444;
 	padding-right: 20px;
 	padding-top: 0px;
 	padding-bottom: 30px;
@@ -277,10 +291,10 @@ p.logo-sub {
 button.load-btn {
 	font-family: 'Bodoni Moda', serif;
 	font-size: 40px;
-	color: #5549b3;
+	color: #6984ba;
 	border-radius: 10px;
 	border-width: 2px;
-	border-color: #5549b3;
+	border-color: #6984ba;
 	padding: 20px 20px;
 }
 
