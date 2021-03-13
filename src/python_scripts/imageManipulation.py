@@ -3,6 +3,7 @@ import sys
 import cv2
 import pathlib
 import numpy as np
+import json
 
 file_name = sys.argv[1]
 path = sys.argv[2]
@@ -54,7 +55,6 @@ imgs = [roi_tens, roi_ones, roi_decimal]
 # image manipulation
 # first, we scale the crop to 20 px then we pad to 28 (as per mnist)
 scale_pert = round(20/h, 3)
-# print(scale_pert)
 
 width = int(11 * scale_pert)
 height = int(12 * scale_pert)
@@ -103,6 +103,9 @@ imgs_to_pred(prediction_list)
 pred_class = probability_model.predict_classes(np.array(prediction_list), batch_size=3, verbose=1)
 
 # combine the digits and get back a float value for the depth of imaging
-number = float(str(pred_class[0]) + str(pred_class[1]) + str(pred_class[2])) /10
+depth = float(str(pred_class[0]) + str(pred_class[1]) + str(pred_class[2])) /10
 
-print(f'depth: {number} cm')
+db_path = str(pathlib.Path.joinpath(path,  'data'))
+db_file_path = path.joinpath(db_path, file_name + '.json')
+
+print(depth)

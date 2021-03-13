@@ -1613,7 +1613,21 @@ var app = (function () {
     	console.log(`moved ${storageFiles[0]} to done!`);
     }
 
+    const fs$1 = window.require('fs');
+
+    function jsonUpdater(filePath, fileName, objToAppend) {
+            // path still not working even if i convert the object to string, so we use this ugly thing
+            const dbFilePath = filePath + '/data/' + fileName + '.json';
+
+            let dbObj = JSON.parse(fs$1.readFileSync(dbFilePath));
+
+            dbObj = {...dbObj, ...objToAppend};
+
+            fs$1.writeFileSync(dbFilePath, JSON.stringify(dbObj, 0, 2));
+    }
+
     const { PythonShell } = window.require('python-shell');
+    const fs$2 = window.require('fs');
 
     function launchPy(file_name, root_path) {
 
@@ -1624,9 +1638,22 @@ var app = (function () {
             args: [file_name, root_path]
         };
 
+        let pyResults = [];
+
         PythonShell.run('imageManipulation.py', options, function(err, results) {
+            // results come in as an object
             if (err) throw err;
+            results.forEach(result => {
+                pyResults.push(result);
+            });
+
             console.log(results);
+
+            const depth = parseInt(pyResults[pyResults.length - 1]);
+
+            const depth_obj = {'depth_cm': depth};
+
+            jsonUpdater(root_path, file_name, depth_obj);
         });
     }
 
