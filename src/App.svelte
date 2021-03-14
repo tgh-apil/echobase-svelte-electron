@@ -3,6 +3,7 @@
 	import { videoSource, rootDirectory } from './stores.js';
 	import FormTemplate from './components/FormTemplate.components.svelte';
 	import Confetti from './components/Confetti.component.svelte';
+    import { vidBlackBar } from './pythonScripts';
 	const { dialog } = require('electron').remote;
 	const fs = window.require('fs');
 
@@ -133,6 +134,10 @@
 
 		rootDirectory.update(src => src = directory);
 
+		vidBlackBar($rootDirectory)
+
+		// i want everything below this line to wait for the video anonymization to finish
+
 		const storagePath = directory + '/storage';
 
 		if(fs.readdirSync(storagePath).length === 0) {
@@ -141,6 +146,7 @@
 			// sets initial clip to be shown
 			fs.readdir(storagePath, (err, files) => {
 				videoSource.update(src => src = storagePath + '/' + files[0]);
+				console.log($videoSource);
 			})
 		}
 	}

@@ -9,4 +9,6 @@ export default function jsonUpdater(filePath, fileName, objToAppend) {
         dbObj = {...dbObj, ...objToAppend};
 
         fs.writeFileSync(dbFilePath, JSON.stringify(dbObj, 0, 2));
+
+        console.log(`File: ${fileName} updated!`)
 }

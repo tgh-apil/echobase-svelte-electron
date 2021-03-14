@@ -4,10 +4,10 @@
     import TextInput from './TextInput.component.svelte';
     import TextArea from './TextArea.component.svelte';
     import { nextClip } from '../NextClip.svelte';
-    import { videoSource, rootDirectory } from '../stores';
+    import { rootDirectory } from '../stores';
 
     // comment this out if you dont wan't to run python scripts
-    import launchPy from '../pythonScripts';
+    import { launchPy } from '../pythonScripts';
 
     const fs = window.require('fs');
 

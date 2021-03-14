@@ -3,7 +3,6 @@ import sys
 import cv2
 import pathlib
 import numpy as np
-import json
 
 file_name = sys.argv[1]
 path = sys.argv[2]
@@ -104,8 +103,5 @@ pred_class = probability_model.predict_classes(np.array(prediction_list), batch_
 
 # combine the digits and get back a float value for the depth of imaging
 depth = float(str(pred_class[0]) + str(pred_class[1]) + str(pred_class[2])) /10
-
-db_path = str(pathlib.Path.joinpath(path,  'data'))
-db_file_path = path.joinpath(db_path, file_name + '.json')
 
 print(depth)
