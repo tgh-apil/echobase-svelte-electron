@@ -127,6 +127,9 @@
 		}
 	]
 
+	let isDataSet = false;
+	let storagePath = '';
+
 	function loadData() {
 		const directory = dialog.showOpenDialogSync({ properties: ['openFile', 'openDirectory'] });
 
@@ -135,18 +138,31 @@
 		rootDirectory.update(src => src = directory);
 
 		vidBlackBar($rootDirectory)
-
+		
+		storagePath = directory + '/storage';
 		// i want everything below this line to wait for the video anonymization to finish
-
-		const storagePath = directory + '/storage';
-
+		
+		setVideo(storagePath);
+	}
+	
+	function setVideo(storagePath) {
 		if(fs.readdirSync(storagePath).length === 0) {
+			isDataSet = true;
 			videoSource.update(src => src = 'done');
 		} else {
 			// sets initial clip to be shown
 			fs.readdir(storagePath, (err, files) => {
-				videoSource.update(src => src = storagePath + '/' + files[0]);
-				console.log($videoSource);
+				if (files[0].includes('__anon__')) {
+					videoSource.update(src => src = storagePath + '/' + files[0]);
+					console.log($videoSource);
+					isDataSet = true;					
+				} else {
+					videoSource.update(src => src = 'loading')
+					console.log('loading');
+					setTimeout(() => {
+						setVideo(storagePath);	
+					}, 1000);
+				}
 			})
 		}
 	}
@@ -158,154 +174,150 @@
     }
 </script>
 
-{#if $videoSource === ''}
 <div class="header">
 	<h1 class="logo">Echobase</h1>
-	<p class="logo-sub">by APIL</p>
 </div>
+{#if isDataSet === false}
 <div class="startup">
 	<div class="startup-child">
+		{#if $videoSource === ''}
 		<div>
 			<h2 class="intro-text">Hi 👋</h2>
 			<br>
-			<p class="intro-text">We need you to point us to the data folder 👇</p>
+			<p class="intro-text">We need you to point us to the data folder</p>
 		</div>
 		<br>
 		<div>
-			<button class="load-btn" on:click={loadData}>Take me to the data!</button>
+			<button class="load-btn" on:click={loadData}>Take me to the data! 🚀</button>
 		</div>
+		{:else if $videoSource === 'loading'}
+		<div>
+			<h2 class="intro-text">One second <br>⏱</h2>
+			<br>
+			<p class="intro-text">We're anonymizing some data for you</p>
+		</div>
+		{/if}
 	</div>
 </div>
 <!-- <pre><code>{JSON.stringify(result, 0, 2)}</code></pre> -->
-{:else if $videoSource=='done'}
-<div>
-	<div class="header">
-		<h1 class="logo">Echobase</h1>
-		<p class="logo-sub">by APIL</p>
+{:else if isDataSet === true}
+	{#if $videoSource === 'done'}
+	<div>
+		<h2 class="outro-text">You're all done! <br>🍾</h2>
+		<Confetti characters={[ '🎊', '🥳', '🎉']}/>
 	</div>
-	<h2 class="outro-text">You're all done!</h2>
-	<h2 class="outro-text">🍾</h2>
-	<Confetti characters={[ '🎊', '🥳', '🎉']}/>
-</div>
-{:else}
-<h1 class="logo-sm">Echobase</h1>
-<main class="main">
-	<div class="videoPlayer">
-		<VideoPlayer {$videoSource} />
-	</div>
-	<div class="form-div" bind:this={div}>
-		<div class="form">
-			<FormTemplate onSubmit={() => (scrollToTop())} {fields} />
+	{:else}
+	<main class="main">
+		<div class="videoPlayer">
+			<VideoPlayer {$videoSource} />
 		</div>
-	</div>	
-</main>
+		<div class="form-div" bind:this={div}>
+			<div class="form">
+				<FormTemplate onSubmit={() => (scrollToTop())} {fields} />
+			</div>
+		</div>	
+	</main>
+	{/if}
 {/if}
 	
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-main.main {
-	display: grid;
-	grid-template-columns: 3fr 1.5fr;
-	grid-template-rows: 0.1fr 0.1fr;
-}
+	main.main {
+		display: grid;
+		grid-template-columns: 3fr 1.5fr;
+		grid-template-rows: 0.1fr 0.1fr;
+	}
 
-h1.logo {
-	color: #ffc800;
-	font-family: 'Bodoni Moda', serif;
-	font-weight: 900;
-	font-size: 70px;
-	text-align: right;
-	padding-right: 20px;
-}
+	h1.logo {
+		color: #ff264e;
+		font-family: 'Lobster', cursive;
+		font-size: 70px;
+		text-align: right;
+		padding-right: 20px;
+	}
 
+	h2.intro-text {
+		color: #ff264e;
+		font-family: 'IBM Plex Sans', sans-seirf;
+		font-weight: 900;
+		font-size: 75px;
+		text-align: center;
+	}
 
-h1.logo-sm {
-	color: #ffc800;
-	font-family: 'Bodoni Moda', serif;
-	font-weight: 600;
-	font-size: 70px;
-	text-align: right;
-}
+	h2.outro-text {
+		color: #fff;
+		font-family: 'IBM Plex Sans', sans-seirf;
+		font-weight: 900;
+		font-size: 75px;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%)
+	}
 
-h2.intro-text {
-	color: #ffc800;
-	font-family: 'Bodoni Moda', serif;
-	font-weight: 900;
-	font-size: 75px;
-	text-align: center;
-}
+	div.startup {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-h2.outro-text {
-	color: #fafafa;
-	font-family: 'Bodoni Moda', serif;
-	font-weight: 900;
-	font-size: 75px;
-	text-align: center;
-}
+	div.startup-child {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-div.startup {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+	div.header {
+		grid-column-start: 1;
+		grid-column-end: 5;
+	}
 
-div.startup-child {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
+	div.form-div {
+		overflow: auto;
+		padding-left: 30px;
+		padding-right: 20px;
+		min-height: 0;
+	}
 
-div.header {
-	grid-column-start: 1;
-	grid-column-end: 5;
-}
+	div.form {
+		height: 0px;
+	}
 
-div.form-div {
-	overflow: auto;
-	padding-left: 30px;
-	padding-right: 20px;
-	min-height: 0;
-}
+	p.intro-text {
+		text-align: center;
+		font-family: 'IBM Plex Sans', sans-seirf;
+		font-size: 20px;
+	}
 
-div.form {
-	height: 0px;
-}
+	p.logo-sub {
+		text-align: right;
+		font-family: 'IBM Plex Sans', sans-seirf;
+		font-size: 24px;
+		color: #444444;
+		padding-right: 20px;
+		padding-top: 0px;
+		padding-bottom: 30px;
+	}
 
-p.intro-text {
-	text-align: center;
-	font-family: 'IBM Plex Sans', sans-seirf;
-	font-size: 20px;
-	color: #fafafa;
-}
+	button.load-btn {
+		font-family: 'IBM Plex Sans', sans-seirf;
+		font-size: 40px;
+		color: #fff;
+		border-radius: 10px;
+		border-width: 2px;
+		border-color: #fff;
+		padding: 20px 20px;
+	}
 
-p.logo-sub {
-	text-align: right;
-	font-family: 'IBM Plex Sans', sans-seirf;
-	font-size: 24px;
-	color: #444444;
-	padding-right: 20px;
-	padding-top: 0px;
-	padding-bottom: 30px;
-}
-
-button.load-btn {
-	font-family: 'Bodoni Moda', serif;
-	font-size: 40px;
-	color: #6984ba;
-	border-radius: 10px;
-	border-width: 2px;
-	border-color: #6984ba;
-	padding: 20px 20px;
-}
-
-button.load-btn:hover{
-	border-color: #ffc800;
-	color: #ffc800;
-}
+	button.load-btn:hover{
+		border-color: #ff264e;
+		color: #ff264e;
+	}
 </style>
