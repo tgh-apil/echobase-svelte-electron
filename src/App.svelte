@@ -181,7 +181,7 @@
 
 {#if isDataSet === false}
 <div class="header">
-	<h1 class="logo">Echobase</h1>
+	<h1>Echobase</h1>
 </div>
 <div class="startup">
 	<div class="startup-child">
@@ -245,7 +245,6 @@
 	main.main {
 		display: grid;
 		grid-template-columns: 3fr 1.5fr;
-		grid-template-rows: 0.1fr 0.1fr;
 	}
 
 	h2.intro-text {
@@ -303,27 +302,14 @@
 		font-size: 20px;
 	}
 
-	p.logo-sub {
-		text-align: right;
-		font-family: 'IBM Plex Sans', sans-seirf;
-		font-size: 24px;
-		color: #444444;
-		padding-right: 20px;
-		padding-top: 0px;
-		padding-bottom: 30px;
-	}
-
-	button.load-btn {
-		font-family: 'IBM Plex Sans', sans-seirf;
+	.load-btn {
 		font-size: 40px;
-		color: #fff;
-		border-radius: 10px;
 		border-width: 2px;
 		border-color: #fff;
 		padding: 20px 20px;
 	}
 
-	button.load-btn:hover{
+	.load-btn:hover{
 		border-color: #ff264e;
 		color: #ff264e;
 		cursor: pointer;

@@ -32,14 +32,14 @@ input, button, select, textarea {
 }
 
 input:disabled {
-	color: #999;
+	color: rgb(82, 82, 82);
 }
 
 input[type="range"] {
 	height: 0;
 }
 
-h1.logo {
+h1 {
 	color: #ff264e;
 	font-family: 'Lobster', cursive;
 	font-size: 100px;
@@ -55,10 +55,12 @@ h3 {
 }
 
 button {
+	font-family: 'IBM Plex Sans', sans-seirf;
 	color: #fff;
 	background-color: transparent;
 	border: 1.5px solid #fff;
-	font-size: 30px;
+	border-radius: 10px;
+	font-size: 25px;
 	outline: none;
 	font-weight: 900;
 }
@@ -70,6 +72,26 @@ button:hover {
 }
 
 button:disabled {
-	color: #999;
+	color: rgb(82, 82, 82);
 }
 
+/* from w3 schools */
+/* width */
+::-webkit-scrollbar {
+	width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgb(26, 26, 26);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #d3455f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #ff264e;
+}

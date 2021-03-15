@@ -30,7 +30,7 @@
     .nav-logo {
         color: #ff264e;
         font-family: 'Lobster', cursive;
-        font-size: 50px;
+        font-size: 70px;
         text-align: right;
         padding-right: 20px;
         margin: 0px;
@@ -44,6 +44,7 @@
 
     .not-selected:hover {
         color: #ff264e;
+        border-radius: 2px;
         border-bottom: 2px solid #ff264e;
     }
 
@@ -51,6 +52,7 @@
         font-size: 20px;
         border-color: transparent;
         color: #ff264e;
+        border-radius: 2px;
         border-bottom: 2px solid #ff264e;
     }
 </style>

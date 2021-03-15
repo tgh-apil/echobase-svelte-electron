@@ -2629,22 +2629,22 @@ var app = (function () {
 
     			attr_dev(button0, "class", button0_class_value = "" + (null_to_empty(/*currentButton*/ ctx[0] === "main"
     			? "selected"
-    			: "not-selected") + " svelte-1xgz8y"));
+    			: "not-selected") + " svelte-16ytbcc"));
 
     			add_location(button0, file$7, 14, 8, 341);
 
     			attr_dev(button1, "class", button1_class_value = "" + (null_to_empty(/*currentButton*/ ctx[0] === "overview"
     			? "selected"
-    			: "not-selected") + " svelte-1xgz8y"));
+    			: "not-selected") + " svelte-16ytbcc"));
 
     			add_location(button1, file$7, 15, 8, 475);
     			attr_dev(div0, "class", "button-container");
     			add_location(div0, file$7, 13, 4, 301);
-    			attr_dev(p, "class", "nav-logo svelte-1xgz8y");
+    			attr_dev(p, "class", "nav-logo svelte-16ytbcc");
     			add_location(p, file$7, 18, 8, 667);
     			attr_dev(div1, "class", "logo-container");
     			add_location(div1, file$7, 17, 4, 629);
-    			attr_dev(main, "class", "nav-top svelte-1xgz8y");
+    			attr_dev(main, "class", "nav-top svelte-16ytbcc");
     			add_location(main, file$7, 12, 0, 273);
     		},
     		l: function claim(nodes) {
@@ -2670,13 +2670,13 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*currentButton*/ 1 && button0_class_value !== (button0_class_value = "" + (null_to_empty(/*currentButton*/ ctx[0] === "main"
     			? "selected"
-    			: "not-selected") + " svelte-1xgz8y"))) {
+    			: "not-selected") + " svelte-16ytbcc"))) {
     				attr_dev(button0, "class", button0_class_value);
     			}
 
     			if (dirty & /*currentButton*/ 1 && button1_class_value !== (button1_class_value = "" + (null_to_empty(/*currentButton*/ ctx[0] === "overview"
     			? "selected"
-    			: "not-selected") + " svelte-1xgz8y"))) {
+    			: "not-selected") + " svelte-16ytbcc"))) {
     				attr_dev(button1, "class", button1_class_value);
     			}
     		},
@@ -2866,14 +2866,14 @@ var app = (function () {
     			div2 = element("div");
     			div1 = element("div");
     			if (if_block) if_block.c();
-    			attr_dev(h1, "class", "logo svelte-p5mk3f");
+    			attr_dev(h1, "class", "svelte-1qye0pk");
     			add_location(h1, file$8, 183, 1, 4640);
-    			attr_dev(div0, "class", "header svelte-p5mk3f");
+    			attr_dev(div0, "class", "header svelte-1qye0pk");
     			add_location(div0, file$8, 182, 0, 4617);
-    			attr_dev(div1, "class", "startup-child svelte-p5mk3f");
-    			add_location(div1, file$8, 186, 1, 4704);
-    			attr_dev(div2, "class", "startup svelte-p5mk3f");
-    			add_location(div2, file$8, 185, 0, 4680);
+    			attr_dev(div1, "class", "startup-child svelte-1qye0pk");
+    			add_location(div1, file$8, 186, 1, 4691);
+    			attr_dev(div2, "class", "startup svelte-1qye0pk");
+    			add_location(div2, file$8, 185, 0, 4667);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -2935,12 +2935,12 @@ var app = (function () {
     			t0 = text("Uh-oh, something happened! ");
     			br = element("br");
     			t1 = text("💩");
-    			attr_dev(br, "class", "svelte-p5mk3f");
-    			add_location(br, file$8, 231, 52, 5891);
-    			attr_dev(h2, "class", "outro-text svelte-p5mk3f");
-    			add_location(h2, file$8, 231, 2, 5841);
-    			attr_dev(div_1, "class", "svelte-p5mk3f");
-    			add_location(div_1, file$8, 230, 1, 5832);
+    			attr_dev(br, "class", "svelte-1qye0pk");
+    			add_location(br, file$8, 231, 52, 5878);
+    			attr_dev(h2, "class", "outro-text svelte-1qye0pk");
+    			add_location(h2, file$8, 231, 2, 5828);
+    			attr_dev(div_1, "class", "svelte-1qye0pk");
+    			add_location(div_1, file$8, 230, 1, 5819);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -2978,10 +2978,10 @@ var app = (function () {
     			div_1 = element("div");
     			p = element("p");
     			p.textContent = "overview";
-    			attr_dev(p, "class", "svelte-p5mk3f");
-    			add_location(p, file$8, 227, 4, 5792);
-    			attr_dev(div_1, "class", "svelte-p5mk3f");
-    			add_location(div_1, file$8, 226, 3, 5781);
+    			attr_dev(p, "class", "svelte-1qye0pk");
+    			add_location(p, file$8, 227, 4, 5779);
+    			attr_dev(div_1, "class", "svelte-1qye0pk");
+    			add_location(div_1, file$8, 226, 3, 5768);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -3037,14 +3037,14 @@ var app = (function () {
     			div2 = element("div");
     			div1 = element("div");
     			create_component(formtemplate.$$.fragment);
-    			attr_dev(div0, "class", "videoPlayer svelte-p5mk3f");
-    			add_location(div0, file$8, 216, 4, 5487);
-    			attr_dev(div1, "class", "form svelte-p5mk3f");
-    			add_location(div1, file$8, 220, 5, 5612);
-    			attr_dev(div2, "class", "form-div svelte-p5mk3f");
-    			add_location(div2, file$8, 219, 4, 5567);
-    			attr_dev(main, "class", "main svelte-p5mk3f");
-    			add_location(main, file$8, 215, 3, 5462);
+    			attr_dev(div0, "class", "videoPlayer svelte-1qye0pk");
+    			add_location(div0, file$8, 216, 4, 5474);
+    			attr_dev(div1, "class", "form svelte-1qye0pk");
+    			add_location(div1, file$8, 220, 5, 5599);
+    			attr_dev(div2, "class", "form-div svelte-1qye0pk");
+    			add_location(div2, file$8, 219, 4, 5554);
+    			attr_dev(main, "class", "main svelte-1qye0pk");
+    			add_location(main, file$8, 215, 3, 5449);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
@@ -3116,12 +3116,12 @@ var app = (function () {
     			t1 = text("🍾");
     			t2 = space();
     			create_component(confetti.$$.fragment);
-    			attr_dev(br, "class", "svelte-p5mk3f");
-    			add_location(br, file$8, 210, 42, 5346);
-    			attr_dev(h2, "class", "outro-text svelte-p5mk3f");
-    			add_location(h2, file$8, 210, 2, 5306);
-    			attr_dev(div_1, "class", "svelte-p5mk3f");
-    			add_location(div_1, file$8, 209, 1, 5297);
+    			attr_dev(br, "class", "svelte-1qye0pk");
+    			add_location(br, file$8, 210, 42, 5333);
+    			attr_dev(h2, "class", "outro-text svelte-1qye0pk");
+    			add_location(h2, file$8, 210, 2, 5293);
+    			attr_dev(div_1, "class", "svelte-1qye0pk");
+    			add_location(div_1, file$8, 209, 1, 5284);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -3184,16 +3184,16 @@ var app = (function () {
     			t3 = space();
     			p = element("p");
     			p.textContent = "We're anonymizing some data for you";
-    			attr_dev(br0, "class", "svelte-p5mk3f");
-    			add_location(br0, file$8, 199, 37, 5097);
-    			attr_dev(h2, "class", "intro-text svelte-p5mk3f");
-    			add_location(h2, file$8, 199, 3, 5063);
-    			attr_dev(br1, "class", "svelte-p5mk3f");
-    			add_location(br1, file$8, 200, 3, 5112);
-    			attr_dev(p, "class", "intro-text svelte-p5mk3f");
-    			add_location(p, file$8, 201, 3, 5121);
-    			attr_dev(div_1, "class", "svelte-p5mk3f");
-    			add_location(div_1, file$8, 198, 2, 5053);
+    			attr_dev(br0, "class", "svelte-1qye0pk");
+    			add_location(br0, file$8, 199, 37, 5084);
+    			attr_dev(h2, "class", "intro-text svelte-1qye0pk");
+    			add_location(h2, file$8, 199, 3, 5050);
+    			attr_dev(br1, "class", "svelte-1qye0pk");
+    			add_location(br1, file$8, 200, 3, 5099);
+    			attr_dev(p, "class", "intro-text svelte-1qye0pk");
+    			add_location(p, file$8, 201, 3, 5108);
+    			attr_dev(div_1, "class", "svelte-1qye0pk");
+    			add_location(div_1, file$8, 198, 2, 5040);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -3254,20 +3254,20 @@ var app = (function () {
     			div1 = element("div");
     			button = element("button");
     			button.textContent = "Take me to the data! 🚀";
-    			attr_dev(h2, "class", "intro-text svelte-p5mk3f");
-    			add_location(h2, file$8, 189, 3, 4774);
-    			attr_dev(br0, "class", "svelte-p5mk3f");
-    			add_location(br0, file$8, 190, 3, 4812);
-    			attr_dev(p, "class", "intro-text svelte-p5mk3f");
-    			add_location(p, file$8, 191, 3, 4821);
-    			attr_dev(div0, "class", "svelte-p5mk3f");
-    			add_location(div0, file$8, 188, 2, 4764);
-    			attr_dev(br1, "class", "svelte-p5mk3f");
-    			add_location(br1, file$8, 193, 2, 4903);
-    			attr_dev(button, "class", "load-btn svelte-p5mk3f");
-    			add_location(button, file$8, 195, 3, 4921);
-    			attr_dev(div1, "class", "svelte-p5mk3f");
-    			add_location(div1, file$8, 194, 2, 4911);
+    			attr_dev(h2, "class", "intro-text svelte-1qye0pk");
+    			add_location(h2, file$8, 189, 3, 4761);
+    			attr_dev(br0, "class", "svelte-1qye0pk");
+    			add_location(br0, file$8, 190, 3, 4799);
+    			attr_dev(p, "class", "intro-text svelte-1qye0pk");
+    			add_location(p, file$8, 191, 3, 4808);
+    			attr_dev(div0, "class", "svelte-1qye0pk");
+    			add_location(div0, file$8, 188, 2, 4751);
+    			attr_dev(br1, "class", "svelte-1qye0pk");
+    			add_location(br1, file$8, 193, 2, 4890);
+    			attr_dev(button, "class", "load-btn svelte-1qye0pk");
+    			add_location(button, file$8, 195, 3, 4908);
+    			attr_dev(div1, "class", "svelte-1qye0pk");
+    			add_location(div1, file$8, 194, 2, 4898);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
