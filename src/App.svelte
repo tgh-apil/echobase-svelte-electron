@@ -1,10 +1,13 @@
 <script>
 	import VideoPlayer from './components/VideoPlayer.component.svelte';
-	import { videoSource, rootDirectory } from './stores.js';
+	import { videoSource, rootDirectory, currentPage } from './stores.js';
 	import FormTemplate from './components/FormTemplate.components.svelte';
 	import Confetti from './components/Confetti.component.svelte';
-    import { vidBlackBar } from './pythonScripts';
+	import NavBar from './components/NavBar.component.svelte';
+
 	const { dialog } = require('electron').remote;
+    // python scripts
+	import { vidBlackBar } from './pythonScripts';
 	const fs = window.require('fs');
 
 	// form options
@@ -129,7 +132,10 @@
 
 	let isDataSet = false;
 	let storagePath = '';
-
+	
+	// set primary page view
+	currentPage.update(src => src = 'main');
+	
 	function loadData() {
 		const directory = dialog.showOpenDialogSync({ properties: ['openFile', 'openDirectory'] });
 
@@ -140,7 +146,6 @@
 		vidBlackBar($rootDirectory)
 		
 		storagePath = directory + '/storage';
-		// i want everything below this line to wait for the video anonymization to finish
 		
 		setVideo(storagePath);
 	}
@@ -174,10 +179,10 @@
     }
 </script>
 
+{#if isDataSet === false}
 <div class="header">
 	<h1 class="logo">Echobase</h1>
 </div>
-{#if isDataSet === false}
 <div class="startup">
 	<div class="startup-child">
 		{#if $videoSource === ''}
@@ -199,24 +204,34 @@
 		{/if}
 	</div>
 </div>
-<!-- <pre><code>{JSON.stringify(result, 0, 2)}</code></pre> -->
 {:else if isDataSet === true}
+	<NavBar />
 	{#if $videoSource === 'done'}
 	<div>
 		<h2 class="outro-text">You're all done! <br>🍾</h2>
 		<Confetti characters={[ '🎊', '🥳', '🎉']}/>
 	</div>
 	{:else}
-	<main class="main">
-		<div class="videoPlayer">
-			<VideoPlayer {$videoSource} />
-		</div>
-		<div class="form-div" bind:this={div}>
-			<div class="form">
-				<FormTemplate onSubmit={() => (scrollToTop())} {fields} />
+		{#if $currentPage === 'main'}
+			<main class="main">
+				<div class="videoPlayer">
+					<VideoPlayer {$videoSource} />
+				</div>
+				<div class="form-div" bind:this={div}>
+					<div class="form">
+						<FormTemplate onSubmit={() => (scrollToTop())} {fields} />
+					</div>
+				</div>	
+			</main>
+		{:else if $currentPage === 'overview'}
+			<div>
+				<p>overview</p>
 			</div>
-		</div>	
-	</main>
+		{:else}
+	<div>
+		<h2 class="outro-text">Uh-oh, something happened! <br>💩</h2>
+	</div>
+		{/if}
 	{/if}
 {/if}
 	
@@ -231,14 +246,6 @@
 		display: grid;
 		grid-template-columns: 3fr 1.5fr;
 		grid-template-rows: 0.1fr 0.1fr;
-	}
-
-	h1.logo {
-		color: #ff264e;
-		font-family: 'Lobster', cursive;
-		font-size: 70px;
-		text-align: right;
-		padding-right: 20px;
 	}
 
 	h2.intro-text {
@@ -319,5 +326,6 @@
 	button.load-btn:hover{
 		border-color: #ff264e;
 		color: #ff264e;
+		cursor: pointer;
 	}
 </style>

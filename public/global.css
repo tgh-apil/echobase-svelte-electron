@@ -16,7 +16,7 @@ body {
 label {
 	color: #fff;
 	display: block;
-	font-size: 16px;
+	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 100;
 }
@@ -39,8 +39,16 @@ input[type="range"] {
 	height: 0;
 }
 
+h1.logo {
+	color: #ff264e;
+	font-family: 'Lobster', cursive;
+	font-size: 100px;
+	text-align: right;
+	padding-right: 20px;
+}
+
 h3 {
-	font-size: 22px;
+	font-size: 25px;
 	color: #d3455f;
 	font-family: 'IBM Plex Sans';
 	font-weight: 500;
@@ -58,8 +66,10 @@ button {
 button:hover {
 	color: #ff264e;
 	border: 1.5px solid #ff264e;
+    cursor: pointer;
 }
 
 button:disabled {
 	color: #999;
 }
+
