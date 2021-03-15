@@ -4,6 +4,7 @@
 	import FormTemplate from './components/FormTemplate.components.svelte';
 	import Confetti from './components/Confetti.component.svelte';
 	import NavBar from './components/NavBar.component.svelte';
+	import Table from './components/Table.component.svelte';
 
 	const { dialog } = require('electron').remote;
     // python scripts
@@ -13,27 +14,27 @@
 	// form options
 	let fields = [
 		{
-			name: 'view',
+			name: 'View',
 			type:'select',
-			value: '4C',
+			value: 'Apical Four Chamber',
 			label: '🔭 What view is it?',
 			id: 'view',
 			options: [
 				{label: 'Apical FOUR Chamber', value: '4C'},
 				{label: 'Apical FIVE Chamber', value: '5C'},
-				{label: 'Parasternal Long Axis', value: 'PLX'},
-				{label: 'Parasternal Short Axis BASAL', value: 'PSXB'},
-				{label: 'Parasternal Short Axis MIDDLE', value: 'PSXM'},
-				{label: 'Parasternal Short Axis APICAL', value: 'PSXA'},
+				{label: 'Parasternal Long Axis', value: 'PLSX'},
+				{label: 'Parasternal Short Axis BASAL', value: 'PSAXb'},
+				{label: 'Parasternal Short Axis MIDDLE', value: 'PSAXm'},
+				{label: 'Parasternal Short Axis APICAL', value: 'PSAXa'},
 				{label: 'Aortic Valve Short Axis', value: 'AVSX'},
 				{label: 'Subcostal Four Chamber', value: 'SC'},
-				{label: 'Right Lateral IVC/SV IVC View', value: 'RIVC'},
-				{label: 'Lung', value: 'LUNG'},
-				{label: 'Other', value: 'OTHER'},
+				{label: 'Right Lateral IVC/SV IVC View', value: 'RISV'},
+				{label: 'Lung', value: 'Lung'},
+				{label: 'Other', value: 'Other'},
 			]
 		},
 		{
-			name: 'quality',
+			name: 'Quality (0-4)',
 			type: 'radio',
 			value: 0,
 			label: "📸 How's the image quality?",
@@ -41,79 +42,79 @@
 			options: [
 				{label: 'View cannot be identified clearly', value: 0},
 				{label: 'View can be identified but diagnosis very difficult/impossible', value: 1},
-				{label: 'Most aspects can be diagnosed but image can be clearer', value: 2},
-				{label: 'All diagnostic features visible and clear', value: 3},
+				{label: 'Most aspects can be diagnosed but image can be clearer', value: 3},
+				{label: 'All diagnostic features visible and clear', value: 4},
 			]
 		},
 		{
-			name: 'gain',
+			name: 'Gain',
 			type: 'radio',
-			value: 0,
+			value: 'NaN',
 			label: "☀ How's the gain?",
 			id: 'gain',
 			options: [
-				{label: 'Under gained', value: 0},
-				{label: 'Optimal', value: 1},
-				{label: 'Overgained', value: 2},
+				{label: 'Under gained', value: 'Under gained'},
+				{label: 'Optimal', value: 'Optimal'},
+				{label: 'Overgained', value: 'Overgained'},
 			]
 		},
 		{
-			name: 'orientation',
+			name: 'Orientation',
 			type: 'radio',
-			value: 1,
+			value: 'NaN',
 			label: "🧭 Is the orientation correct?",
 			id: 'orientation',
 			options: [
-				{label: 'Yes', value: 1},
-				{label: 'No', value: 0},
+				{label: 'Yes', value: 'Correct'},
+				{label: 'No', value: 'Incorrect'},
 			]
 		},
 		{
-			name: 'depth',
+			name: 'Depth',
 			type: 'radio',
-			value: 1,
+			value: 'NaN',
 			label: '⛏ Is the depth appropriate?',
 			id: 'depth',
 			options: [
-				{label: 'Yes', value: 1},
-				{label: 'No', value: 0},
+				{label: 'Yes', value: 'Appropriate'},
+				{label: 'No', value: 'Inappropriate'},
 			]
 		},
 		{
-			name: 'focus',
+			name: 'Focus',
 			type: 'radio',
-			value: 1,
+			value: 'NaN',
 			label: '🔬 Is the focus appropriate?',
 			id: 'focus',
 			options: [
-				{label: 'Yes', value: 1},
-				{label: 'No', value: 0},
+				{label: 'Yes', value: 'Appropriate'},
+				{label: 'No', value: 'Inappropriate'},
 			]
 		},
 		{
-			name: 'frequency',
+			name: 'Frequency',
 			type: 'radio',
-			value: 1,
+			value: 'NaN',
 			label: '🔊 Is the frequecy appropriate?',
 			id: 'frequency',
 			options: [
-				{label: 'Yes', value: 1},
-				{label: 'No', value: 0},
+				{label: 'Yes', value: 'Appropriate'},
+				{label: 'No', value: 'Inappropriate'},
 			]
 		},
 		{
-			name: 'normal_physiology',
+			name: 'Physiology',
 			type: 'radio',
-			value: 1,
+			value: 'NaN',
 			label: '🩺 Is the physiology normal?',
 			id: 'normal_physiology',
 			options: [
-				{label: 'Yes', value: 1},
-				{label: 'No', value: 0},
+				{label: 'Yes', value: 'Normal'},
+				{label: 'No', value: 'Abnormal'},
 			]
 		},
 		{
-			name: 'num_cardiac_cycles',
+			name: 'Cardiac Cycles (#)',
 			type: 'text',
 			id: 'num_cardiac_cycles',
 			value: '',
@@ -121,7 +122,7 @@
 			placeholder: '# Cardiac cycles...'
 		},
 		{
-			name: 'comments',
+			name: 'Comments',
 			type: 'text-area',
 			id: 'comments',
 			value: '',
@@ -224,9 +225,7 @@
 				</div>	
 			</main>
 		{:else if $currentPage === 'overview'}
-			<div>
-				<p>overview</p>
-			</div>
+			<Table />
 		{:else}
 	<div>
 		<h2 class="outro-text">Uh-oh, something happened! <br>💩</h2>

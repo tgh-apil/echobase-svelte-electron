@@ -23,7 +23,7 @@ export function launchPy(file_name, root_path) {
 
         const depth = parseInt(pyResults[pyResults.length - 1]);
 
-        const depth_obj = {'depth_cm': depth};
+        const depth_obj = {'Depth (cm)': depth};
 
         jsonUpdater(root_path, file_name, depth_obj)
     })
