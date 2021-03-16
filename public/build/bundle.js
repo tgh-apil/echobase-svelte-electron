@@ -2752,17 +2752,17 @@ var app = (function () {
 
     function get_each_context$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[18] = list[i];
+    	child_ctx[20] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
+    	child_ctx[23] = list[i];
     	return child_ctx;
     }
 
-    // (116:0) {:else}
+    // (127:0) {:else}
     function create_else_block$1(ctx) {
     	let div;
 
@@ -2770,7 +2770,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "nah";
-    			add_location(div, file$8, 116, 0, 2942);
+    			attr_dev(div, "class", "svelte-wqmkxj");
+    			add_location(div, file$8, 127, 0, 3346);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2785,26 +2786,53 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(116:0) {:else}",
+    		source: "(127:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (87:0) {#if hasData}
+    // (88:0) {#if hasData}
     function create_if_block$2(ctx) {
+    	let div1;
     	let div0;
     	let table;
     	let tr;
     	let t0;
     	let t1;
-    	let div1;
-    	let button0;
+    	let div7;
+    	let div3;
+    	let div2;
+    	let t2;
+    	let t3_value = /*counter*/ ctx[5] / /*maxEntriesShown*/ ctx[8] + 1 + "";
     	let t3;
+    	let t4;
+    	let t5_value = Math.ceil(/*dataArray*/ ctx[7].length / /*maxEntriesShown*/ ctx[8]) + "";
+    	let t5;
+    	let t6;
+    	let div5;
+    	let div4;
+    	let t7_value = /*counter*/ ctx[5] + 1 + "";
+    	let t7;
+    	let t8;
+
+    	let t9_value = (/*counter*/ ctx[5] + /*maxEntriesShown*/ ctx[8] > /*dataArray*/ ctx[7].length
+    	? /*dataArray*/ ctx[7].length
+    	: /*counter*/ ctx[5] + /*maxEntriesShown*/ ctx[8]) + "";
+
+    	let t9;
+    	let t10;
+    	let t11_value = /*dataArray*/ ctx[7].length + "";
+    	let t11;
+    	let t12;
+    	let t13;
+    	let div6;
+    	let button0;
+    	let t15;
     	let button1;
     	let dispose;
-    	let each_value_1 = /*colHeadings*/ ctx[0];
+    	let each_value_1 = /*colHeadings*/ ctx[1];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -2812,7 +2840,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let each_value = /*rowData*/ ctx[1];
+    	let each_value = /*rowData*/ ctx[2];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -2822,6 +2850,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			div1 = element("div");
     			div0 = element("div");
     			table = element("table");
     			tr = element("tr");
@@ -2837,24 +2866,58 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			div1 = element("div");
+    			div7 = element("div");
+    			div3 = element("div");
+    			div2 = element("div");
+    			t2 = text("Page ");
+    			t3 = text(t3_value);
+    			t4 = text(" of ");
+    			t5 = text(t5_value);
+    			t6 = space();
+    			div5 = element("div");
+    			div4 = element("div");
+    			t7 = text(t7_value);
+    			t8 = text(" to ");
+    			t9 = text(t9_value);
+    			t10 = text(" entries out of ");
+    			t11 = text(t11_value);
+    			t12 = text(" total results");
+    			t13 = space();
+    			div6 = element("div");
     			button0 = element("button");
     			button0.textContent = "Previous";
-    			t3 = space();
+    			t15 = space();
     			button1 = element("button");
     			button1.textContent = "Next";
-    			attr_dev(tr, "class", "svelte-lcub5y");
-    			add_location(tr, file$8, 89, 3, 2214);
+    			attr_dev(tr, "class", "svelte-wqmkxj");
+    			add_location(tr, file$8, 91, 4, 2049);
     			set_style(table, "width", "100%");
-    			add_location(table, file$8, 88, 2, 2183);
-    			attr_dev(div0, "class", "table-div-container svelte-lcub5y");
-    			add_location(div0, file$8, 87, 1, 2146);
-    			add_location(button0, file$8, 112, 2, 2763);
-    			add_location(button1, file$8, 113, 2, 2847);
-    			add_location(div1, file$8, 111, 1, 2754);
+    			attr_dev(table, "class", "svelte-wqmkxj");
+    			add_location(table, file$8, 90, 3, 2017);
+    			attr_dev(div0, "class", "table-div-container-inner svelte-wqmkxj");
+    			add_location(div0, file$8, 89, 2, 1973);
+    			attr_dev(div1, "class", "table-div-container svelte-wqmkxj");
+    			add_location(div1, file$8, 88, 1, 1914);
+    			attr_dev(div2, "class", "table-page-number svelte-wqmkxj");
+    			add_location(div2, file$8, 116, 3, 2705);
+    			attr_dev(div3, "class", "table-page-number-container svelte-wqmkxj");
+    			add_location(div3, file$8, 115, 2, 2659);
+    			attr_dev(div4, "class", "table-results-counter svelte-wqmkxj");
+    			add_location(div4, file$8, 119, 3, 2891);
+    			attr_dev(div5, "class", "table-results-counter-container svelte-wqmkxj");
+    			add_location(div5, file$8, 118, 2, 2841);
+    			attr_dev(button0, "class", "table-button svelte-wqmkxj");
+    			add_location(button0, file$8, 122, 3, 3114);
+    			attr_dev(button1, "class", "table-button svelte-wqmkxj");
+    			add_location(button1, file$8, 123, 3, 3220);
+    			attr_dev(div6, "class", "svelte-wqmkxj");
+    			add_location(div6, file$8, 121, 2, 3104);
+    			attr_dev(div7, "class", "table-button-container svelte-wqmkxj");
+    			add_location(div7, file$8, 114, 1, 2619);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div0, anchor);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
     			append_dev(div0, table);
     			append_dev(table, tr);
 
@@ -2868,22 +2931,40 @@ var app = (function () {
     				each_blocks[i].m(table, null);
     			}
 
+    			/*div1_binding*/ ctx[15](div1);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, button0);
-    			/*button0_binding*/ ctx[14](button0);
-    			append_dev(div1, t3);
-    			append_dev(div1, button1);
-    			/*button1_binding*/ ctx[16](button1);
+    			insert_dev(target, div7, anchor);
+    			append_dev(div7, div3);
+    			append_dev(div3, div2);
+    			append_dev(div2, t2);
+    			append_dev(div2, t3);
+    			append_dev(div2, t4);
+    			append_dev(div2, t5);
+    			append_dev(div7, t6);
+    			append_dev(div7, div5);
+    			append_dev(div5, div4);
+    			append_dev(div4, t7);
+    			append_dev(div4, t8);
+    			append_dev(div4, t9);
+    			append_dev(div4, t10);
+    			append_dev(div4, t11);
+    			append_dev(div4, t12);
+    			append_dev(div7, t13);
+    			append_dev(div7, div6);
+    			append_dev(div6, button0);
+    			/*button0_binding*/ ctx[16](button0);
+    			append_dev(div6, t15);
+    			append_dev(div6, button1);
+    			/*button1_binding*/ ctx[18](button1);
 
     			dispose = [
-    				listen_dev(button0, "click", /*click_handler*/ ctx[15], false, false, false),
-    				listen_dev(button1, "click", /*click_handler_1*/ ctx[17], false, false, false)
+    				listen_dev(button0, "click", /*click_handler*/ ctx[17], false, false, false),
+    				listen_dev(button1, "click", /*click_handler_1*/ ctx[19], false, false, false)
     			];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*colHeadings*/ 1) {
-    				each_value_1 = /*colHeadings*/ ctx[0];
+    			if (dirty & /*colHeadings*/ 2) {
+    				each_value_1 = /*colHeadings*/ ctx[1];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -2906,8 +2987,8 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty & /*rowData*/ 2) {
-    				each_value = /*rowData*/ ctx[1];
+    			if (dirty & /*rowData*/ 4) {
+    				each_value = /*rowData*/ ctx[2];
     				validate_each_argument(each_value);
     				let i;
 
@@ -2929,15 +3010,23 @@ var app = (function () {
 
     				each_blocks.length = each_value.length;
     			}
+
+    			if (dirty & /*counter*/ 32 && t3_value !== (t3_value = /*counter*/ ctx[5] / /*maxEntriesShown*/ ctx[8] + 1 + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*counter*/ 32 && t7_value !== (t7_value = /*counter*/ ctx[5] + 1 + "")) set_data_dev(t7, t7_value);
+
+    			if (dirty & /*counter*/ 32 && t9_value !== (t9_value = (/*counter*/ ctx[5] + /*maxEntriesShown*/ ctx[8] > /*dataArray*/ ctx[7].length
+    			? /*dataArray*/ ctx[7].length
+    			: /*counter*/ ctx[5] + /*maxEntriesShown*/ ctx[8]) + "")) set_data_dev(t9, t9_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
+    			/*div1_binding*/ ctx[15](null);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div1);
-    			/*button0_binding*/ ctx[14](null);
-    			/*button1_binding*/ ctx[16](null);
+    			if (detaching) detach_dev(div7);
+    			/*button0_binding*/ ctx[16](null);
+    			/*button1_binding*/ ctx[18](null);
     			run_all(dispose);
     		}
     	};
@@ -2946,32 +3035,32 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(87:0) {#if hasData}",
+    		source: "(88:0) {#if hasData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:4) {#each colHeadings as heading}
+    // (93:5) {#each colHeadings as heading}
     function create_each_block_1(ctx) {
     	let th;
-    	let t_value = /*heading*/ ctx[21] + "";
+    	let t_value = /*heading*/ ctx[23] + "";
     	let t;
 
     	const block = {
     		c: function create() {
     			th = element("th");
     			t = text(t_value);
-    			attr_dev(th, "class", "svelte-lcub5y");
-    			add_location(th, file$8, 91, 5, 2261);
+    			attr_dev(th, "class", "svelte-wqmkxj");
+    			add_location(th, file$8, 93, 6, 2098);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
     			append_dev(th, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*colHeadings*/ 1 && t_value !== (t_value = /*heading*/ ctx[21] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*colHeadings*/ 2 && t_value !== (t_value = /*heading*/ ctx[23] + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(th);
@@ -2982,58 +3071,58 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(91:4) {#each colHeadings as heading}",
+    		source: "(93:5) {#each colHeadings as heading}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:3) {#each rowData as row}
+    // (97:4) {#each rowData as row}
     function create_each_block$4(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*row*/ ctx[18].View + "";
+    	let t0_value = /*row*/ ctx[20].View + "";
     	let t0;
     	let t1;
     	let td1;
-    	let t2_value = /*row*/ ctx[18]["Quality (0-4)"] + "";
+    	let t2_value = /*row*/ ctx[20]["Quality (0-4)"] + "";
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*row*/ ctx[18].Gain + "";
+    	let t4_value = /*row*/ ctx[20].Gain + "";
     	let t4;
     	let t5;
     	let td3;
-    	let t6_value = /*row*/ ctx[18].Orientation + "";
+    	let t6_value = /*row*/ ctx[20].Orientation + "";
     	let t6;
     	let t7;
     	let td4;
-    	let t8_value = /*row*/ ctx[18].Depth + "";
+    	let t8_value = /*row*/ ctx[20].Depth + "";
     	let t8;
     	let t9;
     	let td5;
-    	let t10_value = /*row*/ ctx[18].Focus + "";
+    	let t10_value = /*row*/ ctx[20].Focus + "";
     	let t10;
     	let t11;
     	let td6;
-    	let t12_value = /*row*/ ctx[18].Frequency + "";
+    	let t12_value = /*row*/ ctx[20].Frequency + "";
     	let t12;
     	let t13;
     	let td7;
-    	let t14_value = /*row*/ ctx[18].Physiology + "";
+    	let t14_value = /*row*/ ctx[20].Physiology + "";
     	let t14;
     	let t15;
     	let td8;
-    	let t16_value = /*row*/ ctx[18]["Cardiac Cycles (#)"] + "";
+    	let t16_value = /*row*/ ctx[20]["Cardiac Cycles (#)"] + "";
     	let t16;
     	let t17;
     	let td9;
-    	let t18_value = /*row*/ ctx[18].Comments + "";
+    	let t18_value = /*row*/ ctx[20].Comments + "";
     	let t18;
     	let t19;
     	let td10;
-    	let t20_value = /*row*/ ctx[18]["Depth (cm)"] + "";
+    	let t20_value = /*row*/ ctx[20]["Depth (cm)"] + "";
     	let t20;
     	let t21;
 
@@ -3073,20 +3162,30 @@ var app = (function () {
     			td10 = element("td");
     			t20 = text(t20_value);
     			t21 = space();
-    			add_location(td0, file$8, 96, 5, 2346);
-    			add_location(td1, file$8, 97, 5, 2372);
-    			add_location(td2, file$8, 98, 5, 2410);
-    			add_location(td3, file$8, 99, 5, 2436);
-    			add_location(td4, file$8, 100, 5, 2469);
-    			add_location(td5, file$8, 101, 5, 2496);
-    			add_location(td6, file$8, 102, 5, 2523);
-    			add_location(td7, file$8, 103, 5, 2554);
-    			add_location(td8, file$8, 104, 5, 2586);
-    			attr_dev(td9, "class", "td-comments svelte-lcub5y");
-    			add_location(td9, file$8, 105, 5, 2629);
-    			add_location(td10, file$8, 106, 5, 2679);
-    			attr_dev(tr, "class", "svelte-lcub5y");
-    			add_location(tr, file$8, 95, 4, 2335);
+    			attr_dev(td0, "class", "svelte-wqmkxj");
+    			add_location(td0, file$8, 98, 6, 2188);
+    			attr_dev(td1, "class", "svelte-wqmkxj");
+    			add_location(td1, file$8, 99, 6, 2215);
+    			attr_dev(td2, "class", "svelte-wqmkxj");
+    			add_location(td2, file$8, 100, 6, 2254);
+    			attr_dev(td3, "class", "svelte-wqmkxj");
+    			add_location(td3, file$8, 101, 6, 2281);
+    			attr_dev(td4, "class", "svelte-wqmkxj");
+    			add_location(td4, file$8, 102, 6, 2315);
+    			attr_dev(td5, "class", "svelte-wqmkxj");
+    			add_location(td5, file$8, 103, 6, 2343);
+    			attr_dev(td6, "class", "svelte-wqmkxj");
+    			add_location(td6, file$8, 104, 6, 2371);
+    			attr_dev(td7, "class", "svelte-wqmkxj");
+    			add_location(td7, file$8, 105, 6, 2403);
+    			attr_dev(td8, "class", "svelte-wqmkxj");
+    			add_location(td8, file$8, 106, 6, 2436);
+    			attr_dev(td9, "class", "td-comments svelte-wqmkxj");
+    			add_location(td9, file$8, 107, 6, 2480);
+    			attr_dev(td10, "class", "svelte-wqmkxj");
+    			add_location(td10, file$8, 108, 6, 2531);
+    			attr_dev(tr, "class", "svelte-wqmkxj");
+    			add_location(tr, file$8, 97, 5, 2176);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -3125,17 +3224,17 @@ var app = (function () {
     			append_dev(tr, t21);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*rowData*/ 2 && t0_value !== (t0_value = /*row*/ ctx[18].View + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*rowData*/ 2 && t2_value !== (t2_value = /*row*/ ctx[18]["Quality (0-4)"] + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*rowData*/ 2 && t4_value !== (t4_value = /*row*/ ctx[18].Gain + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*rowData*/ 2 && t6_value !== (t6_value = /*row*/ ctx[18].Orientation + "")) set_data_dev(t6, t6_value);
-    			if (dirty & /*rowData*/ 2 && t8_value !== (t8_value = /*row*/ ctx[18].Depth + "")) set_data_dev(t8, t8_value);
-    			if (dirty & /*rowData*/ 2 && t10_value !== (t10_value = /*row*/ ctx[18].Focus + "")) set_data_dev(t10, t10_value);
-    			if (dirty & /*rowData*/ 2 && t12_value !== (t12_value = /*row*/ ctx[18].Frequency + "")) set_data_dev(t12, t12_value);
-    			if (dirty & /*rowData*/ 2 && t14_value !== (t14_value = /*row*/ ctx[18].Physiology + "")) set_data_dev(t14, t14_value);
-    			if (dirty & /*rowData*/ 2 && t16_value !== (t16_value = /*row*/ ctx[18]["Cardiac Cycles (#)"] + "")) set_data_dev(t16, t16_value);
-    			if (dirty & /*rowData*/ 2 && t18_value !== (t18_value = /*row*/ ctx[18].Comments + "")) set_data_dev(t18, t18_value);
-    			if (dirty & /*rowData*/ 2 && t20_value !== (t20_value = /*row*/ ctx[18]["Depth (cm)"] + "")) set_data_dev(t20, t20_value);
+    			if (dirty & /*rowData*/ 4 && t0_value !== (t0_value = /*row*/ ctx[20].View + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*rowData*/ 4 && t2_value !== (t2_value = /*row*/ ctx[20]["Quality (0-4)"] + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*rowData*/ 4 && t4_value !== (t4_value = /*row*/ ctx[20].Gain + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*rowData*/ 4 && t6_value !== (t6_value = /*row*/ ctx[20].Orientation + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*rowData*/ 4 && t8_value !== (t8_value = /*row*/ ctx[20].Depth + "")) set_data_dev(t8, t8_value);
+    			if (dirty & /*rowData*/ 4 && t10_value !== (t10_value = /*row*/ ctx[20].Focus + "")) set_data_dev(t10, t10_value);
+    			if (dirty & /*rowData*/ 4 && t12_value !== (t12_value = /*row*/ ctx[20].Frequency + "")) set_data_dev(t12, t12_value);
+    			if (dirty & /*rowData*/ 4 && t14_value !== (t14_value = /*row*/ ctx[20].Physiology + "")) set_data_dev(t14, t14_value);
+    			if (dirty & /*rowData*/ 4 && t16_value !== (t16_value = /*row*/ ctx[20]["Cardiac Cycles (#)"] + "")) set_data_dev(t16, t16_value);
+    			if (dirty & /*rowData*/ 4 && t18_value !== (t18_value = /*row*/ ctx[20].Comments + "")) set_data_dev(t18, t18_value);
+    			if (dirty & /*rowData*/ 4 && t20_value !== (t20_value = /*row*/ ctx[20]["Depth (cm)"] + "")) set_data_dev(t20, t20_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -3146,7 +3245,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(95:3) {#each rowData as row}",
+    		source: "(97:4) {#each rowData as row}",
     		ctx
     	});
 
@@ -3157,7 +3256,7 @@ var app = (function () {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*hasData*/ ctx[2]) return create_if_block$2;
+    		if (/*hasData*/ ctx[0]) return create_if_block$2;
     		return create_else_block$1;
     	}
 
@@ -3211,28 +3310,28 @@ var app = (function () {
     function instance$8($$self, $$props, $$invalidate) {
     	let $rootDirectory;
     	validate_store(rootDirectory, "rootDirectory");
-    	component_subscribe($$self, rootDirectory, $$value => $$invalidate(7, $rootDirectory = $$value));
+    	component_subscribe($$self, rootDirectory, $$value => $$invalidate(10, $rootDirectory = $$value));
     	const fs = window.require("fs");
 
     	// read data folder
     	const dataDir = $rootDirectory + "/data/";
 
     	const dataArray = fs.readdirSync(dataDir);
-    	let dataParse = [];
-    	let colHeadings = [];
-    	let rowData = [];
 
     	// check if there's saved data
     	let hasData;
 
+    	// for the table
+    	let colHeadings;
+
+    	let rowData;
     	let prevButton;
     	let nextButton;
     	let counter = 0;
-    	let maxEntriesShown = 20;
+    	let maxEntriesShown = 40;
 
     	onMount(() => {
     		$$invalidate(3, prevButton.disabled = true, prevButton);
-    		console.log(dataArray.length);
     	});
 
     	if (dataArray.length === 0) {
@@ -3242,53 +3341,63 @@ var app = (function () {
     		populateTable();
     	}
 
-    	// add a next page button --> load next 100 entries
-    	function changePage(modifier) {
-    		if (counter === maxEntriesShown) {
-    			$$invalidate(3, prevButton.disabled = true, prevButton);
-    		} else {
-    			$$invalidate(3, prevButton.disabled = false, prevButton);
-    		}
+    	function scrollToTop() {
+    		container.scrollTo({ top: 0, behavior: "smooth" });
+    	}
 
-    		if (counter >= dataArray.length) {
+    	function changePage(modifier) {
+    		$$invalidate(5, counter += maxEntriesShown * modifier);
+    		scrollToTop();
+
+    		if (counter + maxEntriesShown >= dataArray.length) {
     			$$invalidate(4, nextButton.disabled = true, nextButton);
     		} else {
     			$$invalidate(4, nextButton.disabled = false, nextButton);
     		}
 
-    		counter += maxEntriesShown * modifier;
+    		if (counter === 0) {
+    			$$invalidate(3, prevButton.disabled = true, prevButton);
+    		} else {
+    			$$invalidate(3, prevButton.disabled = false, prevButton);
+    		}
+
     		console.log(counter);
     		populateTable();
     	}
 
     	function populateTable() {
-    		// parse data from json
+    		// we only want a subset of the data at a time
+    		let dataSlice;
+
     		if (dataArray.length <= maxEntriesShown) {
-    			dataArray.forEach(fileData => {
-    				dataParse.push(JSON.parse(fs.readFileSync(dataDir + fileData)));
-    			});
+    			dataSlice = dataArray.slice(0, dataArray.length);
     		} else {
-    			for (let i = 0 + counter; i < maxEntriesShown + counter; i++) {
-    				dataParse.push(JSON.parse(fs.readFileSync(dataDir + dataArray[i])));
-    			}
+    			dataSlice = dataArray.slice(counter, counter + maxEntriesShown);
     		}
+
+    		dataSlice = dataSlice.map(data => JSON.parse(fs.readFileSync(dataDir + data)));
 
     		// create columns based on keys
-    		$$invalidate(0, colHeadings = Object.keys(dataParse[0]));
+    		$$invalidate(1, colHeadings = Object.keys(dataSlice[0]));
 
-    		// create rows based on values
-    		$$invalidate(1, rowData = Object.values(dataParse));
+    		// create rows based on values + truncate length of comments to be displayed
+    		$$invalidate(2, rowData = Object.values(dataSlice));
 
-    		// truncate the data: clip name (limit to 20 chars), comments (limit 50 chars)
-    		for (let i = 0; i < rowData.length; i++) {
-    			// let fileName = dataArray[i].slice(8, dataArray[i].length - 9)
-    			// rowData.unshift(fileName);
-    			if (rowData[i].Comments.length > 30) {
-    				$$invalidate(1, rowData[i].Comments = rowData[i].Comments.slice(0, 31) + "...", rowData);
-    				console.log(rowData[i].Comments);
+    		rowData.forEach(data => {
+    			if (data.Comments.length >= 50) {
+    				data.Comments = data.Comments.slice(0, 50) + "...";
     			}
-    		}
-    	} // if click on cell 'edit labels', insert new video player + ratings form to edit the form
+    		});
+    	}
+
+    	// to reference container for autoscroll
+    	let container;
+
+    	function div1_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			$$invalidate(6, container = $$value);
+    		});
+    	}
 
     	function button0_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -3312,16 +3421,17 @@ var app = (function () {
     		fs,
     		dataDir,
     		dataArray,
-    		dataParse,
+    		hasData,
     		colHeadings,
     		rowData,
-    		hasData,
     		prevButton,
     		nextButton,
     		counter,
     		maxEntriesShown,
+    		scrollToTop,
     		changePage,
     		populateTable,
+    		container,
     		window,
     		$rootDirectory,
     		console,
@@ -3330,14 +3440,14 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("dataParse" in $$props) dataParse = $$props.dataParse;
-    		if ("colHeadings" in $$props) $$invalidate(0, colHeadings = $$props.colHeadings);
-    		if ("rowData" in $$props) $$invalidate(1, rowData = $$props.rowData);
-    		if ("hasData" in $$props) $$invalidate(2, hasData = $$props.hasData);
+    		if ("hasData" in $$props) $$invalidate(0, hasData = $$props.hasData);
+    		if ("colHeadings" in $$props) $$invalidate(1, colHeadings = $$props.colHeadings);
+    		if ("rowData" in $$props) $$invalidate(2, rowData = $$props.rowData);
     		if ("prevButton" in $$props) $$invalidate(3, prevButton = $$props.prevButton);
     		if ("nextButton" in $$props) $$invalidate(4, nextButton = $$props.nextButton);
-    		if ("counter" in $$props) counter = $$props.counter;
-    		if ("maxEntriesShown" in $$props) maxEntriesShown = $$props.maxEntriesShown;
+    		if ("counter" in $$props) $$invalidate(5, counter = $$props.counter);
+    		if ("maxEntriesShown" in $$props) $$invalidate(8, maxEntriesShown = $$props.maxEntriesShown);
+    		if ("container" in $$props) $$invalidate(6, container = $$props.container);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -3345,20 +3455,22 @@ var app = (function () {
     	}
 
     	return [
+    		hasData,
     		colHeadings,
     		rowData,
-    		hasData,
     		prevButton,
     		nextButton,
-    		changePage,
     		counter,
+    		container,
+    		dataArray,
+    		maxEntriesShown,
+    		changePage,
     		$rootDirectory,
     		fs,
     		dataDir,
-    		dataArray,
-    		dataParse,
-    		maxEntriesShown,
+    		scrollToTop,
     		populateTable,
+    		div1_binding,
     		button0_binding,
     		click_handler,
     		button1_binding,

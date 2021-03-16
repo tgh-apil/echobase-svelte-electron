@@ -7,111 +7,122 @@
 	const dataDir = $rootDirectory + '/data/'
 	const dataArray = fs.readdirSync(dataDir);
 
-	let dataParse = [];
-	let colHeadings = [];
-	let rowData = [];
-
 	// check if there's saved data
 	let hasData;
-	
+
+	// for the table
+	let colHeadings;
+	let rowData;
+
 	let prevButton;
 	let nextButton;
 	let counter = 0; 
-	let maxEntriesShown = 20;
-
+	let maxEntriesShown = 40;
+	
 	onMount(() => {
 		prevButton.disabled = true;
-		console.log(dataArray.length);
 	})
-
+	
 	if (dataArray.length === 0) {
 		hasData = false;
 	} else {
 		hasData = true;
 		populateTable();
 	}
+    
+	function scrollToTop() {
+		container.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-	// add a next page button --> load next 100 entries
 	function changePage(modifier) {
-		if (counter === maxEntriesShown) {
+		counter += maxEntriesShown * modifier;
+		
+		scrollToTop();
+			
+		if (counter + maxEntriesShown >= dataArray.length) {
+			nextButton.disabled = true;
+		} else {
+			nextButton.disabled = false;			
+		}
+
+		if (counter === 0) {
 			prevButton.disabled = true;
 		}
 		else {
 			prevButton.disabled = false;
 		}
 
-		if (counter >= dataArray.length) {
-			nextButton.disabled = true;
-		} else {
-			nextButton.disabled = false;
-		}
-
-		counter += maxEntriesShown * modifier;
 		console.log(counter);
 		populateTable()
 	}
 
 	function populateTable() {
-		// parse data from json
+		// we only want a subset of the data at a time
+		let dataSlice;
+		
 		if (dataArray.length <= maxEntriesShown) {
-			dataArray.forEach(fileData => {
-				dataParse.push(JSON.parse(fs.readFileSync(dataDir + fileData)));
-			});
+			dataSlice = dataArray.slice(0, dataArray.length);
 		} else {
-			for (let i = 0 + counter; i < maxEntriesShown + counter; i++) {
-				dataParse.push(JSON.parse(fs.readFileSync(dataDir + dataArray[i])));
-			}
+			dataSlice = dataArray.slice(counter, counter + maxEntriesShown);
 		}
+
+		dataSlice = dataSlice.map(data => JSON.parse(fs.readFileSync(dataDir + data)));
 
 		// create columns based on keys
-		colHeadings = (Object.keys(dataParse[0]));
+		colHeadings = (Object.keys(dataSlice[0]));
 
-		// create rows based on values
-		rowData = (Object.values(dataParse))
-		// truncate the data: clip name (limit to 20 chars), comments (limit 50 chars)
-		for (let i = 0; i < rowData.length; i++) {
-			// let fileName = dataArray[i].slice(8, dataArray[i].length - 9)
-			// rowData.unshift(fileName);
-
-			if (rowData[i].Comments.length > 30) {
-				rowData[i].Comments = rowData[i].Comments.slice(0, 31) + '...';
-				console.log(rowData[i].Comments);				
+		// create rows based on values + truncate length of comments to be displayed
+		rowData = (Object.values(dataSlice));
+		rowData.forEach(data => {
+			if (data.Comments.length >= 50) {
+				data.Comments = data.Comments.slice(0, 50) + '...';
 			}
-		}
-		
-		// if click on cell 'edit labels', insert new video player + ratings form to edit the form
+		})
 	}
+
+	// to reference container for autoscroll
+	let container;
 
 </script>
 
 {#if hasData}
-	<div class="table-div-container">
-		<table style="width:100%">
-			<tr>
-				{#each colHeadings as heading}
-					<th>{heading}</th>
-				{/each}
-			</tr>
-			{#each rowData as row}
+	<div class="table-div-container" bind:this={container}>
+		<div class="table-div-container-inner">
+			<table style="width:100%">
 				<tr>
-					<td>{row.View}</td>
-					<td>{row['Quality (0-4)']}</td>
-					<td>{row.Gain}</td>
-					<td>{row.Orientation}</td>
-					<td>{row.Depth}</td>
-					<td>{row.Focus}</td>
-					<td>{row.Frequency}</td>
-					<td>{row.Physiology}</td>
-					<td>{row['Cardiac Cycles (#)']}</td>
-					<td class="td-comments">{row.Comments}</td>
-					<td>{row["Depth (cm)"]}</td>
+					{#each colHeadings as heading}
+						<th>{heading}</th>
+					{/each}
 				</tr>
-			{/each}
-		</table>
+				{#each rowData as row}
+					<tr>
+						<td>{row.View}</td>
+						<td>{row['Quality (0-4)']}</td>
+						<td>{row.Gain}</td>
+						<td>{row.Orientation}</td>
+						<td>{row.Depth}</td>
+						<td>{row.Focus}</td>
+						<td>{row.Frequency}</td>
+						<td>{row.Physiology}</td>
+						<td>{row['Cardiac Cycles (#)']}</td>
+						<td class="td-comments">{row.Comments}</td>
+						<td>{row["Depth (cm)"]}</td>
+					</tr>
+				{/each}
+			</table>
+		</div>
 	</div>
-	<div>
-		<button bind:this={prevButton} on:click={() => changePage(-1)}>Previous</button>
-		<button bind:this={nextButton} on:click={() => changePage(1)}>Next</button>
+	<div class="table-button-container">
+		<div class="table-page-number-container">
+			<div class="table-page-number">Page {(counter/maxEntriesShown) + 1} of {Math.ceil(dataArray.length/maxEntriesShown)}</div>
+		</div>
+		<div class="table-results-counter-container">
+			<div class="table-results-counter">{counter + 1} to {counter + maxEntriesShown > dataArray.length ? dataArray.length : counter + maxEntriesShown} entries out of {dataArray.length} total results</div>
+		</div>
+		<div>
+			<button class="table-button" bind:this={prevButton} on:click={() => changePage(-1)}>Previous</button>
+			<button class="table-button" bind:this={nextButton} on:click={() => changePage(1)}>Next</button>
+		</div>
 	</div>
 {:else}
 <div>
@@ -120,9 +131,63 @@
 {/if}
 
 <style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	.table-div-container {
-		overflow: scroll;
-		height: 80%;
+		height: 70%;
+		overflow: auto;
+		margin-bottom: 25px;
+	}
+
+	.table-div-container-inner {
+		height: 100%;
+	}
+
+	.table-button-container {
+		display:grid;
+		grid-template-columns: 1fr 3.5fr 1fr;
+	}
+	
+	.table-button {
+		font-size: 16px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 20px;
+		padding-right: 20px;
+		margin-right: 0px;
+	}
+
+	.table-page-number-container {
+		position: relative;
+	}
+
+	.table-results-counter-container {
+		position: relative;
+	}
+
+	.table-page-number {
+		font-size: 16px;
+		font-weight: bold;
+		color: #ff264e;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.table-results-counter {
+		font-size: 16px;
+		font-style: italic;
+		color: #808080;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	tr {
