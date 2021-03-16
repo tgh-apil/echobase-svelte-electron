@@ -5,7 +5,7 @@
 
 	// read data folder
 	const dataDir = $rootDirectory + '/data/'
-	const dataArray = fs.readdirSync(dataDir);
+	let dataArray = fs.readdirSync(dataDir);
 
 	// check if there's saved data
 	let hasData;
@@ -22,14 +22,17 @@
 	onMount(() => {
 		prevButton.disabled = true;
 	})
-	
+
 	if (dataArray.length === 0) {
 		hasData = false;
 	} else {
 		hasData = true;
+
+		// this will be the data we filter through
+		dataArray = dataArray.map(data => JSON.parse(fs.readFileSync(dataDir + data)));
 		populateTable();
 	}
-    
+	
 	function scrollToTop() {
 		container.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -57,22 +60,29 @@
 	}
 
 	function populateTable() {
-		// we only want a subset of the data at a time
-		let dataSlice;
-		
-		if (dataArray.length <= maxEntriesShown) {
-			dataSlice = dataArray.slice(0, dataArray.length);
-		} else {
-			dataSlice = dataArray.slice(counter, counter + maxEntriesShown);
+		let filter = true;
+
+		// where we apply our fiters
+		if (filter) {
+			dataArray = dataArray.filter(db => db['Gain'] === 'Under gained');
 		}
 
-		dataSlice = dataSlice.map(data => JSON.parse(fs.readFileSync(dataDir + data)));
+		// disconnect the # of results to be shown from the total # of filtered results
+		let shownResults;
+
+		// we only want a subset of the data at a time
+		if (dataArray.length <= maxEntriesShown) {
+			shownResults = dataArray.slice(0, dataArray.length);
+		} else {
+			shownResults = dataArray.slice(counter, counter + maxEntriesShown);
+		}
 
 		// create columns based on keys
-		colHeadings = (Object.keys(dataSlice[0]));
+		colHeadings = (Object.keys(shownResults[0]));
+		// colHeadings.unshift('clip name');
 
 		// create rows based on values + truncate length of comments to be displayed
-		rowData = (Object.values(dataSlice));
+		rowData = (Object.values(shownResults));
 		rowData.forEach(data => {
 			if (data.Comments.length >= 50) {
 				data.Comments = data.Comments.slice(0, 50) + '...';
