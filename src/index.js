@@ -19,6 +19,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     height: 1080,
     width: 1920,
+    icon: path.join(__dirname, '../public/build/icon.png'),
     fullscreen: true,
     webPreferences: {
       enableRemoteModule: true,

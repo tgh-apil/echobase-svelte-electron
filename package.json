@@ -1,8 +1,8 @@
 {
-  "name": "svelte-electron-forge",
-  "productName": "svelte-electron-forge",
+  "name": "echobase-svelte-electron",
+  "productName": "echobase-svelte-electron",
   "version": "1.0.0",
-  "description": "Svelte + Electron Forge",
+  "description": "Desktop echo clip rating app",
   "main": "src/index.js",
   "scripts": {
     "start": "concurrently \"npm:svelte-dev\" \"electron-forge start\"",
@@ -15,7 +15,7 @@
     "svelte-start": "sirv public"
   },
   "keywords": [],
-  "author": "jeffd23",
+  "author": "APIL",
   "license": "MIT",
   "config": {
     "forge": {
