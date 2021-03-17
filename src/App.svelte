@@ -7,6 +7,7 @@
 	import Table from './components/Table.component.svelte';
 
 	const { dialog } = require('electron').remote;
+
     // python scripts
 	import { vidBlackBar } from './pythonScripts';
 	const fs = window.require('fs');
@@ -128,6 +129,15 @@
 			value: '',
 			label: '📝 Any comments?',
 			placeholder: 'Please leave any additional comments you have (optional)...'
+		},
+		{
+			name: 'Bookmark',
+			type: 'check',
+			value: false,
+			label: '📑 Bookmark this for future reference?',
+			options: [
+				{label: '⭐', value: 'fav'}
+			]
 		}
 	]
 
@@ -246,14 +256,6 @@
 		grid-template-columns: 3fr 1.5fr;
 	}
 
-	h2.intro-text {
-		color: #ff264e;
-		font-family: 'IBM Plex Sans', sans-seirf;
-		font-weight: 900;
-		font-size: 75px;
-		text-align: center;
-	}
-
 	h2.outro-text {
 		color: #fff;
 		font-family: 'IBM Plex Sans', sans-seirf;
@@ -294,23 +296,22 @@
 	div.form {
 		height: 0px;
 	}
-
-	p.intro-text {
-		text-align: center;
-		font-family: 'IBM Plex Sans', sans-seirf;
-		font-size: 20px;
-	}
-
+	
 	.load-btn {
 		font-size: 40px;
+		color: #ff264e;
 		border-width: 2px;
-		border-color: #fff;
+		border-color: #ff264e;
 		padding: 20px 20px;
+		transition: border 0.15s ease-in-out;
+		transition: color 0.15s ease-in-out;
+		-webkit-transition: background-color 0.15s ease-in-out;
 	}
 
 	.load-btn:hover{
-		border-color: #ff264e;
-		color: #ff264e;
+		background-color: #ff264e;
+		border-color: #fff;
+		color: #fff;
 		cursor: pointer;
 	}
 </style>

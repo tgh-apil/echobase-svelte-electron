@@ -7,7 +7,7 @@
 	const dataDir = $rootDirectory + '/data/'
 	let dataArray = fs.readdirSync(dataDir);
 
-	// check if there's saved data
+	// check if there's saved data (or filtered data)
 	let hasData;
 
 	// for the table
@@ -18,10 +18,23 @@
 	let nextButton;
 	let counter = 0; 
 	let maxEntriesShown = 40;
-	
+
+	// // for the search bar
+	// let field = {
+	// 	value: '',
+	// 	placeholder: '🔎 search',
+	// 	id: 'searchbar',
+	// 	name: 'searchbar' 
+	// };
+
+	let value = '';
+
 	onMount(() => {
 		prevButton.disabled = true;
 	})
+
+	// this is the array we'll store data in when we apply filters/search terms
+	let filteredResults;
 
 	if (dataArray.length === 0) {
 		hasData = false;
@@ -30,6 +43,7 @@
 
 		// this will be the data we filter through
 		dataArray = dataArray.map(data => JSON.parse(fs.readFileSync(dataDir + data)));
+		filteredResults = dataArray;
 		populateTable();
 	}
 	
@@ -42,7 +56,7 @@
 		
 		scrollToTop();
 			
-		if (counter + maxEntriesShown >= dataArray.length) {
+		if (counter + maxEntriesShown >= filteredResults.length) {
 			nextButton.disabled = true;
 		} else {
 			nextButton.disabled = false;			
@@ -55,26 +69,49 @@
 			prevButton.disabled = false;
 		}
 
-		console.log(counter);
 		populateTable()
 	}
 
 	function populateTable() {
-		let filter = true;
+		let searchTerms = value;
+		let tempResults = [];
 
-		// where we apply our fiters
-		if (filter) {
-			dataArray = dataArray.filter(db => db['Gain'] === 'Under gained');
+		// reload data flag when redrawing the table
+		hasData = true;
+
+		if (searchTerms != '') {
+			dataArray.forEach(data => {
+				Object.values(data).forEach(v => {
+					v = String(v).toLowerCase();
+
+					if (v.includes(searchTerms.toLowerCase())) {
+						tempResults = [...tempResults, data]
+					}
+				})
+			})
+			
+	
+			if (tempResults.length > 0) {
+				// need to add this otherwise the array will continue to add on itself
+				filteredResults = tempResults;
+				// filteredResults = dataArray;
+			} else {
+				console.log('no results');
+				hasData = false;
+			}
+
+			console.log(filteredResults.length);
+		} else {
+			filteredResults = dataArray;
 		}
 
-		// disconnect the # of results to be shown from the total # of filtered results
-		let shownResults;
-
 		// we only want a subset of the data at a time
-		if (dataArray.length <= maxEntriesShown) {
-			shownResults = dataArray.slice(0, dataArray.length);
+		let shownResults = [];
+		
+		if (filteredResults.length <= maxEntriesShown) {
+			shownResults = filteredResults.slice(0, filteredResults.length);
 		} else {
-			shownResults = dataArray.slice(counter, counter + maxEntriesShown);
+			shownResults = filteredResults.slice(counter, counter + maxEntriesShown);
 		}
 
 		// create columns based on keys
@@ -83,18 +120,26 @@
 
 		// create rows based on values + truncate length of comments to be displayed
 		rowData = (Object.values(shownResults));
+
 		rowData.forEach(data => {
 			if (data.Comments.length >= 50) {
 				data.Comments = data.Comments.slice(0, 50) + '...';
 			}
 		})
+		
 	}
 
 	// to reference container for autoscroll
 	let container;
 
+	function handleKeydown() {
+		populateTable()
+	}
 </script>
 
+	<div class="searchbar-container">
+		<input class="searchbar" bind:value placeholder='🔎 Global search' id='searchbar' name='searchbar' type='text' on:keyup={handleKeydown} />
+	</div>
 {#if hasData}
 	<div class="table-div-container" bind:this={container}>
 		<div class="table-div-container-inner">
@@ -105,8 +150,8 @@
 					{/each}
 				</tr>
 				{#each rowData as row}
-					<tr>
-						<td>{row.View}</td>
+				<tr>
+					<td>{row.View}</td>
 						<td>{row['Quality (0-4)']}</td>
 						<td>{row.Gain}</td>
 						<td>{row.Orientation}</td>
@@ -124,10 +169,10 @@
 	</div>
 	<div class="table-button-container">
 		<div class="table-page-number-container">
-			<div class="table-page-number">Page {(counter/maxEntriesShown) + 1} of {Math.ceil(dataArray.length/maxEntriesShown)}</div>
+			<div class="table-page-number">Page {(counter/maxEntriesShown) + 1} of {Math.ceil(filteredResults.length/maxEntriesShown)}</div>
 		</div>
 		<div class="table-results-counter-container">
-			<div class="table-results-counter">{counter + 1} to {counter + maxEntriesShown > dataArray.length ? dataArray.length : counter + maxEntriesShown} entries out of {dataArray.length} total results</div>
+			<div class="table-results-counter">{counter + 1} to {counter + maxEntriesShown > filteredResults.length ? filteredResults.length : counter + maxEntriesShown} entries out of {filteredResults.length} total results</div>
 		</div>
 		<div>
 			<button class="table-button" bind:this={prevButton} on:click={() => changePage(-1)}>Previous</button>
@@ -135,8 +180,9 @@
 		</div>
 	</div>
 {:else}
-<div>
-	nah
+<div class="no-results-container">
+	<h2 class="intro-text">🙊🙉🙈</h2>
+	<p class="intro-text">Uh-oh, no results found in the database!</p>
 </div>
 {/if}
 
@@ -145,6 +191,45 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+	}
+
+	.searchbar-container {
+		display: grid;
+		columns: 1fr;
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+	
+	.searchbar {
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding-top: 5px;
+		padding-left: 10px;
+		width: 75%;
+		font-size: 25px;
+		background-color: #1a1a1a;
+		border: 2px solid #fff;
+		border-radius: 10px;
+		color: #fff;
+		resize: none;
+		transition: border 0.15s ease-in-out;
+	}
+
+	.searchbar:hover {
+		border: 2px solid #ff264e
+	}
+
+	.searchbar:focus {
+		border: 2px solid #ff264e
+	}
+
+	.no-results-container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	.table-div-container {

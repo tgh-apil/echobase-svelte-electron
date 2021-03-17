@@ -36,13 +36,22 @@
         margin: 0px;
     }
 
+    .selected {
+        background-color: transparent;
+        border-radius: 2px;
+    }
+
     .not-selected {
         font-size: 20px;
         border-color: transparent;
         color: #fff;
+        border-radius: 2px;
+		transition: color 0.15s ease-in-out;
+        transition: border 0.15s ease-in-out;
     }
 
     .not-selected:hover {
+        background-color: transparent;
         color: #ff264e;
         border-radius: 2px;
         border-bottom: 2px solid #ff264e;
