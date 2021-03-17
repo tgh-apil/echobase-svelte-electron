@@ -205,12 +205,14 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		padding-top: 5px;
+		padding-top: 7px;
+		padding-bottom: 7px;
 		padding-left: 10px;
+		padding-right: 10px;
 		width: 75%;
 		font-size: 25px;
-		background-color: #1a1a1a;
-		border: 2px solid #fff;
+		background-color: #000;
+		border: 1px solid #fff;
 		border-radius: 10px;
 		color: #fff;
 		resize: none;
@@ -218,11 +220,11 @@
 	}
 
 	.searchbar:hover {
-		border: 2px solid #ff264e
+		border: 1px solid #ff264e
 	}
 
 	.searchbar:focus {
-		border: 2px solid #ff264e
+		border: 1px solid #ff264e
 	}
 
 	.no-results-container {

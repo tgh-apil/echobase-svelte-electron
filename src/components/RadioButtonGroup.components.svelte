@@ -21,13 +21,14 @@
 .container {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 20px;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-size: 16px;
 }
 
 /* Hide the browser's default radio button */
@@ -42,10 +43,10 @@
 /* Create a custom radio button */
 .checkmark {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
+    top: 2px;
+    left: 0px;
+    height: 1rem;
+    width: 1rem;
     background-color: #fff;
     border-radius: 50%;
 }
@@ -74,10 +75,10 @@
 
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
-    top: 5px;
-    left: 5px;
-    width: 15px;
-    height: 15px;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     background: #fff;
 }

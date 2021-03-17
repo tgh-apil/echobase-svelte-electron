@@ -670,12 +670,12 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.__value = input_value_value = /*option*/ ctx[6].value;
     			input.value = input.__value;
-    			attr_dev(input, "class", "svelte-i4sq47");
+    			attr_dev(input, "class", "svelte-1cixp9u");
     			/*$$binding_groups*/ ctx[5][0].push(input);
     			add_location(input, file$1, 10, 8, 207);
-    			attr_dev(span, "class", "checkmark svelte-i4sq47");
+    			attr_dev(span, "class", "checkmark svelte-1cixp9u");
     			add_location(span, file$1, 12, 8, 299);
-    			attr_dev(label_1, "class", "container svelte-i4sq47");
+    			attr_dev(label_1, "class", "container svelte-1cixp9u");
     			add_location(label_1, file$1, 9, 4, 172);
     		},
     		m: function mount(target, anchor) {
@@ -2777,11 +2777,11 @@ var app = (function () {
     			t1 = space();
     			p = element("p");
     			p.textContent = "Uh-oh, no results found in the database!";
-    			attr_dev(h2, "class", "intro-text svelte-6zhprv");
+    			attr_dev(h2, "class", "intro-text svelte-1u6c5l3");
     			add_location(h2, file$8, 183, 1, 4819);
-    			attr_dev(p, "class", "intro-text svelte-6zhprv");
+    			attr_dev(p, "class", "intro-text svelte-1u6c5l3");
     			add_location(p, file$8, 184, 1, 4856);
-    			attr_dev(div, "class", "no-results-container svelte-6zhprv");
+    			attr_dev(div, "class", "no-results-container svelte-1u6c5l3");
     			add_location(div, file$8, 182, 0, 4782);
     		},
     		m: function mount(target, anchor) {
@@ -2903,30 +2903,30 @@ var app = (function () {
     			t15 = space();
     			button1 = element("button");
     			button1.textContent = "Next";
-    			attr_dev(tr, "class", "svelte-6zhprv");
+    			attr_dev(tr, "class", "svelte-1u6c5l3");
     			add_location(tr, file$8, 146, 4, 3463);
     			set_style(table, "width", "100%");
-    			attr_dev(table, "class", "svelte-6zhprv");
+    			attr_dev(table, "class", "svelte-1u6c5l3");
     			add_location(table, file$8, 145, 3, 3431);
-    			attr_dev(div0, "class", "table-div-container-inner svelte-6zhprv");
+    			attr_dev(div0, "class", "table-div-container-inner svelte-1u6c5l3");
     			add_location(div0, file$8, 144, 2, 3387);
-    			attr_dev(div1, "class", "table-div-container svelte-6zhprv");
+    			attr_dev(div1, "class", "table-div-container svelte-1u6c5l3");
     			add_location(div1, file$8, 143, 1, 3328);
-    			attr_dev(div2, "class", "table-page-number svelte-6zhprv");
+    			attr_dev(div2, "class", "table-page-number svelte-1u6c5l3");
     			add_location(div2, file$8, 171, 3, 4117);
-    			attr_dev(div3, "class", "table-page-number-container svelte-6zhprv");
+    			attr_dev(div3, "class", "table-page-number-container svelte-1u6c5l3");
     			add_location(div3, file$8, 170, 2, 4071);
-    			attr_dev(div4, "class", "table-results-counter svelte-6zhprv");
+    			attr_dev(div4, "class", "table-results-counter svelte-1u6c5l3");
     			add_location(div4, file$8, 174, 3, 4309);
-    			attr_dev(div5, "class", "table-results-counter-container svelte-6zhprv");
+    			attr_dev(div5, "class", "table-results-counter-container svelte-1u6c5l3");
     			add_location(div5, file$8, 173, 2, 4259);
-    			attr_dev(button0, "class", "table-button svelte-6zhprv");
+    			attr_dev(button0, "class", "table-button svelte-1u6c5l3");
     			add_location(button0, file$8, 177, 3, 4550);
-    			attr_dev(button1, "class", "table-button svelte-6zhprv");
+    			attr_dev(button1, "class", "table-button svelte-1u6c5l3");
     			add_location(button1, file$8, 178, 3, 4656);
-    			attr_dev(div6, "class", "svelte-6zhprv");
+    			attr_dev(div6, "class", "svelte-1u6c5l3");
     			add_location(div6, file$8, 176, 2, 4540);
-    			attr_dev(div7, "class", "table-button-container svelte-6zhprv");
+    			attr_dev(div7, "class", "table-button-container svelte-1u6c5l3");
     			add_location(div7, file$8, 169, 1, 4031);
     		},
     		m: function mount(target, anchor) {
@@ -3069,7 +3069,7 @@ var app = (function () {
     		c: function create() {
     			th = element("th");
     			t = text(t_value);
-    			attr_dev(th, "class", "svelte-6zhprv");
+    			attr_dev(th, "class", "svelte-1u6c5l3");
     			add_location(th, file$8, 148, 6, 3512);
     		},
     		m: function mount(target, anchor) {
@@ -3179,29 +3179,29 @@ var app = (function () {
     			td10 = element("td");
     			t20 = text(t20_value);
     			t21 = space();
-    			attr_dev(td0, "class", "svelte-6zhprv");
+    			attr_dev(td0, "class", "svelte-1u6c5l3");
     			add_location(td0, file$8, 153, 5, 3600);
-    			attr_dev(td1, "class", "svelte-6zhprv");
+    			attr_dev(td1, "class", "svelte-1u6c5l3");
     			add_location(td1, file$8, 154, 6, 3627);
-    			attr_dev(td2, "class", "svelte-6zhprv");
+    			attr_dev(td2, "class", "svelte-1u6c5l3");
     			add_location(td2, file$8, 155, 6, 3666);
-    			attr_dev(td3, "class", "svelte-6zhprv");
+    			attr_dev(td3, "class", "svelte-1u6c5l3");
     			add_location(td3, file$8, 156, 6, 3693);
-    			attr_dev(td4, "class", "svelte-6zhprv");
+    			attr_dev(td4, "class", "svelte-1u6c5l3");
     			add_location(td4, file$8, 157, 6, 3727);
-    			attr_dev(td5, "class", "svelte-6zhprv");
+    			attr_dev(td5, "class", "svelte-1u6c5l3");
     			add_location(td5, file$8, 158, 6, 3755);
-    			attr_dev(td6, "class", "svelte-6zhprv");
+    			attr_dev(td6, "class", "svelte-1u6c5l3");
     			add_location(td6, file$8, 159, 6, 3783);
-    			attr_dev(td7, "class", "svelte-6zhprv");
+    			attr_dev(td7, "class", "svelte-1u6c5l3");
     			add_location(td7, file$8, 160, 6, 3815);
-    			attr_dev(td8, "class", "svelte-6zhprv");
+    			attr_dev(td8, "class", "svelte-1u6c5l3");
     			add_location(td8, file$8, 161, 6, 3848);
-    			attr_dev(td9, "class", "td-comments svelte-6zhprv");
+    			attr_dev(td9, "class", "td-comments svelte-1u6c5l3");
     			add_location(td9, file$8, 162, 6, 3892);
-    			attr_dev(td10, "class", "svelte-6zhprv");
+    			attr_dev(td10, "class", "svelte-1u6c5l3");
     			add_location(td10, file$8, 163, 6, 3943);
-    			attr_dev(tr, "class", "svelte-6zhprv");
+    			attr_dev(tr, "class", "svelte-1u6c5l3");
     			add_location(tr, file$8, 152, 4, 3589);
     		},
     		m: function mount(target, anchor) {
@@ -3291,13 +3291,13 @@ var app = (function () {
     			t = space();
     			if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(input, "class", "searchbar svelte-6zhprv");
+    			attr_dev(input, "class", "searchbar svelte-1u6c5l3");
     			attr_dev(input, "placeholder", "🔎 Global search");
     			attr_dev(input, "id", "searchbar");
     			attr_dev(input, "name", "searchbar");
     			attr_dev(input, "type", "text");
     			add_location(input, file$8, 140, 2, 3163);
-    			attr_dev(div, "class", "searchbar-container svelte-6zhprv");
+    			attr_dev(div, "class", "searchbar-container svelte-1u6c5l3");
     			add_location(div, file$8, 139, 1, 3126);
     		},
     		l: function claim(nodes) {
