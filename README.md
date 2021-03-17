@@ -42,7 +42,7 @@ Tensorflow 2 + opencv to determine clip depth
 2. Run dev to edit live: `npm start`
 3. Make for your platform: `npm run make`
 
-### 🐍 Deep learning thing
+### 🐍 Deep Learning Capacity
 If you want to use the digit recognition we're using to gauge depth, you'll need to have these installed on your system:
 
 - python 3.8x
