@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { rootDirectory } from '../stores.js';
+	import Filters from './Filters.component.svelte';
 	const fs = window.require('fs');
 
 	// read data folder
@@ -17,17 +18,127 @@
 	let prevButton;
 	let nextButton;
 	let counter = 0; 
-	let maxEntriesShown = 40;
-
-	// // for the search bar
-	// let field = {
-	// 	value: '',
-	// 	placeholder: '🔎 search',
-	// 	id: 'searchbar',
-	// 	name: 'searchbar' 
-	// };
+	let maxEntriesShown = 30;
 
 	let value = '';
+	let appliedFilters = [];
+
+	let filters = [
+		{
+			value : 'None',
+			label : 'View',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: '4C', value: '4C'},
+				{label: '5C', value: '5C'},
+				{label: 'PLSX', value: 'PLSX'},
+				{label: 'PSAXb', value: 'PSAXb'},
+				{label: 'PSAXm', value: 'PSAXm'},
+				{label: 'PSAXa', value: 'PSAXa'},
+				{label: 'AVSX', value: 'AVSX'},
+				{label: 'SC', value: 'SC'},
+				{label: 'RISV', value: 'RISV'},
+				{label: 'Lung', value: 'Lung'},
+				{label: 'Other', value: 'Other'},
+			],
+			id: 'view-filter',
+			type: 'multi-select'
+		},
+		{
+			value : 'None',
+			label : 'Quality',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: '1', value: 1},
+				{label: '2', value: 2},
+				{label: '3', value: 3},
+				{label: '4', value: 4},
+			],
+			id: 'quality-filter',
+			type: 'multi-select'
+		},
+		{
+			value : 'None',
+			label : 'Gain',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: 'Under gained', value: 'Under gained'},
+				{label: 'Optimal', value: 'Optimal'},
+				{label: 'Overgained', value: 'Overgained'},
+			],
+			id: 'gain-filter',
+			type: 'single-select'
+		},
+		{
+			value : 'None',
+			label : 'Orientation',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: 'Correct', value: 'Correct'},
+				{label: 'Incorrect', value: 'Incorrect'},
+			],
+			id: 'orientation-filter',
+			type: 'single-select'
+		},
+		{
+			value : 'None',
+			label : 'Depth',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: 'Correct', value: 'Correct'},
+				{label: 'Incorrect', value: 'Incorrect'},
+			],
+			id: 'depth-filter',
+			type: 'single-select'
+		},
+		{
+			value : 'None',
+			label : 'Focus',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: 'Appropriate', value: 'Appropriate'},
+				{label: 'Inappropriate', value: 'Inappropriate'},
+			],
+			id: 'focus-filter',
+			type: 'single-select'
+		},
+		{
+			value : 'None',
+			label : 'Frequency',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: 'Appropriate', value: 'Appropriate'},
+				{label: 'Inappropriate', value: 'Inappropriate'},
+			],
+			id: 'frequency-filter',
+			type: 'single-select'
+		},
+		{
+			value : 'None',
+			label : 'Physiology',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: 'Normal', value: 'Normal'},
+				{label: 'Abnormal', value: 'Abnormal'},
+			],
+			id: 'physiology-filter',
+			type: 'single-select'
+		},
+		{
+			value : 'None',
+			label : 'Cardiac Cycles',
+			options : [
+				{label: 'Not filtered', value: 'None'},
+				{label: '0', value: 0},
+				{label: '1', value: 1},
+				{label: '2', value: 2},
+				{label: '3', value: 3},
+				{label: '>3', value: 4},
+			],
+			id: 'cardiac-cycles-filter',
+			type: 'single-select'
+		},
+	]
 
 	onMount(() => {
 		prevButton.disabled = true;
@@ -89,20 +200,28 @@
 					}
 				})
 			})
-			
-	
+
 			if (tempResults.length > 0) {
 				// need to add this otherwise the array will continue to add on itself
 				filteredResults = tempResults;
-				// filteredResults = dataArray;
 			} else {
 				console.log('no results');
 				hasData = false;
 			}
-
-			console.log(filteredResults.length);
 		} else {
 			filteredResults = dataArray;
+		}
+
+		if (appliedFilters.length != 0) {
+			appliedFilters.forEach(filter => {
+				filteredResults = filteredResults.filter(v => {
+					return v[filter.label] === filter.value;
+				})	
+			})
+
+			if (filteredResults == 0) {
+				hasData = false;
+			}
 		}
 
 		// we only want a subset of the data at a time
@@ -114,8 +233,8 @@
 			shownResults = filteredResults.slice(counter, counter + maxEntriesShown);
 		}
 
-		// create columns based on keys
-		colHeadings = (Object.keys(shownResults[0]));
+		// create columns based on keys on the original unchanging data
+		colHeadings = (Object.keys(dataArray[0]));
 		// colHeadings.unshift('clip name');
 
 		// create rows based on values + truncate length of comments to be displayed
@@ -129,6 +248,40 @@
 		
 	}
 
+	function clearSearch() {
+		value = '';
+		populateTable();
+	}
+
+	function applyFilters() {
+		appliedFilters = [];
+		
+		filters.forEach(filter => {
+			if (filter.value != 'None') {
+				let label = filter.label;
+				let value = filter.value;
+				let obj = {label: label, value: value}
+				appliedFilters.push(obj);
+			}
+		})
+		
+		console.log(appliedFilters);
+		populateTable();
+	}
+
+	function clearFilters() {
+		appliedFilters = [];
+
+		filters.forEach(v => {
+			v.value = 'None';
+			v.options.label = 'Not filtered';
+			v.options.value = 'None';
+		})
+
+		populateTable();
+		console.log(appliedFilters.length);
+	}
+
 	// to reference container for autoscroll
 	let container;
 
@@ -137,9 +290,20 @@
 	}
 </script>
 
-	<div class="searchbar-container">
+<div class="searchbar-container">
+	<span></span>
+	<div>
 		<input class="searchbar" bind:value placeholder='🔎 Global search' id='searchbar' name='searchbar' type='text' on:keyup={handleKeydown} />
 	</div>
+	<div>
+		<button class="clear-search-button" on:click={clearSearch}>Clear</button>
+	</div>
+</div>
+<div class="filter-container">
+	<Filters filters={filters}/>
+	<button on:click={applyFilters}>Apply Filters</button>
+	<button on:click={clearFilters}>Clear Filters</button>
+</div>
 {#if hasData}
 	<div class="table-div-container" bind:this={container}>
 		<div class="table-div-container-inner">
@@ -182,7 +346,7 @@
 {:else}
 <div class="no-results-container">
 	<h2 class="intro-text">🙊🙉🙈</h2>
-	<p class="intro-text">Uh-oh, no results found in the database!</p>
+	<p class="intro-text">Uh-oh, no results found!</p>
 </div>
 {/if}
 
@@ -195,21 +359,21 @@
 
 	.searchbar-container {
 		display: grid;
-		columns: 1fr;
+		grid-template-columns: 1fr 3fr 1fr;
 		margin-top: 25px;
 		margin-bottom: 25px;
 	}
-	
+
 	.searchbar {
 		position: relative;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		width: 100%;
 		padding-top: 7px;
 		padding-bottom: 7px;
 		padding-left: 10px;
 		padding-right: 10px;
-		width: 75%;
 		font-size: 25px;
 		background-color: #000;
 		border: 1px solid #fff;
@@ -227,6 +391,20 @@
 		border: 1px solid #ff264e
 	}
 
+	.clear-search-button {
+		position: relative;
+		top: 50%;
+		text-align: center;
+		transform: translate(0, -50%);
+		font-size: 14px;
+		font-weight: bold;
+		margin-left: 10px;
+		height: 100%;
+		width: auto;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
 	.no-results-container {
 		position: absolute;
 		top: 50%;
@@ -235,9 +413,9 @@
 	}
 
 	.table-div-container {
-		height: 70%;
+		height: 45%;
 		overflow: auto;
-		margin-bottom: 25px;
+		margin-bottom: 20px;
 	}
 
 	.table-div-container-inner {
