@@ -17,7 +17,7 @@
 		{
 			name: 'View',
 			type:'select',
-			value: 'Apical Four Chamber',
+			value: '4C',
 			label: '🔭 What view is it?',
 			id: 'view',
 			options: [
@@ -35,7 +35,7 @@
 			]
 		},
 		{
-			name: 'Quality (0-4)',
+			name: 'Quality (0-3)',
 			type: 'radio',
 			value: 0,
 			label: "📸 How's the image quality?",
@@ -43,8 +43,8 @@
 			options: [
 				{label: 'View cannot be identified clearly', value: 0},
 				{label: 'View can be identified but diagnosis very difficult/impossible', value: 1},
-				{label: 'Most aspects can be diagnosed but image can be clearer', value: 3},
-				{label: 'All diagnostic features visible and clear', value: 4},
+				{label: 'Most aspects can be diagnosed but image can be clearer', value: 2},
+				{label: 'All diagnostic features visible and clear', value: 3},
 			]
 		},
 		{
@@ -115,12 +115,17 @@
 			]
 		},
 		{
-			name: 'Cardiac Cycles (#)',
-			type: 'text',
+			name: 'Cardiac Cycles',
+			type: 'radio',
 			id: 'num_cardiac_cycles',
-			value: '',
+			value: 0,
 			label: '💓 How many cardiac cycles?',
-			placeholder: '# Cardiac cycles...'
+			options: [
+				{label: 0, value: 0},
+				{label: 1, value: 1},
+				{label: 2, value: 2},
+				{label: 3, value: 3},
+			]
 		},
 		{
 			name: 'Comments',
@@ -132,11 +137,12 @@
 		},
 		{
 			name: 'Bookmark',
-			type: 'check',
-			value: false,
-			label: '📑 Bookmark this for future reference?',
+			type: 'radio',
+			value: 'No',
+			label: '📑 Bookmark this clip for future reference?',
 			options: [
-				{label: '⭐', value: 'fav'}
+				{label: 'Yes', value: 'Yes'},
+				{label: 'No', value: 'No'},
 			]
 		}
 	]

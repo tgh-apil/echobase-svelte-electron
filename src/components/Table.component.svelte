@@ -5,6 +5,8 @@
 	const fs = window.require('fs');
 
 	// read data folder
+	// this does not scale well!!
+	// my poor RAM
 	const dataDir = $rootDirectory + '/data/'
 	let dataArray = fs.readdirSync(dataDir);
 
@@ -46,13 +48,13 @@
 		},
 		{
 			value : 'None',
-			label : 'Quality',
+			label : 'Quality (0-3)',
 			options : [
 				{label: 'Not filtered', value: 'None'},
+				{label: '0', value: 0},
 				{label: '1', value: 1},
 				{label: '2', value: 2},
 				{label: '3', value: 3},
-				{label: '4', value: 4},
 			],
 			id: 'quality-filter',
 			type: 'multi-select'
@@ -85,8 +87,8 @@
 			label : 'Depth',
 			options : [
 				{label: 'Not filtered', value: 'None'},
-				{label: 'Correct', value: 'Correct'},
-				{label: 'Incorrect', value: 'Incorrect'},
+				{label: 'Appropriate', value: 'Appropriate'},
+				{label: 'Inappropriate', value: 'Inappropriate'},
 			],
 			id: 'depth-filter',
 			type: 'single-select'
@@ -133,30 +135,45 @@
 				{label: '1', value: 1},
 				{label: '2', value: 2},
 				{label: '3', value: 3},
-				{label: '>3', value: 4},
 			],
 			id: 'cardiac-cycles-filter',
-			type: 'single-select'
+			type: 'multi-select'
 		},
+		{
+			name: 'Bookmark',
+			label: 'Bookmark',
+			options: [
+				{label: 'Yes', value: 'Yes'},
+				{label: 'No', value: 'No'},
+			],
+			id: 'bookmarked-filter',
+			type: 'single-select'
+		}
 	]
-
-	onMount(() => {
-		prevButton.disabled = true;
-	})
 
 	// this is the array we'll store data in when we apply filters/search terms
 	let filteredResults;
-
+	
 	if (dataArray.length === 0) {
 		hasData = false;
 	} else {
+		// prevButton.disabled = true;
 		hasData = true;
 
 		// this will be the data we filter through
 		dataArray = dataArray.map(data => JSON.parse(fs.readFileSync(dataDir + data)));
 		filteredResults = dataArray;
+
 		populateTable();
 	}
+
+	onMount(() => {
+		prevButton.disabled = true;
+
+		if (filteredResults.length < maxEntriesShown) {
+			nextButton.disabled = true;
+		}
+	})
 	
 	function scrollToTop() {
 		container.scrollTo({ top: 0, behavior: 'smooth' });
@@ -173,7 +190,7 @@
 			nextButton.disabled = false;			
 		}
 
-		if (counter === 0) {
+		if (counter <= 0) {
 			prevButton.disabled = true;
 		}
 		else {
@@ -183,6 +200,7 @@
 		populateTable()
 	}
 
+	// this function is so bad
 	function populateTable() {
 		let searchTerms = value;
 		let tempResults = [];
@@ -190,6 +208,7 @@
 		// reload data flag when redrawing the table
 		hasData = true;
 
+		// this has to search for unique terms
 		if (searchTerms != '') {
 			dataArray.forEach(data => {
 				Object.values(data).forEach(v => {
@@ -212,11 +231,30 @@
 			filteredResults = dataArray;
 		}
 
+		// only called when categorical filters are applied
 		if (appliedFilters.length != 0) {
+			// store filtered results temporarily
+			let localTemp = [];
+
 			appliedFilters.forEach(filter => {
-				filteredResults = filteredResults.filter(v => {
-					return v[filter.label] === filter.value;
-				})	
+				// first check whether the filter is an array
+				if (Array.isArray(filter.value)) {
+					filter.value.forEach(arrayVal => {
+						filteredResults.forEach(v => {
+							console.log(arrayVal);
+							console.log(v[filter.label])
+							if (v[filter.label] === arrayVal) {
+								localTemp = [...localTemp, v]
+							}
+						})
+					})
+				} else {
+					localTemp = filteredResults.filter(v => {
+						return v[filter.label] === filter.value;
+					})	
+				}
+
+				filteredResults = localTemp;
 			})
 
 			if (filteredResults == 0) {
@@ -235,10 +273,11 @@
 
 		// create columns based on keys on the original unchanging data
 		colHeadings = (Object.keys(dataArray[0]));
-		// colHeadings.unshift('clip name');
+		console.log(colHeadings);
 
 		// create rows based on values + truncate length of comments to be displayed
 		rowData = (Object.values(shownResults));
+		console.log(rowData);
 
 		rowData.forEach(data => {
 			if (data.Comments.length >= 50) {
@@ -265,7 +304,6 @@
 			}
 		})
 		
-		console.log(appliedFilters);
 		populateTable();
 	}
 
@@ -279,7 +317,6 @@
 		})
 
 		populateTable();
-		console.log(appliedFilters.length);
 	}
 
 	// to reference container for autoscroll
@@ -296,13 +333,16 @@
 		<input class="searchbar" bind:value placeholder='🔎 Global search' id='searchbar' name='searchbar' type='text' on:keyup={handleKeydown} />
 	</div>
 	<div>
-		<button class="clear-search-button" on:click={clearSearch}>Clear</button>
+		<button class="clear-search-button" on:click={clearSearch}>Clear Search</button>
 	</div>
 </div>
 <div class="filter-container">
 	<Filters filters={filters}/>
-	<button on:click={applyFilters}>Apply Filters</button>
-	<button on:click={clearFilters}>Clear Filters</button>
+</div>
+<div class="filter-button-container">
+	<span class="filter-button-filler"></span>
+	<button class="filter-button" on:click={clearFilters}>Clear Filters</button>
+	<button class="filter-button" on:click={applyFilters}>Apply Filters</button>
 </div>
 {#if hasData}
 	<div class="table-div-container" bind:this={container}>
@@ -314,17 +354,19 @@
 					{/each}
 				</tr>
 				{#each rowData as row}
-				<tr>
-					<td>{row.View}</td>
-						<td>{row['Quality (0-4)']}</td>
+					<tr>
+						<!-- this needs to be refactored to update automatically when the form updates -->
+						<td>{row.View}</td>
+						<td>{row['Quality (0-3)']}</td>
 						<td>{row.Gain}</td>
 						<td>{row.Orientation}</td>
 						<td>{row.Depth}</td>
 						<td>{row.Focus}</td>
 						<td>{row.Frequency}</td>
 						<td>{row.Physiology}</td>
-						<td>{row['Cardiac Cycles (#)']}</td>
+						<td>{row['Cardiac Cycles']}</td>
 						<td class="td-comments">{row.Comments}</td>
+						<td>{row.Bookmark}</td>
 						<td>{row["Depth (cm)"]}</td>
 					</tr>
 				{/each}
@@ -391,6 +433,10 @@
 		border: 1px solid #ff264e
 	}
 
+	.filter-button-filler {
+		grid-column-end: 9;
+	}
+
 	.clear-search-button {
 		position: relative;
 		top: 50%;
@@ -403,6 +449,23 @@
 		width: auto;
 		padding-left: 10px;
 		padding-right: 10px;
+	}
+
+	.filter-button-container {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        padding-bottom: 20px;
+	}
+
+	.filter-button {
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding-top: 5px;
+		padding-bottom: 5px;
+		width: 90%;
+		font-size: 16px;
 	}
 
 	.no-results-container {

@@ -28,8 +28,8 @@
 
     .filter-container {
         display: grid;
-        grid-template-columns: repeat(9, 1fr);
-        padding-bottom: 25px;
+        grid-template-columns: repeat(10, 1fr);
+        margin-bottom: 20px;
     }
 
     .select-container {

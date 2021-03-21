@@ -54,7 +54,7 @@
             {:else if field.type === 'text'}
                 <TextInput bind:value={field.value} label={field.label} placeholder={field.placeholder} id={field.id} name={field.name}/>
             {:else if field.type === 'text-area'}
-                <TextArea bind:value={field.value} label={field.label} placeholder={field.placeholder} id={field.id} name={field.name}/>            
+                <TextArea bind:value={field.value} label={field.label} placeholder={field.placeholder} id={field.id} name={field.name}/>
             {/if}
         {/each}
     </div>

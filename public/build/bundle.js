@@ -2141,8 +2141,8 @@ var app = (function () {
     			attr_dev(div0, "class", "formOptions");
     			add_location(div0, file$5, 47, 4, 1959);
     			attr_dev(button, "type", "submit");
-    			add_location(button, file$5, 61, 8, 2797);
-    			add_location(div1, file$5, 60, 4, 2782);
+    			add_location(button, file$5, 61, 8, 2785);
+    			add_location(div1, file$5, 60, 4, 2770);
     			add_location(form, file$5, 46, 0, 1893);
     		},
     		l: function claim(nodes) {
@@ -3072,7 +3072,7 @@ var app = (function () {
     			div = element("div");
     			create_component(selectmultiplegroup.$$.fragment);
     			t = space();
-    			attr_dev(div, "class", "select-container svelte-1m7n7eg");
+    			attr_dev(div, "class", "select-container svelte-p3g5ei");
     			add_location(div, file$9, 14, 12, 553);
     		},
     		m: function mount(target, anchor) {
@@ -3151,7 +3151,7 @@ var app = (function () {
     			div = element("div");
     			create_component(selectgroup.$$.fragment);
     			t = space();
-    			attr_dev(div, "class", "select-container svelte-1m7n7eg");
+    			attr_dev(div, "class", "select-container svelte-p3g5ei");
     			add_location(div, file$9, 10, 12, 319);
     		},
     		m: function mount(target, anchor) {
@@ -3319,7 +3319,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div, "class", "filter-container svelte-1m7n7eg");
+    			attr_dev(div, "class", "filter-container svelte-p3g5ei");
     			add_location(div, file$9, 7, 0, 197);
     		},
     		l: function claim(nodes) {
@@ -3474,7 +3474,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (346:0) {:else}
+    // (388:0) {:else}
     function create_else_block$1(ctx) {
     	let div;
     	let h2;
@@ -3489,12 +3489,12 @@ var app = (function () {
     			t1 = space();
     			p = element("p");
     			p.textContent = "Uh-oh, no results found!";
-    			attr_dev(h2, "class", "intro-text svelte-1ld5mml");
-    			add_location(h2, file$a, 347, 1, 8790);
-    			attr_dev(p, "class", "intro-text svelte-1ld5mml");
-    			add_location(p, file$a, 348, 1, 8827);
-    			attr_dev(div, "class", "no-results-container svelte-1ld5mml");
-    			add_location(div, file$a, 346, 0, 8753);
+    			attr_dev(h2, "class", "intro-text svelte-1vsqsx4");
+    			add_location(h2, file$a, 389, 1, 9959);
+    			attr_dev(p, "class", "intro-text svelte-1vsqsx4");
+    			add_location(p, file$a, 390, 1, 9996);
+    			attr_dev(div, "class", "no-results-container svelte-1vsqsx4");
+    			add_location(div, file$a, 388, 0, 9922);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3512,14 +3512,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(346:0) {:else}",
+    		source: "(388:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (307:0) {#if hasData}
+    // (347:0) {#if hasData}
     function create_if_block$3(ctx) {
     	let div1;
     	let div0;
@@ -3615,31 +3615,31 @@ var app = (function () {
     			t15 = space();
     			button1 = element("button");
     			button1.textContent = "Next";
-    			attr_dev(tr, "class", "svelte-1ld5mml");
-    			add_location(tr, file$a, 310, 4, 7434);
+    			attr_dev(tr, "class", "svelte-1vsqsx4");
+    			add_location(tr, file$a, 350, 4, 8484);
     			set_style(table, "width", "100%");
-    			attr_dev(table, "class", "svelte-1ld5mml");
-    			add_location(table, file$a, 309, 3, 7402);
-    			attr_dev(div0, "class", "table-div-container-inner svelte-1ld5mml");
-    			add_location(div0, file$a, 308, 2, 7358);
-    			attr_dev(div1, "class", "table-div-container svelte-1ld5mml");
-    			add_location(div1, file$a, 307, 1, 7299);
-    			attr_dev(div2, "class", "table-page-number svelte-1ld5mml");
-    			add_location(div2, file$a, 335, 3, 8088);
-    			attr_dev(div3, "class", "table-page-number-container svelte-1ld5mml");
-    			add_location(div3, file$a, 334, 2, 8042);
-    			attr_dev(div4, "class", "table-results-counter svelte-1ld5mml");
-    			add_location(div4, file$a, 338, 3, 8280);
-    			attr_dev(div5, "class", "table-results-counter-container svelte-1ld5mml");
-    			add_location(div5, file$a, 337, 2, 8230);
-    			attr_dev(button0, "class", "table-button svelte-1ld5mml");
-    			add_location(button0, file$a, 341, 3, 8521);
-    			attr_dev(button1, "class", "table-button svelte-1ld5mml");
-    			add_location(button1, file$a, 342, 3, 8627);
-    			attr_dev(div6, "class", "svelte-1ld5mml");
-    			add_location(div6, file$a, 340, 2, 8511);
-    			attr_dev(div7, "class", "table-button-container svelte-1ld5mml");
-    			add_location(div7, file$a, 333, 1, 8002);
+    			attr_dev(table, "class", "svelte-1vsqsx4");
+    			add_location(table, file$a, 349, 3, 8452);
+    			attr_dev(div0, "class", "table-div-container-inner svelte-1vsqsx4");
+    			add_location(div0, file$a, 348, 2, 8408);
+    			attr_dev(div1, "class", "table-div-container svelte-1vsqsx4");
+    			add_location(div1, file$a, 347, 1, 8349);
+    			attr_dev(div2, "class", "table-page-number svelte-1vsqsx4");
+    			add_location(div2, file$a, 377, 3, 9257);
+    			attr_dev(div3, "class", "table-page-number-container svelte-1vsqsx4");
+    			add_location(div3, file$a, 376, 2, 9211);
+    			attr_dev(div4, "class", "table-results-counter svelte-1vsqsx4");
+    			add_location(div4, file$a, 380, 3, 9449);
+    			attr_dev(div5, "class", "table-results-counter-container svelte-1vsqsx4");
+    			add_location(div5, file$a, 379, 2, 9399);
+    			attr_dev(button0, "class", "table-button svelte-1vsqsx4");
+    			add_location(button0, file$a, 383, 3, 9690);
+    			attr_dev(button1, "class", "table-button svelte-1vsqsx4");
+    			add_location(button1, file$a, 384, 3, 9796);
+    			attr_dev(div6, "class", "svelte-1vsqsx4");
+    			add_location(div6, file$a, 382, 2, 9680);
+    			attr_dev(div7, "class", "table-button-container svelte-1vsqsx4");
+    			add_location(div7, file$a, 375, 1, 9171);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -3764,14 +3764,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(307:0) {#if hasData}",
+    		source: "(347:0) {#if hasData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (312:5) {#each colHeadings as heading}
+    // (352:5) {#each colHeadings as heading}
     function create_each_block_1(ctx) {
     	let th;
     	let t_value = /*heading*/ ctx[32] + "";
@@ -3781,8 +3781,8 @@ var app = (function () {
     		c: function create() {
     			th = element("th");
     			t = text(t_value);
-    			attr_dev(th, "class", "svelte-1ld5mml");
-    			add_location(th, file$a, 312, 6, 7483);
+    			attr_dev(th, "class", "svelte-1vsqsx4");
+    			add_location(th, file$a, 352, 6, 8533);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
@@ -3800,14 +3800,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(312:5) {#each colHeadings as heading}",
+    		source: "(352:5) {#each colHeadings as heading}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (316:4) {#each rowData as row}
+    // (356:4) {#each rowData as row}
     function create_each_block$6(ctx) {
     	let tr;
     	let td0;
@@ -3815,7 +3815,7 @@ var app = (function () {
     	let t0;
     	let t1;
     	let td1;
-    	let t2_value = /*row*/ ctx[29]["Quality (0-4)"] + "";
+    	let t2_value = /*row*/ ctx[29]["Quality (0-3)"] + "";
     	let t2;
     	let t3;
     	let td2;
@@ -3843,7 +3843,7 @@ var app = (function () {
     	let t14;
     	let t15;
     	let td8;
-    	let t16_value = /*row*/ ctx[29]["Cardiac Cycles (#)"] + "";
+    	let t16_value = /*row*/ ctx[29]["Cardiac Cycles"] + "";
     	let t16;
     	let t17;
     	let td9;
@@ -3851,9 +3851,13 @@ var app = (function () {
     	let t18;
     	let t19;
     	let td10;
-    	let t20_value = /*row*/ ctx[29]["Depth (cm)"] + "";
+    	let t20_value = /*row*/ ctx[29].Bookmark + "";
     	let t20;
     	let t21;
+    	let td11;
+    	let t22_value = /*row*/ ctx[29]["Depth (cm)"] + "";
+    	let t22;
+    	let t23;
 
     	const block = {
     		c: function create() {
@@ -3891,30 +3895,35 @@ var app = (function () {
     			td10 = element("td");
     			t20 = text(t20_value);
     			t21 = space();
-    			attr_dev(td0, "class", "svelte-1ld5mml");
-    			add_location(td0, file$a, 317, 5, 7571);
-    			attr_dev(td1, "class", "svelte-1ld5mml");
-    			add_location(td1, file$a, 318, 6, 7598);
-    			attr_dev(td2, "class", "svelte-1ld5mml");
-    			add_location(td2, file$a, 319, 6, 7637);
-    			attr_dev(td3, "class", "svelte-1ld5mml");
-    			add_location(td3, file$a, 320, 6, 7664);
-    			attr_dev(td4, "class", "svelte-1ld5mml");
-    			add_location(td4, file$a, 321, 6, 7698);
-    			attr_dev(td5, "class", "svelte-1ld5mml");
-    			add_location(td5, file$a, 322, 6, 7726);
-    			attr_dev(td6, "class", "svelte-1ld5mml");
-    			add_location(td6, file$a, 323, 6, 7754);
-    			attr_dev(td7, "class", "svelte-1ld5mml");
-    			add_location(td7, file$a, 324, 6, 7786);
-    			attr_dev(td8, "class", "svelte-1ld5mml");
-    			add_location(td8, file$a, 325, 6, 7819);
-    			attr_dev(td9, "class", "td-comments svelte-1ld5mml");
-    			add_location(td9, file$a, 326, 6, 7863);
-    			attr_dev(td10, "class", "svelte-1ld5mml");
-    			add_location(td10, file$a, 327, 6, 7914);
-    			attr_dev(tr, "class", "svelte-1ld5mml");
-    			add_location(tr, file$a, 316, 4, 7560);
+    			td11 = element("td");
+    			t22 = text(t22_value);
+    			t23 = space();
+    			attr_dev(td0, "class", "svelte-1vsqsx4");
+    			add_location(td0, file$a, 358, 6, 8713);
+    			attr_dev(td1, "class", "svelte-1vsqsx4");
+    			add_location(td1, file$a, 359, 6, 8740);
+    			attr_dev(td2, "class", "svelte-1vsqsx4");
+    			add_location(td2, file$a, 360, 6, 8779);
+    			attr_dev(td3, "class", "svelte-1vsqsx4");
+    			add_location(td3, file$a, 361, 6, 8806);
+    			attr_dev(td4, "class", "svelte-1vsqsx4");
+    			add_location(td4, file$a, 362, 6, 8840);
+    			attr_dev(td5, "class", "svelte-1vsqsx4");
+    			add_location(td5, file$a, 363, 6, 8868);
+    			attr_dev(td6, "class", "svelte-1vsqsx4");
+    			add_location(td6, file$a, 364, 6, 8896);
+    			attr_dev(td7, "class", "svelte-1vsqsx4");
+    			add_location(td7, file$a, 365, 6, 8928);
+    			attr_dev(td8, "class", "svelte-1vsqsx4");
+    			add_location(td8, file$a, 366, 6, 8961);
+    			attr_dev(td9, "class", "td-comments svelte-1vsqsx4");
+    			add_location(td9, file$a, 367, 6, 9001);
+    			attr_dev(td10, "class", "svelte-1vsqsx4");
+    			add_location(td10, file$a, 368, 6, 9052);
+    			attr_dev(td11, "class", "svelte-1vsqsx4");
+    			add_location(td11, file$a, 369, 6, 9083);
+    			attr_dev(tr, "class", "svelte-1vsqsx4");
+    			add_location(tr, file$a, 356, 5, 8611);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -3951,19 +3960,23 @@ var app = (function () {
     			append_dev(tr, td10);
     			append_dev(td10, t20);
     			append_dev(tr, t21);
+    			append_dev(tr, td11);
+    			append_dev(td11, t22);
+    			append_dev(tr, t23);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*rowData*/ 4 && t0_value !== (t0_value = /*row*/ ctx[29].View + "")) set_data_dev(t0, t0_value);
-    			if (dirty[0] & /*rowData*/ 4 && t2_value !== (t2_value = /*row*/ ctx[29]["Quality (0-4)"] + "")) set_data_dev(t2, t2_value);
+    			if (dirty[0] & /*rowData*/ 4 && t2_value !== (t2_value = /*row*/ ctx[29]["Quality (0-3)"] + "")) set_data_dev(t2, t2_value);
     			if (dirty[0] & /*rowData*/ 4 && t4_value !== (t4_value = /*row*/ ctx[29].Gain + "")) set_data_dev(t4, t4_value);
     			if (dirty[0] & /*rowData*/ 4 && t6_value !== (t6_value = /*row*/ ctx[29].Orientation + "")) set_data_dev(t6, t6_value);
     			if (dirty[0] & /*rowData*/ 4 && t8_value !== (t8_value = /*row*/ ctx[29].Depth + "")) set_data_dev(t8, t8_value);
     			if (dirty[0] & /*rowData*/ 4 && t10_value !== (t10_value = /*row*/ ctx[29].Focus + "")) set_data_dev(t10, t10_value);
     			if (dirty[0] & /*rowData*/ 4 && t12_value !== (t12_value = /*row*/ ctx[29].Frequency + "")) set_data_dev(t12, t12_value);
     			if (dirty[0] & /*rowData*/ 4 && t14_value !== (t14_value = /*row*/ ctx[29].Physiology + "")) set_data_dev(t14, t14_value);
-    			if (dirty[0] & /*rowData*/ 4 && t16_value !== (t16_value = /*row*/ ctx[29]["Cardiac Cycles (#)"] + "")) set_data_dev(t16, t16_value);
+    			if (dirty[0] & /*rowData*/ 4 && t16_value !== (t16_value = /*row*/ ctx[29]["Cardiac Cycles"] + "")) set_data_dev(t16, t16_value);
     			if (dirty[0] & /*rowData*/ 4 && t18_value !== (t18_value = /*row*/ ctx[29].Comments + "")) set_data_dev(t18, t18_value);
-    			if (dirty[0] & /*rowData*/ 4 && t20_value !== (t20_value = /*row*/ ctx[29]["Depth (cm)"] + "")) set_data_dev(t20, t20_value);
+    			if (dirty[0] & /*rowData*/ 4 && t20_value !== (t20_value = /*row*/ ctx[29].Bookmark + "")) set_data_dev(t20, t20_value);
+    			if (dirty[0] & /*rowData*/ 4 && t22_value !== (t22_value = /*row*/ ctx[29]["Depth (cm)"] + "")) set_data_dev(t22, t22_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -3974,7 +3987,7 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(316:4) {#each rowData as row}",
+    		source: "(356:4) {#each rowData as row}",
     		ctx
     	});
 
@@ -3983,7 +3996,7 @@ var app = (function () {
 
     function create_fragment$a(ctx) {
     	let div2;
-    	let span;
+    	let span0;
     	let t0;
     	let div0;
     	let input;
@@ -3993,10 +4006,13 @@ var app = (function () {
     	let t3;
     	let div3;
     	let t4;
+    	let div4;
+    	let span1;
+    	let t5;
     	let button1;
-    	let t6;
+    	let t7;
     	let button2;
-    	let t8;
+    	let t9;
     	let if_block_anchor;
     	let current;
     	let dispose;
@@ -4017,55 +4033,62 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div2 = element("div");
-    			span = element("span");
+    			span0 = element("span");
     			t0 = space();
     			div0 = element("div");
     			input = element("input");
     			t1 = space();
     			div1 = element("div");
     			button0 = element("button");
-    			button0.textContent = "Clear";
+    			button0.textContent = "Clear Search";
     			t3 = space();
     			div3 = element("div");
     			create_component(filters_1.$$.fragment);
     			t4 = space();
+    			div4 = element("div");
+    			span1 = element("span");
+    			t5 = space();
     			button1 = element("button");
-    			button1.textContent = "Apply Filters";
-    			t6 = space();
+    			button1.textContent = "Clear Filters";
+    			t7 = space();
     			button2 = element("button");
-    			button2.textContent = "Clear Filters";
-    			t8 = space();
+    			button2.textContent = "Apply Filters";
+    			t9 = space();
     			if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(span, "class", "svelte-1ld5mml");
-    			add_location(span, file$a, 293, 1, 6822);
-    			attr_dev(input, "class", "searchbar svelte-1ld5mml");
+    			attr_dev(span0, "class", "svelte-1vsqsx4");
+    			add_location(span0, file$a, 330, 1, 7729);
+    			attr_dev(input, "class", "searchbar svelte-1vsqsx4");
     			attr_dev(input, "placeholder", "🔎 Global search");
     			attr_dev(input, "id", "searchbar");
     			attr_dev(input, "name", "searchbar");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$a, 295, 2, 6847);
-    			attr_dev(div0, "class", "svelte-1ld5mml");
-    			add_location(div0, file$a, 294, 1, 6838);
-    			attr_dev(button0, "class", "clear-search-button svelte-1ld5mml");
-    			add_location(button0, file$a, 298, 2, 7006);
-    			attr_dev(div1, "class", "svelte-1ld5mml");
-    			add_location(div1, file$a, 297, 1, 6997);
-    			attr_dev(div2, "class", "searchbar-container svelte-1ld5mml");
-    			add_location(div2, file$a, 292, 0, 6786);
-    			attr_dev(button1, "class", "svelte-1ld5mml");
-    			add_location(button1, file$a, 303, 1, 7162);
-    			attr_dev(button2, "class", "svelte-1ld5mml");
-    			add_location(button2, file$a, 304, 1, 7219);
-    			attr_dev(div3, "class", "filter-container svelte-1ld5mml");
-    			add_location(div3, file$a, 301, 0, 7098);
+    			add_location(input, file$a, 332, 2, 7754);
+    			attr_dev(div0, "class", "svelte-1vsqsx4");
+    			add_location(div0, file$a, 331, 1, 7745);
+    			attr_dev(button0, "class", "clear-search-button svelte-1vsqsx4");
+    			add_location(button0, file$a, 335, 2, 7913);
+    			attr_dev(div1, "class", "svelte-1vsqsx4");
+    			add_location(div1, file$a, 334, 1, 7904);
+    			attr_dev(div2, "class", "searchbar-container svelte-1vsqsx4");
+    			add_location(div2, file$a, 329, 0, 7693);
+    			attr_dev(div3, "class", "filter-container svelte-1vsqsx4");
+    			add_location(div3, file$a, 338, 0, 8012);
+    			attr_dev(span1, "class", "filter-button-filler svelte-1vsqsx4");
+    			add_location(span1, file$a, 342, 1, 8123);
+    			attr_dev(button1, "class", "filter-button svelte-1vsqsx4");
+    			add_location(button1, file$a, 343, 1, 8168);
+    			attr_dev(button2, "class", "filter-button svelte-1vsqsx4");
+    			add_location(button2, file$a, 344, 1, 8247);
+    			attr_dev(div4, "class", "filter-button-container svelte-1vsqsx4");
+    			add_location(div4, file$a, 341, 0, 8083);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
-    			append_dev(div2, span);
+    			append_dev(div2, span0);
     			append_dev(div2, t0);
     			append_dev(div2, div0);
     			append_dev(div0, input);
@@ -4076,11 +4099,14 @@ var app = (function () {
     			insert_dev(target, t3, anchor);
     			insert_dev(target, div3, anchor);
     			mount_component(filters_1, div3, null);
-    			append_dev(div3, t4);
-    			append_dev(div3, button1);
-    			append_dev(div3, t6);
-    			append_dev(div3, button2);
-    			insert_dev(target, t8, anchor);
+    			insert_dev(target, t4, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, span1);
+    			append_dev(div4, t5);
+    			append_dev(div4, button1);
+    			append_dev(div4, t7);
+    			append_dev(div4, button2);
+    			insert_dev(target, t9, anchor);
     			if_block.m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     			current = true;
@@ -4089,8 +4115,8 @@ var app = (function () {
     				listen_dev(input, "input", /*input_input_handler*/ ctx[23]),
     				listen_dev(input, "keyup", /*handleKeydown*/ ctx[15], false, false, false),
     				listen_dev(button0, "click", /*clearSearch*/ ctx[12], false, false, false),
-    				listen_dev(button1, "click", /*applyFilters*/ ctx[13], false, false, false),
-    				listen_dev(button2, "click", /*clearFilters*/ ctx[14], false, false, false)
+    				listen_dev(button1, "click", /*clearFilters*/ ctx[14], false, false, false),
+    				listen_dev(button2, "click", /*applyFilters*/ ctx[13], false, false, false)
     			];
     		},
     		p: function update(ctx, dirty) {
@@ -4124,7 +4150,9 @@ var app = (function () {
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div3);
     			destroy_component(filters_1);
-    			if (detaching) detach_dev(t8);
+    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(div4);
+    			if (detaching) detach_dev(t9);
     			if_block.d(detaching);
     			if (detaching) detach_dev(if_block_anchor);
     			run_all(dispose);
@@ -4149,6 +4177,8 @@ var app = (function () {
     	const fs = window.require("fs");
 
     	// read data folder
+    	// this does not scale well!!
+    	// my poor RAM
     	const dataDir = $rootDirectory + "/data/";
 
     	let dataArray = fs.readdirSync(dataDir);
@@ -4190,13 +4220,13 @@ var app = (function () {
     		},
     		{
     			value: "None",
-    			label: "Quality",
+    			label: "Quality (0-3)",
     			options: [
     				{ label: "Not filtered", value: "None" },
+    				{ label: "0", value: 0 },
     				{ label: "1", value: 1 },
     				{ label: "2", value: 2 },
-    				{ label: "3", value: 3 },
-    				{ label: "4", value: 4 }
+    				{ label: "3", value: 3 }
     			],
     			id: "quality-filter",
     			type: "multi-select"
@@ -4232,8 +4262,14 @@ var app = (function () {
     			label: "Depth",
     			options: [
     				{ label: "Not filtered", value: "None" },
-    				{ label: "Correct", value: "Correct" },
-    				{ label: "Incorrect", value: "Incorrect" }
+    				{
+    					label: "Appropriate",
+    					value: "Appropriate"
+    				},
+    				{
+    					label: "Inappropriate",
+    					value: "Inappropriate"
+    				}
     			],
     			id: "depth-filter",
     			type: "single-select"
@@ -4291,17 +4327,19 @@ var app = (function () {
     				{ label: "0", value: 0 },
     				{ label: "1", value: 1 },
     				{ label: "2", value: 2 },
-    				{ label: "3", value: 3 },
-    				{ label: ">3", value: 4 }
+    				{ label: "3", value: 3 }
     			],
     			id: "cardiac-cycles-filter",
+    			type: "multi-select"
+    		},
+    		{
+    			name: "Bookmark",
+    			label: "Bookmark",
+    			options: [{ label: "Yes", value: "Yes" }, { label: "No", value: "No" }],
+    			id: "bookmarked-filter",
     			type: "single-select"
     		}
     	];
-
-    	onMount(() => {
-    		$$invalidate(3, prevButton.disabled = true, prevButton);
-    	});
 
     	// this is the array we'll store data in when we apply filters/search terms
     	let filteredResults;
@@ -4309,6 +4347,7 @@ var app = (function () {
     	if (dataArray.length === 0) {
     		hasData = false;
     	} else {
+    		// prevButton.disabled = true;
     		hasData = true;
 
     		// this will be the data we filter through
@@ -4317,6 +4356,14 @@ var app = (function () {
     		filteredResults = dataArray;
     		populateTable();
     	}
+
+    	onMount(() => {
+    		$$invalidate(3, prevButton.disabled = true, prevButton);
+
+    		if (filteredResults.length < maxEntriesShown) {
+    			$$invalidate(4, nextButton.disabled = true, nextButton);
+    		}
+    	});
 
     	function scrollToTop() {
     		container.scrollTo({ top: 0, behavior: "smooth" });
@@ -4332,7 +4379,7 @@ var app = (function () {
     			$$invalidate(4, nextButton.disabled = false, nextButton);
     		}
 
-    		if (counter === 0) {
+    		if (counter <= 0) {
     			$$invalidate(3, prevButton.disabled = true, prevButton);
     		} else {
     			$$invalidate(3, prevButton.disabled = false, prevButton);
@@ -4341,6 +4388,7 @@ var app = (function () {
     		populateTable();
     	}
 
+    	// this function is so bad
     	function populateTable() {
     		let searchTerms = value;
     		let tempResults = [];
@@ -4348,6 +4396,7 @@ var app = (function () {
     		// reload data flag when redrawing the table
     		$$invalidate(0, hasData = true);
 
+    		// this has to search for unique terms
     		if (searchTerms != "") {
     			dataArray.forEach(data => {
     				Object.values(data).forEach(v => {
@@ -4370,11 +4419,31 @@ var app = (function () {
     			$$invalidate(7, filteredResults = dataArray);
     		}
 
+    		// only called when categorical filters are applied
     		if (appliedFilters.length != 0) {
+    			// store filtered results temporarily
+    			let localTemp = [];
+
     			appliedFilters.forEach(filter => {
-    				$$invalidate(7, filteredResults = filteredResults.filter(v => {
-    					return v[filter.label] === filter.value;
-    				}));
+    				// first check whether the filter is an array
+    				if (Array.isArray(filter.value)) {
+    					filter.value.forEach(arrayVal => {
+    						filteredResults.forEach(v => {
+    							console.log(arrayVal);
+    							console.log(v[filter.label]);
+
+    							if (v[filter.label] === arrayVal) {
+    								localTemp = [...localTemp, v];
+    							}
+    						});
+    					});
+    				} else {
+    					localTemp = filteredResults.filter(v => {
+    						return v[filter.label] === filter.value;
+    					});
+    				}
+
+    				$$invalidate(7, filteredResults = localTemp);
     			});
 
     			if (filteredResults == 0) {
@@ -4394,9 +4463,12 @@ var app = (function () {
     		// create columns based on keys on the original unchanging data
     		$$invalidate(1, colHeadings = Object.keys(dataArray[0]));
 
-    		// colHeadings.unshift('clip name');
+    		console.log(colHeadings);
+
     		// create rows based on values + truncate length of comments to be displayed
     		$$invalidate(2, rowData = Object.values(shownResults));
+
+    		console.log(rowData);
 
     		rowData.forEach(data => {
     			if (data.Comments.length >= 50) {
@@ -4422,7 +4494,6 @@ var app = (function () {
     			}
     		});
 
-    		console.log(appliedFilters);
     		populateTable();
     	}
 
@@ -4436,7 +4507,6 @@ var app = (function () {
     		});
 
     		populateTable();
-    		console.log(appliedFilters.length);
     	}
 
     	// to reference container for autoscroll
@@ -4504,7 +4574,8 @@ var app = (function () {
     		JSON,
     		Object,
     		String,
-    		console
+    		console,
+    		Array
     	});
 
     	$$self.$inject_state = $$props => {
@@ -4578,7 +4649,7 @@ var app = (function () {
 
     const file$b = "src\\App.svelte";
 
-    // (218:29) 
+    // (224:29) 
     function create_if_block_3$1(ctx) {
     	let t;
     	let current_block_type_index;
@@ -4661,14 +4732,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(218:29) ",
+    		source: "(224:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (193:0) {#if isDataSet === false}
+    // (199:0) {#if isDataSet === false}
     function create_if_block$4(ctx) {
     	let div0;
     	let h1;
@@ -4694,13 +4765,13 @@ var app = (function () {
     			div1 = element("div");
     			if (if_block) if_block.c();
     			attr_dev(h1, "class", "svelte-g22xgr");
-    			add_location(h1, file$b, 194, 1, 5065);
+    			add_location(h1, file$b, 200, 1, 5174);
     			attr_dev(div0, "class", "header svelte-g22xgr");
-    			add_location(div0, file$b, 193, 0, 5042);
+    			add_location(div0, file$b, 199, 0, 5151);
     			attr_dev(div1, "class", "startup-child svelte-g22xgr");
-    			add_location(div1, file$b, 197, 1, 5116);
+    			add_location(div1, file$b, 203, 1, 5225);
     			attr_dev(div2, "class", "startup svelte-g22xgr");
-    			add_location(div2, file$b, 196, 0, 5092);
+    			add_location(div2, file$b, 202, 0, 5201);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -4740,14 +4811,14 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(193:0) {#if isDataSet === false}",
+    		source: "(199:0) {#if isDataSet === false}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (239:2) {:else}
+    // (245:2) {:else}
     function create_else_block$2(ctx) {
     	let div_1;
     	let h2;
@@ -4763,11 +4834,11 @@ var app = (function () {
     			br = element("br");
     			t1 = text("💩");
     			attr_dev(br, "class", "svelte-g22xgr");
-    			add_location(br, file$b, 240, 52, 6275);
+    			add_location(br, file$b, 246, 52, 6384);
     			attr_dev(h2, "class", "outro-text svelte-g22xgr");
-    			add_location(h2, file$b, 240, 2, 6225);
+    			add_location(h2, file$b, 246, 2, 6334);
     			attr_dev(div_1, "class", "svelte-g22xgr");
-    			add_location(div_1, file$b, 239, 1, 6216);
+    			add_location(div_1, file$b, 245, 1, 6325);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -4788,14 +4859,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(239:2) {:else}",
+    		source: "(245:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (237:40) 
+    // (243:40) 
     function create_if_block_6(ctx) {
     	let current;
     	const table = new Table_component({ $$inline: true });
@@ -4827,14 +4898,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(237:40) ",
+    		source: "(243:40) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (226:2) {#if $currentPage === 'main'}
+    // (232:2) {#if $currentPage === 'main'}
     function create_if_block_5(ctx) {
     	let main;
     	let div0;
@@ -4866,13 +4937,13 @@ var app = (function () {
     			div1 = element("div");
     			create_component(formtemplate.$$.fragment);
     			attr_dev(div0, "class", "videoPlayer svelte-g22xgr");
-    			add_location(div0, file$b, 227, 4, 5899);
+    			add_location(div0, file$b, 233, 4, 6008);
     			attr_dev(div1, "class", "form svelte-g22xgr");
-    			add_location(div1, file$b, 231, 5, 6024);
+    			add_location(div1, file$b, 237, 5, 6133);
     			attr_dev(div2, "class", "form-div svelte-g22xgr");
-    			add_location(div2, file$b, 230, 4, 5979);
+    			add_location(div2, file$b, 236, 4, 6088);
     			attr_dev(main, "class", "main svelte-g22xgr");
-    			add_location(main, file$b, 226, 3, 5874);
+    			add_location(main, file$b, 232, 3, 5983);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
@@ -4913,14 +4984,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(226:2) {#if $currentPage === 'main'}",
+    		source: "(232:2) {#if $currentPage === 'main'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (220:1) {#if $videoSource === 'done'}
+    // (226:1) {#if $videoSource === 'done'}
     function create_if_block_4(ctx) {
     	let div_1;
     	let h2;
@@ -4945,11 +5016,11 @@ var app = (function () {
     			t2 = space();
     			create_component(confetti.$$.fragment);
     			attr_dev(br, "class", "svelte-g22xgr");
-    			add_location(br, file$b, 221, 42, 5758);
+    			add_location(br, file$b, 227, 42, 5867);
     			attr_dev(h2, "class", "outro-text svelte-g22xgr");
-    			add_location(h2, file$b, 221, 2, 5718);
+    			add_location(h2, file$b, 227, 2, 5827);
     			attr_dev(div_1, "class", "svelte-g22xgr");
-    			add_location(div_1, file$b, 220, 1, 5709);
+    			add_location(div_1, file$b, 226, 1, 5818);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -4981,14 +5052,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(220:1) {#if $videoSource === 'done'}",
+    		source: "(226:1) {#if $videoSource === 'done'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (209:39) 
+    // (215:39) 
     function create_if_block_2$1(ctx) {
     	let div_1;
     	let h2;
@@ -5013,15 +5084,15 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "We're anonymizing some data for you";
     			attr_dev(br0, "class", "svelte-g22xgr");
-    			add_location(br0, file$b, 210, 37, 5509);
+    			add_location(br0, file$b, 216, 37, 5618);
     			attr_dev(h2, "class", "intro-text svelte-g22xgr");
-    			add_location(h2, file$b, 210, 3, 5475);
+    			add_location(h2, file$b, 216, 3, 5584);
     			attr_dev(br1, "class", "svelte-g22xgr");
-    			add_location(br1, file$b, 211, 3, 5524);
+    			add_location(br1, file$b, 217, 3, 5633);
     			attr_dev(p, "class", "intro-text svelte-g22xgr");
-    			add_location(p, file$b, 212, 3, 5533);
+    			add_location(p, file$b, 218, 3, 5642);
     			attr_dev(div_1, "class", "svelte-g22xgr");
-    			add_location(div_1, file$b, 209, 2, 5465);
+    			add_location(div_1, file$b, 215, 2, 5574);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -5044,14 +5115,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(209:39) ",
+    		source: "(215:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (199:2) {#if $videoSource === ''}
+    // (205:2) {#if $videoSource === ''}
     function create_if_block_1$2(ctx) {
     	let div0;
     	let h2;
@@ -5083,19 +5154,19 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Take me to the data! 🚀";
     			attr_dev(h2, "class", "intro-text svelte-g22xgr");
-    			add_location(h2, file$b, 200, 3, 5186);
+    			add_location(h2, file$b, 206, 3, 5295);
     			attr_dev(br0, "class", "svelte-g22xgr");
-    			add_location(br0, file$b, 201, 3, 5224);
+    			add_location(br0, file$b, 207, 3, 5333);
     			attr_dev(p, "class", "intro-text svelte-g22xgr");
-    			add_location(p, file$b, 202, 3, 5233);
+    			add_location(p, file$b, 208, 3, 5342);
     			attr_dev(div0, "class", "svelte-g22xgr");
-    			add_location(div0, file$b, 199, 2, 5176);
+    			add_location(div0, file$b, 205, 2, 5285);
     			attr_dev(br1, "class", "svelte-g22xgr");
-    			add_location(br1, file$b, 204, 2, 5315);
+    			add_location(br1, file$b, 210, 2, 5424);
     			attr_dev(button, "class", "load-btn svelte-g22xgr");
-    			add_location(button, file$b, 206, 3, 5333);
+    			add_location(button, file$b, 212, 3, 5442);
     			attr_dev(div1, "class", "svelte-g22xgr");
-    			add_location(div1, file$b, 205, 2, 5323);
+    			add_location(div1, file$b, 211, 2, 5432);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -5126,7 +5197,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(199:2) {#if $videoSource === ''}",
+    		source: "(205:2) {#if $videoSource === ''}",
     		ctx
     	});
 
@@ -5248,7 +5319,7 @@ var app = (function () {
     		{
     			name: "View",
     			type: "select",
-    			value: "Apical Four Chamber",
+    			value: "4C",
     			label: "🔭 What view is it?",
     			id: "view",
     			options: [
@@ -5293,7 +5364,7 @@ var app = (function () {
     			]
     		},
     		{
-    			name: "Quality (0-4)",
+    			name: "Quality (0-3)",
     			type: "radio",
     			value: 0,
     			label: "📸 How's the image quality?",
@@ -5309,11 +5380,11 @@ var app = (function () {
     				},
     				{
     					label: "Most aspects can be diagnosed but image can be clearer",
-    					value: 3
+    					value: 2
     				},
     				{
     					label: "All diagnostic features visible and clear",
-    					value: 4
+    					value: 3
     				}
     			]
     		},
@@ -5382,12 +5453,17 @@ var app = (function () {
     			options: [{ label: "Yes", value: "Normal" }, { label: "No", value: "Abnormal" }]
     		},
     		{
-    			name: "Cardiac Cycles (#)",
-    			type: "text",
+    			name: "Cardiac Cycles",
+    			type: "radio",
     			id: "num_cardiac_cycles",
-    			value: "",
+    			value: 0,
     			label: "💓 How many cardiac cycles?",
-    			placeholder: "# Cardiac cycles..."
+    			options: [
+    				{ label: 0, value: 0 },
+    				{ label: 1, value: 1 },
+    				{ label: 2, value: 2 },
+    				{ label: 3, value: 3 }
+    			]
     		},
     		{
     			name: "Comments",
@@ -5399,10 +5475,10 @@ var app = (function () {
     		},
     		{
     			name: "Bookmark",
-    			type: "check",
-    			value: false,
-    			label: "📑 Bookmark this for future reference?",
-    			options: [{ label: "⭐", value: "fav" }]
+    			type: "radio",
+    			value: "No",
+    			label: "📑 Bookmark this clip for future reference?",
+    			options: [{ label: "Yes", value: "Yes" }, { label: "No", value: "No" }]
     		}
     	];
 
