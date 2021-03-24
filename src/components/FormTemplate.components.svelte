@@ -4,7 +4,7 @@
     import TextInput from './TextInput.component.svelte';
     import TextArea from './TextArea.component.svelte';
     import { nextClip } from '../NextClip.svelte';
-    import { rootDirectory, videoSource } from '../stores';
+    import { rootDirectory, currentPage, videoToEdit } from '../stores';
 
     // comment this out if you dont wan't to run python scripts
     import { launchPy } from '../pythonScripts';
@@ -24,21 +24,41 @@
     function saveData(data) {
         let convertedData = JSON.stringify(data, 0, 2);
 
-        fs.readdir($rootDirectory + '/storage', (err, files) => {
-            let currentFile = files[0] + '.json';
-            let filePath = $rootDirectory + '/data/' + currentFile;
+        // refactor this shit
+        if ($currentPage === 'main') {
+            fs.readdir($rootDirectory + '/storage', (err, files) => {
+                let currentFile = files[0] + '.json';
+                let filePath = $rootDirectory + '/data/' + currentFile;
+    
+                // comment this line out if you don't want to run the python scripts
+                // for machine learning + digit recognition
+                launchPy(files[0], $rootDirectory);
+                
+                fs.writeFile(filePath, convertedData, (err) => {
+                    if (err) throw err;
+                    console.log(`saved file ${currentFile}`);
+                })
+            })
+    
+            nextClip(storagePath, donePath);
 
-            // comment this line out if you don't want to run the python scripts
-            // for machine learning + digit recognition
-            launchPy(files[0], $rootDirectory);
-            
+        } else if ($currentPage === 'viewEditClip') {
+
+
+            let editedFile = $videoToEdit + '.json';
+            let filePath = $rootDirectory + '/data/' + editedFile;
+
+            // needs to re-write the depth AND the file name...
+            // has to be a better way than re-running the ML model...
+            // works fow now
+            launchPy($videoToEdit, $rootDirectory);
+
             fs.writeFile(filePath, convertedData, (err) => {
                 if (err) throw err;
-                console.log(`saved file ${currentFile}`);
+                console.log(`${editedFile} has been edited!`);
             })
-        })
+        }
 
-        nextClip(storagePath, donePath);
     }
 
     // When submitting, turn our fields representation into a JSON body
@@ -60,6 +80,7 @@
         {/each}
     </div>
     <div>
+        <!-- if current page -->
         <button type="submit">Submit</button>
     </div>
 </form>

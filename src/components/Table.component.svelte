@@ -158,7 +158,6 @@
 	if (dataArray.length === 0) {
 		hasData = false;
 	} else {
-		// prevButton.disabled = true;
 		hasData = true;
 
 		// this will be the data we filter through
@@ -385,6 +384,7 @@
 						<td class="td-long-text">{row.Comments}</td>
 						<td>{row.Bookmark}</td>
 						<td><button class="td-filename-button" on:click={openClip(row.Filename)}>Open</button></td>
+						<td>{row['Depth Measure']}</td>
 					</tr>
 				{/each}
 			</table>

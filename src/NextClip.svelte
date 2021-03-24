@@ -17,7 +17,6 @@
             videoSource.update((src) => src = storagePath + storageFiles[1]);
         } else {
             videoSource.update(src => src = 'done');
-            console.log();
         }
 
         console.log(`moved ${storageFiles[0]} to done!`);

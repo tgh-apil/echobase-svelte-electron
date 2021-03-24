@@ -2,7 +2,7 @@ export let formFields = [
     {
         name: 'View',
         type:'select',
-        value: '4C',
+        value: '4C',    
         label: '🔭 What view is it?',
         id: 'view',
         options: [

@@ -1482,7 +1482,6 @@ var app = (function () {
     		videoSource.update(src => src = storagePath + storageFiles[1]);
     	} else {
     		videoSource.update(src => src = "done");
-    		console.log();
     	}
 
     	console.log(`moved ${storageFiles[0]} to done!`);
@@ -1528,7 +1527,7 @@ var app = (function () {
             const depth = parseInt(pyResults[pyResults.length - 1]);
 
             const fileNameObj = {'Filename': file_name.slice(8, file_name.length)};
-            const depthObj = {'Depth': depth};
+            const depthObj = {'Depth Measure': depth};
 
             jsonUpdater(root_path, file_name + '.json', fileNameObj);
             jsonUpdater(root_path, file_name + '.json', depthObj);
@@ -1568,30 +1567,30 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[14] = list[i];
-    	child_ctx[15] = list;
-    	child_ctx[16] = i;
+    	child_ctx[16] = list[i];
+    	child_ctx[17] = list;
+    	child_ctx[18] = i;
     	return child_ctx;
     }
 
-    // (57:49) 
+    // (77:49) 
     function create_if_block_3(ctx) {
     	let updating_value;
     	let current;
 
     	function textarea_value_binding(value) {
-    		/*textarea_value_binding*/ ctx[12].call(null, value, /*field*/ ctx[14]);
+    		/*textarea_value_binding*/ ctx[14].call(null, value, /*field*/ ctx[16]);
     	}
 
     	let textarea_props = {
-    		label: /*field*/ ctx[14].label,
-    		placeholder: /*field*/ ctx[14].placeholder,
-    		id: /*field*/ ctx[14].id,
-    		name: /*field*/ ctx[14].name
+    		label: /*field*/ ctx[16].label,
+    		placeholder: /*field*/ ctx[16].placeholder,
+    		id: /*field*/ ctx[16].id,
+    		name: /*field*/ ctx[16].name
     	};
 
-    	if (/*field*/ ctx[14].value !== void 0) {
-    		textarea_props.value = /*field*/ ctx[14].value;
+    	if (/*field*/ ctx[16].value !== void 0) {
+    		textarea_props.value = /*field*/ ctx[16].value;
     	}
 
     	const textarea = new TextArea_component({ props: textarea_props, $$inline: true });
@@ -1608,14 +1607,14 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const textarea_changes = {};
-    			if (dirty & /*fields*/ 1) textarea_changes.label = /*field*/ ctx[14].label;
-    			if (dirty & /*fields*/ 1) textarea_changes.placeholder = /*field*/ ctx[14].placeholder;
-    			if (dirty & /*fields*/ 1) textarea_changes.id = /*field*/ ctx[14].id;
-    			if (dirty & /*fields*/ 1) textarea_changes.name = /*field*/ ctx[14].name;
+    			if (dirty & /*fields*/ 1) textarea_changes.label = /*field*/ ctx[16].label;
+    			if (dirty & /*fields*/ 1) textarea_changes.placeholder = /*field*/ ctx[16].placeholder;
+    			if (dirty & /*fields*/ 1) textarea_changes.id = /*field*/ ctx[16].id;
+    			if (dirty & /*fields*/ 1) textarea_changes.name = /*field*/ ctx[16].name;
 
     			if (!updating_value && dirty & /*fields*/ 1) {
     				updating_value = true;
-    				textarea_changes.value = /*field*/ ctx[14].value;
+    				textarea_changes.value = /*field*/ ctx[16].value;
     				add_flush_callback(() => updating_value = false);
     			}
 
@@ -1639,31 +1638,31 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(57:49) ",
+    		source: "(77:49) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:44) 
+    // (75:44) 
     function create_if_block_2(ctx) {
     	let updating_value;
     	let current;
 
     	function textinput_value_binding(value) {
-    		/*textinput_value_binding*/ ctx[11].call(null, value, /*field*/ ctx[14]);
+    		/*textinput_value_binding*/ ctx[13].call(null, value, /*field*/ ctx[16]);
     	}
 
     	let textinput_props = {
-    		label: /*field*/ ctx[14].label,
-    		placeholder: /*field*/ ctx[14].placeholder,
-    		id: /*field*/ ctx[14].id,
-    		name: /*field*/ ctx[14].name
+    		label: /*field*/ ctx[16].label,
+    		placeholder: /*field*/ ctx[16].placeholder,
+    		id: /*field*/ ctx[16].id,
+    		name: /*field*/ ctx[16].name
     	};
 
-    	if (/*field*/ ctx[14].value !== void 0) {
-    		textinput_props.value = /*field*/ ctx[14].value;
+    	if (/*field*/ ctx[16].value !== void 0) {
+    		textinput_props.value = /*field*/ ctx[16].value;
     	}
 
     	const textinput = new TextInput_component({ props: textinput_props, $$inline: true });
@@ -1680,14 +1679,14 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const textinput_changes = {};
-    			if (dirty & /*fields*/ 1) textinput_changes.label = /*field*/ ctx[14].label;
-    			if (dirty & /*fields*/ 1) textinput_changes.placeholder = /*field*/ ctx[14].placeholder;
-    			if (dirty & /*fields*/ 1) textinput_changes.id = /*field*/ ctx[14].id;
-    			if (dirty & /*fields*/ 1) textinput_changes.name = /*field*/ ctx[14].name;
+    			if (dirty & /*fields*/ 1) textinput_changes.label = /*field*/ ctx[16].label;
+    			if (dirty & /*fields*/ 1) textinput_changes.placeholder = /*field*/ ctx[16].placeholder;
+    			if (dirty & /*fields*/ 1) textinput_changes.id = /*field*/ ctx[16].id;
+    			if (dirty & /*fields*/ 1) textinput_changes.name = /*field*/ ctx[16].name;
 
     			if (!updating_value && dirty & /*fields*/ 1) {
     				updating_value = true;
-    				textinput_changes.value = /*field*/ ctx[14].value;
+    				textinput_changes.value = /*field*/ ctx[16].value;
     				add_flush_callback(() => updating_value = false);
     			}
 
@@ -1711,30 +1710,30 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(55:44) ",
+    		source: "(75:44) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:46) 
+    // (73:46) 
     function create_if_block_1(ctx) {
     	let updating_value;
     	let current;
 
     	function selectgroup_value_binding(value) {
-    		/*selectgroup_value_binding*/ ctx[10].call(null, value, /*field*/ ctx[14]);
+    		/*selectgroup_value_binding*/ ctx[12].call(null, value, /*field*/ ctx[16]);
     	}
 
     	let selectgroup_props = {
-    		label: /*field*/ ctx[14].label,
-    		options: /*field*/ ctx[14].options,
-    		id: /*field*/ ctx[14].id
+    		label: /*field*/ ctx[16].label,
+    		options: /*field*/ ctx[16].options,
+    		id: /*field*/ ctx[16].id
     	};
 
-    	if (/*field*/ ctx[14].value !== void 0) {
-    		selectgroup_props.value = /*field*/ ctx[14].value;
+    	if (/*field*/ ctx[16].value !== void 0) {
+    		selectgroup_props.value = /*field*/ ctx[16].value;
     	}
 
     	const selectgroup = new SelectGroup_component({ props: selectgroup_props, $$inline: true });
@@ -1751,13 +1750,13 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const selectgroup_changes = {};
-    			if (dirty & /*fields*/ 1) selectgroup_changes.label = /*field*/ ctx[14].label;
-    			if (dirty & /*fields*/ 1) selectgroup_changes.options = /*field*/ ctx[14].options;
-    			if (dirty & /*fields*/ 1) selectgroup_changes.id = /*field*/ ctx[14].id;
+    			if (dirty & /*fields*/ 1) selectgroup_changes.label = /*field*/ ctx[16].label;
+    			if (dirty & /*fields*/ 1) selectgroup_changes.options = /*field*/ ctx[16].options;
+    			if (dirty & /*fields*/ 1) selectgroup_changes.id = /*field*/ ctx[16].id;
 
     			if (!updating_value && dirty & /*fields*/ 1) {
     				updating_value = true;
-    				selectgroup_changes.value = /*field*/ ctx[14].value;
+    				selectgroup_changes.value = /*field*/ ctx[16].value;
     				add_flush_callback(() => updating_value = false);
     			}
 
@@ -1781,30 +1780,30 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(53:46) ",
+    		source: "(73:46) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:12) {#if field.type === 'radio'}
+    // (71:12) {#if field.type === 'radio'}
     function create_if_block(ctx) {
     	let updating_group;
     	let current;
 
     	function radiobuttongroup_group_binding(value) {
-    		/*radiobuttongroup_group_binding*/ ctx[9].call(null, value, /*field*/ ctx[14]);
+    		/*radiobuttongroup_group_binding*/ ctx[11].call(null, value, /*field*/ ctx[16]);
     	}
 
     	let radiobuttongroup_props = {
-    		label: /*field*/ ctx[14].label,
-    		options: /*field*/ ctx[14].options,
-    		id: /*field*/ ctx[14].id
+    		label: /*field*/ ctx[16].label,
+    		options: /*field*/ ctx[16].options,
+    		id: /*field*/ ctx[16].id
     	};
 
-    	if (/*field*/ ctx[14].value !== void 0) {
-    		radiobuttongroup_props.group = /*field*/ ctx[14].value;
+    	if (/*field*/ ctx[16].value !== void 0) {
+    		radiobuttongroup_props.group = /*field*/ ctx[16].value;
     	}
 
     	const radiobuttongroup = new RadioButtonGroup_components({
@@ -1825,13 +1824,13 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const radiobuttongroup_changes = {};
-    			if (dirty & /*fields*/ 1) radiobuttongroup_changes.label = /*field*/ ctx[14].label;
-    			if (dirty & /*fields*/ 1) radiobuttongroup_changes.options = /*field*/ ctx[14].options;
-    			if (dirty & /*fields*/ 1) radiobuttongroup_changes.id = /*field*/ ctx[14].id;
+    			if (dirty & /*fields*/ 1) radiobuttongroup_changes.label = /*field*/ ctx[16].label;
+    			if (dirty & /*fields*/ 1) radiobuttongroup_changes.options = /*field*/ ctx[16].options;
+    			if (dirty & /*fields*/ 1) radiobuttongroup_changes.id = /*field*/ ctx[16].id;
 
     			if (!updating_group && dirty & /*fields*/ 1) {
     				updating_group = true;
-    				radiobuttongroup_changes.group = /*field*/ ctx[14].value;
+    				radiobuttongroup_changes.group = /*field*/ ctx[16].value;
     				add_flush_callback(() => updating_group = false);
     			}
 
@@ -1855,14 +1854,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(51:12) {#if field.type === 'radio'}",
+    		source: "(71:12) {#if field.type === 'radio'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:8) {#each fields as field}
+    // (70:8) {#each fields as field}
     function create_each_block$2(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1872,10 +1871,10 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*field*/ ctx[14].type === "radio") return 0;
-    		if (/*field*/ ctx[14].type === "select") return 1;
-    		if (/*field*/ ctx[14].type === "text") return 2;
-    		if (/*field*/ ctx[14].type === "text-area") return 3;
+    		if (/*field*/ ctx[16].type === "radio") return 0;
+    		if (/*field*/ ctx[16].type === "select") return 1;
+    		if (/*field*/ ctx[16].type === "text") return 2;
+    		if (/*field*/ ctx[16].type === "text-area") return 3;
     		return -1;
     	}
 
@@ -1952,7 +1951,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(50:8) {#each fields as field}",
+    		source: "(70:8) {#each fields as field}",
     		ctx
     	});
 
@@ -1993,11 +1992,11 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Submit";
     			attr_dev(div0, "class", "formOptions");
-    			add_location(div0, file$4, 48, 4, 1981);
+    			add_location(div0, file$4, 68, 4, 2723);
     			attr_dev(button, "type", "submit");
-    			add_location(button, file$4, 62, 8, 2807);
-    			add_location(div1, file$4, 61, 4, 2792);
-    			add_location(form, file$4, 47, 0, 1915);
+    			add_location(button, file$4, 83, 8, 3583);
+    			add_location(div1, file$4, 81, 4, 3534);
+    			add_location(form, file$4, 67, 0, 2657);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2014,7 +2013,7 @@ var app = (function () {
     			append_dev(form, div1);
     			append_dev(div1, button);
     			current = true;
-    			dispose = listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[13]), false, true, false);
+    			dispose = listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[15]), false, true, false);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*fields*/ 1) {
@@ -2083,8 +2082,14 @@ var app = (function () {
 
     function instance$4($$self, $$props, $$invalidate) {
     	let $rootDirectory;
+    	let $currentPage;
+    	let $videoToEdit;
     	validate_store(rootDirectory, "rootDirectory");
     	component_subscribe($$self, rootDirectory, $$value => $$invalidate(3, $rootDirectory = $$value));
+    	validate_store(currentPage, "currentPage");
+    	component_subscribe($$self, currentPage, $$value => $$invalidate(4, $currentPage = $$value));
+    	validate_store(videoToEdit, "videoToEdit");
+    	component_subscribe($$self, videoToEdit, $$value => $$invalidate(5, $videoToEdit = $$value));
     	const fs = window.require("fs");
     	let { fields } = $$props;
     	let { onSubmit } = $$props;
@@ -2100,21 +2105,37 @@ var app = (function () {
     	function saveData(data) {
     		let convertedData = JSON.stringify(data, 0, 2);
 
-    		fs.readdir($rootDirectory + "/storage", (err, files) => {
-    			let currentFile = files[0] + ".json";
-    			let filePath = $rootDirectory + "/data/" + currentFile;
+    		// refactor this shit
+    		if ($currentPage === "main") {
+    			fs.readdir($rootDirectory + "/storage", (err, files) => {
+    				let currentFile = files[0] + ".json";
+    				let filePath = $rootDirectory + "/data/" + currentFile;
 
-    			// comment this line out if you don't want to run the python scripts
-    			// for machine learning + digit recognition
-    			launchPy(files[0], $rootDirectory);
+    				// comment this line out if you don't want to run the python scripts
+    				// for machine learning + digit recognition
+    				launchPy(files[0], $rootDirectory);
+
+    				fs.writeFile(filePath, convertedData, err => {
+    					if (err) throw err;
+    					console.log(`saved file ${currentFile}`);
+    				});
+    			});
+
+    			nextClip(storagePath, donePath);
+    		} else if ($currentPage === "viewEditClip") {
+    			let editedFile = $videoToEdit + ".json";
+    			let filePath = $rootDirectory + "/data/" + editedFile;
+
+    			// needs to re-write the depth AND the file name...
+    			// has to be a better way than re-running the ML model...
+    			// works fow now
+    			launchPy($videoToEdit, $rootDirectory);
 
     			fs.writeFile(filePath, convertedData, err => {
     				if (err) throw err;
-    				console.log(`saved file ${currentFile}`);
+    				console.log(`${editedFile} has been edited!`);
     			});
-    		});
-
-    		nextClip(storagePath, donePath);
+    		}
     	}
 
     	// When submitting, turn our fields representation into a JSON body
@@ -2160,7 +2181,8 @@ var app = (function () {
     		TextArea: TextArea_component,
     		nextClip,
     		rootDirectory,
-    		videoSource,
+    		currentPage,
+    		videoToEdit,
     		launchPy,
     		fs,
     		fields,
@@ -2173,7 +2195,9 @@ var app = (function () {
     		window,
     		$rootDirectory,
     		JSON,
-    		console
+    		$currentPage,
+    		console,
+    		$videoToEdit
     	});
 
     	$$self.$inject_state = $$props => {
@@ -2192,6 +2216,8 @@ var app = (function () {
     		handleSubmit,
     		onSubmit,
     		$rootDirectory,
+    		$currentPage,
+    		$videoToEdit,
     		fs,
     		storagePath,
     		donePath,
@@ -3457,11 +3483,11 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Uh-oh, no results found!";
     			attr_dev(h2, "class", "intro-text svelte-vylmxi");
-    			add_location(h2, file$9, 406, 1, 10515);
+    			add_location(h2, file$9, 406, 1, 10520);
     			attr_dev(p, "class", "intro-text svelte-vylmxi");
-    			add_location(p, file$9, 407, 1, 10552);
+    			add_location(p, file$9, 407, 1, 10557);
     			attr_dev(div, "class", "no-results-container svelte-vylmxi");
-    			add_location(div, file$9, 405, 0, 10478);
+    			add_location(div, file$9, 405, 0, 10483);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3486,7 +3512,7 @@ var app = (function () {
     	return block;
     }
 
-    // (360:0) {#if hasData}
+    // (359:0) {#if hasData}
     function create_if_block$3(ctx) {
     	let div1;
     	let div0;
@@ -3583,30 +3609,30 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "Next";
     			attr_dev(tr, "class", "svelte-vylmxi");
-    			add_location(tr, file$9, 363, 4, 8889);
+    			add_location(tr, file$9, 362, 4, 8855);
     			set_style(table, "width", "100%");
     			attr_dev(table, "class", "svelte-vylmxi");
-    			add_location(table, file$9, 362, 3, 8857);
+    			add_location(table, file$9, 361, 3, 8823);
     			attr_dev(div0, "class", "table-div-container-inner svelte-vylmxi");
-    			add_location(div0, file$9, 361, 2, 8813);
+    			add_location(div0, file$9, 360, 2, 8779);
     			attr_dev(div1, "class", "table-div-container svelte-vylmxi");
-    			add_location(div1, file$9, 360, 1, 8754);
+    			add_location(div1, file$9, 359, 1, 8720);
     			attr_dev(div2, "class", "table-page-number svelte-vylmxi");
-    			add_location(div2, file$9, 394, 3, 9813);
+    			add_location(div2, file$9, 394, 3, 9818);
     			attr_dev(div3, "class", "table-page-number-container svelte-vylmxi");
-    			add_location(div3, file$9, 393, 2, 9767);
+    			add_location(div3, file$9, 393, 2, 9772);
     			attr_dev(div4, "class", "table-results-counter svelte-vylmxi");
-    			add_location(div4, file$9, 397, 3, 10005);
+    			add_location(div4, file$9, 397, 3, 10010);
     			attr_dev(div5, "class", "table-results-counter-container svelte-vylmxi");
-    			add_location(div5, file$9, 396, 2, 9955);
+    			add_location(div5, file$9, 396, 2, 9960);
     			attr_dev(button0, "class", "table-button svelte-vylmxi");
-    			add_location(button0, file$9, 400, 3, 10246);
+    			add_location(button0, file$9, 400, 3, 10251);
     			attr_dev(button1, "class", "table-button svelte-vylmxi");
-    			add_location(button1, file$9, 401, 3, 10352);
+    			add_location(button1, file$9, 401, 3, 10357);
     			attr_dev(div6, "class", "svelte-vylmxi");
-    			add_location(div6, file$9, 399, 2, 10236);
+    			add_location(div6, file$9, 399, 2, 10241);
     			attr_dev(div7, "class", "table-button-container svelte-vylmxi");
-    			add_location(div7, file$9, 392, 1, 9727);
+    			add_location(div7, file$9, 392, 1, 9732);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -3680,7 +3706,7 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty[0] & /*openClip, rowData*/ 32772) {
+    			if (dirty[0] & /*rowData, openClip*/ 32772) {
     				each_value = /*rowData*/ ctx[2];
     				validate_each_argument(each_value);
     				let i;
@@ -3731,14 +3757,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(360:0) {#if hasData}",
+    		source: "(359:0) {#if hasData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (368:6) {:else}
+    // (367:6) {:else}
     function create_else_block(ctx) {
     	let th;
     	let t_value = /*heading*/ ctx[33] + "";
@@ -3749,7 +3775,7 @@ var app = (function () {
     			th = element("th");
     			t = text(t_value);
     			attr_dev(th, "class", "svelte-vylmxi");
-    			add_location(th, file$9, 368, 7, 9021);
+    			add_location(th, file$9, 367, 7, 8987);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
@@ -3767,14 +3793,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(368:6) {:else}",
+    		source: "(367:6) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (366:6) {#if heading === "Filename"}
+    // (365:6) {#if heading === "Filename"}
     function create_if_block_1$3(ctx) {
     	let th;
 
@@ -3783,7 +3809,7 @@ var app = (function () {
     			th = element("th");
     			th.textContent = "View and Edit";
     			attr_dev(th, "class", "svelte-vylmxi");
-    			add_location(th, file$9, 366, 7, 8975);
+    			add_location(th, file$9, 365, 7, 8941);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
@@ -3798,14 +3824,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(366:6) {#if heading === \\\"Filename\\\"}",
+    		source: "(365:6) {#if heading === \\\"Filename\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (365:5) {#each colHeadings as heading}
+    // (364:5) {#each colHeadings as heading}
     function create_each_block_1(ctx) {
     	let if_block_anchor;
 
@@ -3849,14 +3875,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(365:5) {#each colHeadings as heading}",
+    		source: "(364:5) {#each colHeadings as heading}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (373:4) {#each rowData as row}
+    // (372:4) {#each rowData as row}
     function create_each_block$6(ctx) {
     	let tr;
     	let td0;
@@ -3906,6 +3932,10 @@ var app = (function () {
     	let td11;
     	let button;
     	let t23;
+    	let td12;
+    	let t24_value = /*row*/ ctx[30]["Depth Measure"] + "";
+    	let t24;
+    	let t25;
     	let dispose;
 
     	const block = {
@@ -3948,34 +3978,39 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Open";
     			t23 = space();
+    			td12 = element("td");
+    			t24 = text(t24_value);
+    			t25 = space();
     			attr_dev(td0, "class", "svelte-vylmxi");
-    			add_location(td0, file$9, 375, 6, 9214);
+    			add_location(td0, file$9, 374, 6, 9180);
     			attr_dev(td1, "class", "svelte-vylmxi");
-    			add_location(td1, file$9, 376, 6, 9241);
+    			add_location(td1, file$9, 375, 6, 9207);
     			attr_dev(td2, "class", "svelte-vylmxi");
-    			add_location(td2, file$9, 377, 6, 9271);
+    			add_location(td2, file$9, 376, 6, 9237);
     			attr_dev(td3, "class", "svelte-vylmxi");
-    			add_location(td3, file$9, 378, 6, 9298);
+    			add_location(td3, file$9, 377, 6, 9264);
     			attr_dev(td4, "class", "svelte-vylmxi");
-    			add_location(td4, file$9, 379, 6, 9332);
+    			add_location(td4, file$9, 378, 6, 9298);
     			attr_dev(td5, "class", "svelte-vylmxi");
-    			add_location(td5, file$9, 380, 6, 9360);
+    			add_location(td5, file$9, 379, 6, 9326);
     			attr_dev(td6, "class", "svelte-vylmxi");
-    			add_location(td6, file$9, 381, 6, 9388);
+    			add_location(td6, file$9, 380, 6, 9354);
     			attr_dev(td7, "class", "svelte-vylmxi");
-    			add_location(td7, file$9, 382, 6, 9420);
+    			add_location(td7, file$9, 381, 6, 9386);
     			attr_dev(td8, "class", "svelte-vylmxi");
-    			add_location(td8, file$9, 383, 6, 9453);
+    			add_location(td8, file$9, 382, 6, 9419);
     			attr_dev(td9, "class", "td-long-text svelte-vylmxi");
-    			add_location(td9, file$9, 384, 6, 9493);
+    			add_location(td9, file$9, 383, 6, 9459);
     			attr_dev(td10, "class", "svelte-vylmxi");
-    			add_location(td10, file$9, 385, 6, 9545);
+    			add_location(td10, file$9, 384, 6, 9511);
     			attr_dev(button, "class", "td-filename-button svelte-vylmxi");
-    			add_location(button, file$9, 386, 10, 9580);
+    			add_location(button, file$9, 385, 10, 9546);
     			attr_dev(td11, "class", "svelte-vylmxi");
-    			add_location(td11, file$9, 386, 6, 9576);
+    			add_location(td11, file$9, 385, 6, 9542);
+    			attr_dev(td12, "class", "svelte-vylmxi");
+    			add_location(td12, file$9, 386, 6, 9641);
     			attr_dev(tr, "class", "svelte-vylmxi");
-    			add_location(tr, file$9, 373, 5, 9112);
+    			add_location(tr, file$9, 372, 5, 9078);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -4015,6 +4050,9 @@ var app = (function () {
     			append_dev(tr, td11);
     			append_dev(td11, button);
     			append_dev(tr, t23);
+    			append_dev(tr, td12);
+    			append_dev(td12, t24);
+    			append_dev(tr, t25);
 
     			dispose = listen_dev(
     				button,
@@ -4040,6 +4078,7 @@ var app = (function () {
     			if (dirty[0] & /*rowData*/ 4 && t16_value !== (t16_value = /*row*/ ctx[30]["Cardiac Cycles"] + "")) set_data_dev(t16, t16_value);
     			if (dirty[0] & /*rowData*/ 4 && t18_value !== (t18_value = /*row*/ ctx[30].Comments + "")) set_data_dev(t18, t18_value);
     			if (dirty[0] & /*rowData*/ 4 && t20_value !== (t20_value = /*row*/ ctx[30].Bookmark + "")) set_data_dev(t20, t20_value);
+    			if (dirty[0] & /*rowData*/ 4 && t24_value !== (t24_value = /*row*/ ctx[30]["Depth Measure"] + "")) set_data_dev(t24, t24_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -4051,7 +4090,7 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(373:4) {#each rowData as row}",
+    		source: "(372:4) {#each rowData as row}",
     		ctx
     	});
 
@@ -4121,31 +4160,31 @@ var app = (function () {
     			if_block.c();
     			if_block_anchor = empty();
     			attr_dev(span0, "class", "svelte-vylmxi");
-    			add_location(span0, file$9, 343, 1, 8134);
+    			add_location(span0, file$9, 342, 1, 8100);
     			attr_dev(input, "class", "searchbar svelte-vylmxi");
     			attr_dev(input, "placeholder", "🔎 Global search");
     			attr_dev(input, "id", "searchbar");
     			attr_dev(input, "name", "searchbar");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$9, 345, 2, 8159);
+    			add_location(input, file$9, 344, 2, 8125);
     			attr_dev(div0, "class", "svelte-vylmxi");
-    			add_location(div0, file$9, 344, 1, 8150);
+    			add_location(div0, file$9, 343, 1, 8116);
     			attr_dev(button0, "class", "clear-search-button svelte-vylmxi");
-    			add_location(button0, file$9, 348, 2, 8318);
+    			add_location(button0, file$9, 347, 2, 8284);
     			attr_dev(div1, "class", "svelte-vylmxi");
-    			add_location(div1, file$9, 347, 1, 8309);
+    			add_location(div1, file$9, 346, 1, 8275);
     			attr_dev(div2, "class", "searchbar-container svelte-vylmxi");
-    			add_location(div2, file$9, 342, 0, 8098);
+    			add_location(div2, file$9, 341, 0, 8064);
     			attr_dev(div3, "class", "filter-container svelte-vylmxi");
-    			add_location(div3, file$9, 351, 0, 8417);
+    			add_location(div3, file$9, 350, 0, 8383);
     			attr_dev(span1, "class", "filter-button-filler svelte-vylmxi");
-    			add_location(span1, file$9, 355, 1, 8528);
+    			add_location(span1, file$9, 354, 1, 8494);
     			attr_dev(button1, "class", "filter-button svelte-vylmxi");
-    			add_location(button1, file$9, 356, 1, 8573);
+    			add_location(button1, file$9, 355, 1, 8539);
     			attr_dev(button2, "class", "filter-button svelte-vylmxi");
-    			add_location(button2, file$9, 357, 1, 8652);
+    			add_location(button2, file$9, 356, 1, 8618);
     			attr_dev(div4, "class", "filter-button-container svelte-vylmxi");
-    			add_location(div4, file$9, 354, 0, 8488);
+    			add_location(div4, file$9, 353, 0, 8454);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4415,7 +4454,6 @@ var app = (function () {
     	if (dataArray.length === 0) {
     		hasData = false;
     	} else {
-    		// prevButton.disabled = true;
     		hasData = true;
 
     		// this will be the data we filter through
@@ -4731,7 +4769,7 @@ var app = (function () {
         {
             name: 'View',
             type:'select',
-            value: '4C',
+            value: '4C',    
             label: '🔭 What view is it?',
             id: 'view',
             options: [
