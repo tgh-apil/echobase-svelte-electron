@@ -23,9 +23,11 @@ export function launchPy(file_name, root_path) {
 
         const depth = parseInt(pyResults[pyResults.length - 1]);
 
-        const depth_obj = {'Depth (cm)': depth};
+        const fileNameObj = {'Filename': file_name.slice(8, file_name.length)}
+        const depthObj = {'Depth': depth};
 
-        jsonUpdater(root_path, file_name, depth_obj)
+        jsonUpdater(root_path, file_name + '.json', fileNameObj)
+        jsonUpdater(root_path, file_name + '.json', depthObj)
     })
 }
 

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { rootDirectory } from '../stores.js';
+	import { videoToEdit, videoPathToEdit, rootDirectory, currentPage } from '../stores.js';
 	import Filters from './Filters.component.svelte';
 	const fs = window.require('fs');
 
@@ -48,7 +48,7 @@
 		},
 		{
 			value : 'None',
-			label : 'Quality (0-3)',
+			label : 'Quality',
 			options : [
 				{label: 'Not filtered', value: 'None'},
 				{label: '0', value: 0},
@@ -143,6 +143,7 @@
 			name: 'Bookmark',
 			label: 'Bookmark',
 			options: [
+				{label: 'Not filtered', value: 'None'},
 				{label: 'Yes', value: 'Yes'},
 				{label: 'No', value: 'No'},
 			],
@@ -273,18 +274,19 @@
 
 		// create columns based on keys on the original unchanging data
 		colHeadings = (Object.keys(dataArray[0]));
-		console.log(colHeadings);
-
-		// create rows based on values + truncate length of comments to be displayed
+		
+		// create rows based on values 
 		rowData = (Object.values(shownResults));
+		
+		// add link to video clip to each row
 		console.log(rowData);
 
+		//truncate length of comments to be displayed
 		rowData.forEach(data => {
 			if (data.Comments.length >= 50) {
 				data.Comments = data.Comments.slice(0, 50) + '...';
 			}
 		})
-		
 	}
 
 	function clearSearch() {
@@ -319,6 +321,17 @@
 		populateTable();
 	}
 
+	function openClip(fileName) {
+		currentPage.update(src => src = 'viewEditClip');
+
+		const file = '__anon__' + fileName;
+		const filepath = $rootDirectory + '/done/' + file;
+
+		videoToEdit.update(src => src = file);
+		videoPathToEdit.update(src => src = filepath);
+		console.log(filepath);
+	}
+
 	// to reference container for autoscroll
 	let container;
 
@@ -350,14 +363,18 @@
 			<table style="width:100%">
 				<tr>
 					{#each colHeadings as heading}
-						<th>{heading}</th>
+						{#if heading === "Filename"}
+							<th>View and Edit</th>
+						{:else}
+							<th>{heading}</th>
+						{/if}
 					{/each}
 				</tr>
 				{#each rowData as row}
 					<tr>
 						<!-- this needs to be refactored to update automatically when the form updates -->
 						<td>{row.View}</td>
-						<td>{row['Quality (0-3)']}</td>
+						<td>{row.Quality}</td>
 						<td>{row.Gain}</td>
 						<td>{row.Orientation}</td>
 						<td>{row.Depth}</td>
@@ -365,9 +382,9 @@
 						<td>{row.Frequency}</td>
 						<td>{row.Physiology}</td>
 						<td>{row['Cardiac Cycles']}</td>
-						<td class="td-comments">{row.Comments}</td>
+						<td class="td-long-text">{row.Comments}</td>
 						<td>{row.Bookmark}</td>
-						<td>{row["Depth (cm)"]}</td>
+						<td><button class="td-filename-button" on:click={openClip(row.Filename)}>Open</button></td>
 					</tr>
 				{/each}
 			</table>
@@ -544,7 +561,21 @@
 		color: #ff264e;
 	}
 
-	.td-comments {
+	.td-filename-button {
+		font-size: 16px;
+		font-weight: bold;
+		border: none;
+		color: #ff264e;
+		height: 100%;
+		width: 100%;
+		border-radius: 0px;
+	}
+
+	.td-filename-button:hover {
+		color: #fff;
+	}
+
+	.td-long-text {
 		text-align: left;
 		font-style: italic;
 	}

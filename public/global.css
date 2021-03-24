@@ -101,6 +101,11 @@ button:disabled:hover {
 	border: 1.5px solid #808080;
 }
 
+video {
+	height: 100%;
+	width: 100%;
+}
+
 /* from w3 schools */
 /* width */
 ::-webkit-scrollbar {

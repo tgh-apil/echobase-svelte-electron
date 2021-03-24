@@ -2,7 +2,7 @@ const fs = window.require('fs');
 
 export default function jsonUpdater(filePath, fileName, objToAppend) {
         // path still not working even if i convert the object to string, so we use this ugly thing
-        const dbFilePath = filePath + '/data/' + fileName + '.json'
+        const dbFilePath = filePath + '/data/' + fileName
 
         let dbObj = JSON.parse(fs.readFileSync(dbFilePath));
 

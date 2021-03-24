@@ -13,7 +13,12 @@
 <main class="nav-top">
     <div class="button-container">
         <button class = "{currentButton === 'main' ? 'selected' : 'not-selected'}" on:click={() => changeView('main')}>Main</button>
-        <button class = "{currentButton === 'overview' ? 'selected' : 'not-selected'}" on:click={() => changeView('overview')}>Overview</button>
+        {#if $currentPage != 'viewEditClip'}
+            <button class = "{currentButton === 'overview' ? 'selected' : 'not-selected'}" on:click={() => changeView('overview')}>Overview</button>
+        {:else if $currentPage === 'viewEditClip'}
+            <button class = "not-selected" on:click={() => changeView('overview')}>Overview</button>
+            <button class="selected" on:click={() => changeView('viewEditClip')}>View and Edit</button>
+        {/if}
     </div>
     <div class="logo-container">
         <p class="nav-logo">Echobase</p>
