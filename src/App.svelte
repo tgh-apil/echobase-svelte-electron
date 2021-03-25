@@ -66,18 +66,8 @@
 		let keys = Object.keys(editClipData);
 		
 		for (let i = 0; i < fields.length; i++) {
-			console.log(fields[i].name);
 			fields[i].value = editClipData[keys[i]];
-			console.log(`field value: ${fields[i].name} clip data: ${editClipData[keys[i]]}`);
 		}
-
-		// console.log(editableKeys);
-		// console.log(fields[1].value);
-		// console.log(editClipData['Quality']);
-
-		// fields[1].value = editClipData['Quality'];
-
-
 	}
 
     function scrollToTop() {
@@ -133,7 +123,7 @@
 			<Table />
 		{:else if $currentPage === 'viewEditClip'}
 			<div >
-				<h2>Clip: {$videoPathToEdit}</h2>
+				<p>Currently editing: {$videoToEdit}</p>
 			</div>
 			<main class="main" on:load={setFormData()}>
 				<div class="videoPlayer">

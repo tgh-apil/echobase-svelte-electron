@@ -1573,7 +1573,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (77:49) 
+    // (62:49) 
     function create_if_block_3(ctx) {
     	let updating_value;
     	let current;
@@ -1638,14 +1638,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(77:49) ",
+    		source: "(62:49) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:44) 
+    // (60:44) 
     function create_if_block_2(ctx) {
     	let updating_value;
     	let current;
@@ -1710,14 +1710,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(75:44) ",
+    		source: "(60:44) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:46) 
+    // (58:46) 
     function create_if_block_1(ctx) {
     	let updating_value;
     	let current;
@@ -1780,14 +1780,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(73:46) ",
+    		source: "(58:46) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (71:12) {#if field.type === 'radio'}
+    // (56:12) {#if field.type === 'radio'}
     function create_if_block(ctx) {
     	let updating_group;
     	let current;
@@ -1854,14 +1854,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(71:12) {#if field.type === 'radio'}",
+    		source: "(56:12) {#if field.type === 'radio'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:8) {#each fields as field}
+    // (55:8) {#each fields as field}
     function create_each_block$2(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1951,7 +1951,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(70:8) {#each fields as field}",
+    		source: "(55:8) {#each fields as field}",
     		ctx
     	});
 
@@ -1964,6 +1964,12 @@ var app = (function () {
     	let t0;
     	let div1;
     	let button;
+
+    	let t1_value = (/*$currentPage*/ ctx[1] === "main"
+    	? "Submit"
+    	: "Save Edits") + "";
+
+    	let t1;
     	let current;
     	let dispose;
     	let each_value = /*fields*/ ctx[0];
@@ -1990,13 +1996,13 @@ var app = (function () {
     			t0 = space();
     			div1 = element("div");
     			button = element("button");
-    			button.textContent = "Submit";
+    			t1 = text(t1_value);
     			attr_dev(div0, "class", "formOptions");
-    			add_location(div0, file$4, 68, 4, 2723);
+    			add_location(div0, file$4, 53, 4, 2132);
     			attr_dev(button, "type", "submit");
-    			add_location(button, file$4, 83, 8, 3583);
-    			add_location(div1, file$4, 81, 4, 3534);
-    			add_location(form, file$4, 67, 0, 2657);
+    			add_location(button, file$4, 67, 8, 2958);
+    			add_location(div1, file$4, 66, 4, 2943);
+    			add_location(form, file$4, 52, 0, 2066);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2012,6 +2018,7 @@ var app = (function () {
     			append_dev(form, t0);
     			append_dev(form, div1);
     			append_dev(div1, button);
+    			append_dev(button, t1);
     			current = true;
     			dispose = listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[15]), false, true, false);
     		},
@@ -2043,6 +2050,10 @@ var app = (function () {
 
     				check_outros();
     			}
+
+    			if ((!current || dirty & /*$currentPage*/ 2) && t1_value !== (t1_value = (/*$currentPage*/ ctx[1] === "main"
+    			? "Submit"
+    			: "Save Edits") + "")) set_data_dev(t1, t1_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -2085,9 +2096,9 @@ var app = (function () {
     	let $currentPage;
     	let $videoToEdit;
     	validate_store(rootDirectory, "rootDirectory");
-    	component_subscribe($$self, rootDirectory, $$value => $$invalidate(3, $rootDirectory = $$value));
+    	component_subscribe($$self, rootDirectory, $$value => $$invalidate(4, $rootDirectory = $$value));
     	validate_store(currentPage, "currentPage");
-    	component_subscribe($$self, currentPage, $$value => $$invalidate(4, $currentPage = $$value));
+    	component_subscribe($$self, currentPage, $$value => $$invalidate(1, $currentPage = $$value));
     	validate_store(videoToEdit, "videoToEdit");
     	component_subscribe($$self, videoToEdit, $$value => $$invalidate(5, $videoToEdit = $$value));
     	const fs = window.require("fs");
@@ -2104,38 +2115,25 @@ var app = (function () {
 
     	function saveData(data) {
     		let convertedData = JSON.stringify(data, 0, 2);
+    		let currentFile;
 
-    		// refactor this shit
     		if ($currentPage === "main") {
-    			fs.readdir($rootDirectory + "/storage", (err, files) => {
-    				let currentFile = files[0] + ".json";
-    				let filePath = $rootDirectory + "/data/" + currentFile;
-
-    				// comment this line out if you don't want to run the python scripts
-    				// for machine learning + digit recognition
-    				launchPy(files[0], $rootDirectory);
-
-    				fs.writeFile(filePath, convertedData, err => {
-    					if (err) throw err;
-    					console.log(`saved file ${currentFile}`);
-    				});
-    			});
-
+    			currentFile = fs.readdirSync($rootDirectory + "/storage")[0];
+    			console.log(`${currentFile} has been saved!`);
     			nextClip(storagePath, donePath);
     		} else if ($currentPage === "viewEditClip") {
-    			let editedFile = $videoToEdit + ".json";
-    			let filePath = $rootDirectory + "/data/" + editedFile;
-
-    			// needs to re-write the depth AND the file name...
-    			// has to be a better way than re-running the ML model...
-    			// works fow now
-    			launchPy($videoToEdit, $rootDirectory);
-
-    			fs.writeFile(filePath, convertedData, err => {
-    				if (err) throw err;
-    				console.log(`${editedFile} has been edited!`);
-    			});
+    			currentFile = $videoToEdit;
+    			console.log(`${currentFile} has been edited!`);
     		}
+
+    		let currentFileDb = currentFile + ".json";
+    		let filePath = $rootDirectory + "/data/" + currentFileDb;
+    		launchPy(currentFile, $rootDirectory);
+
+    		fs.writeFile(filePath, convertedData, err => {
+    			if (err) throw err;
+    			console.log(`saved file ${currentFile}`);
+    		});
     	}
 
     	// When submitting, turn our fields representation into a JSON body
@@ -2171,7 +2169,7 @@ var app = (function () {
 
     	$$self.$set = $$props => {
     		if ("fields" in $$props) $$invalidate(0, fields = $$props.fields);
-    		if ("onSubmit" in $$props) $$invalidate(2, onSubmit = $$props.onSubmit);
+    		if ("onSubmit" in $$props) $$invalidate(3, onSubmit = $$props.onSubmit);
     	};
 
     	$$self.$capture_state = () => ({
@@ -2202,7 +2200,7 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("fields" in $$props) $$invalidate(0, fields = $$props.fields);
-    		if ("onSubmit" in $$props) $$invalidate(2, onSubmit = $$props.onSubmit);
+    		if ("onSubmit" in $$props) $$invalidate(3, onSubmit = $$props.onSubmit);
     		if ("storagePath" in $$props) storagePath = $$props.storagePath;
     		if ("donePath" in $$props) donePath = $$props.donePath;
     	};
@@ -2213,10 +2211,10 @@ var app = (function () {
 
     	return [
     		fields,
+    		$currentPage,
     		handleSubmit,
     		onSubmit,
     		$rootDirectory,
-    		$currentPage,
     		$videoToEdit,
     		fs,
     		storagePath,
@@ -2234,7 +2232,7 @@ var app = (function () {
     class FormTemplate_components extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { fields: 0, onSubmit: 2 });
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { fields: 0, onSubmit: 3 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -2250,7 +2248,7 @@ var app = (function () {
     			console_1.warn("<FormTemplate_components> was created without expected prop 'fields'");
     		}
 
-    		if (/*onSubmit*/ ctx[2] === undefined && !("onSubmit" in props)) {
+    		if (/*onSubmit*/ ctx[3] === undefined && !("onSubmit" in props)) {
     			console_1.warn("<FormTemplate_components> was created without expected prop 'onSubmit'");
     		}
     	}
@@ -3467,7 +3465,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (405:0) {:else}
+    // (404:0) {:else}
     function create_else_block_1(ctx) {
     	let div;
     	let h2;
@@ -3482,12 +3480,12 @@ var app = (function () {
     			t1 = space();
     			p = element("p");
     			p.textContent = "Uh-oh, no results found!";
-    			attr_dev(h2, "class", "intro-text svelte-vylmxi");
-    			add_location(h2, file$9, 406, 1, 10520);
-    			attr_dev(p, "class", "intro-text svelte-vylmxi");
-    			add_location(p, file$9, 407, 1, 10557);
-    			attr_dev(div, "class", "no-results-container svelte-vylmxi");
-    			add_location(div, file$9, 405, 0, 10483);
+    			attr_dev(h2, "class", "intro-text svelte-gnoxv");
+    			add_location(h2, file$9, 405, 2, 10340);
+    			attr_dev(p, "class", "intro-text svelte-gnoxv");
+    			add_location(p, file$9, 406, 2, 10378);
+    			attr_dev(div, "class", "no-results-container svelte-gnoxv");
+    			add_location(div, file$9, 404, 1, 10302);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3505,14 +3503,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(405:0) {:else}",
+    		source: "(404:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (359:0) {#if hasData}
+    // (362:0) {#if hasData}
     function create_if_block$3(ctx) {
     	let div1;
     	let div0;
@@ -3520,7 +3518,7 @@ var app = (function () {
     	let tr;
     	let t0;
     	let t1;
-    	let div7;
+    	let div6;
     	let div3;
     	let div2;
     	let t2;
@@ -3545,12 +3543,6 @@ var app = (function () {
     	let t11_value = /*filteredResults*/ ctx[7].length + "";
     	let t11;
     	let t12;
-    	let t13;
-    	let div6;
-    	let button0;
-    	let t15;
-    	let button1;
-    	let dispose;
     	let each_value_1 = /*colHeadings*/ ctx[1];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
@@ -3585,7 +3577,7 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			div7 = element("div");
+    			div6 = element("div");
     			div3 = element("div");
     			div2 = element("div");
     			t2 = text("Page ");
@@ -3601,38 +3593,25 @@ var app = (function () {
     			t10 = text(" entries out of ");
     			t11 = text(t11_value);
     			t12 = text(" total results");
-    			t13 = space();
-    			div6 = element("div");
-    			button0 = element("button");
-    			button0.textContent = "Previous";
-    			t15 = space();
-    			button1 = element("button");
-    			button1.textContent = "Next";
-    			attr_dev(tr, "class", "svelte-vylmxi");
-    			add_location(tr, file$9, 362, 4, 8855);
+    			attr_dev(tr, "class", "svelte-gnoxv");
+    			add_location(tr, file$9, 365, 4, 8899);
     			set_style(table, "width", "100%");
-    			attr_dev(table, "class", "svelte-vylmxi");
-    			add_location(table, file$9, 361, 3, 8823);
-    			attr_dev(div0, "class", "table-div-container-inner svelte-vylmxi");
-    			add_location(div0, file$9, 360, 2, 8779);
-    			attr_dev(div1, "class", "table-div-container svelte-vylmxi");
-    			add_location(div1, file$9, 359, 1, 8720);
-    			attr_dev(div2, "class", "table-page-number svelte-vylmxi");
-    			add_location(div2, file$9, 394, 3, 9818);
-    			attr_dev(div3, "class", "table-page-number-container svelte-vylmxi");
-    			add_location(div3, file$9, 393, 2, 9772);
-    			attr_dev(div4, "class", "table-results-counter svelte-vylmxi");
-    			add_location(div4, file$9, 397, 3, 10010);
-    			attr_dev(div5, "class", "table-results-counter-container svelte-vylmxi");
-    			add_location(div5, file$9, 396, 2, 9960);
-    			attr_dev(button0, "class", "table-button svelte-vylmxi");
-    			add_location(button0, file$9, 400, 3, 10251);
-    			attr_dev(button1, "class", "table-button svelte-vylmxi");
-    			add_location(button1, file$9, 401, 3, 10357);
-    			attr_dev(div6, "class", "svelte-vylmxi");
-    			add_location(div6, file$9, 399, 2, 10241);
-    			attr_dev(div7, "class", "table-button-container svelte-vylmxi");
-    			add_location(div7, file$9, 392, 1, 9732);
+    			attr_dev(table, "class", "svelte-gnoxv");
+    			add_location(table, file$9, 364, 3, 8867);
+    			attr_dev(div0, "class", "table-div-container-inner svelte-gnoxv");
+    			add_location(div0, file$9, 363, 2, 8823);
+    			attr_dev(div1, "class", "table-div-container svelte-gnoxv");
+    			add_location(div1, file$9, 362, 1, 8764);
+    			attr_dev(div2, "class", "table-page-number svelte-gnoxv");
+    			add_location(div2, file$9, 397, 3, 9862);
+    			attr_dev(div3, "class", "table-page-number-container svelte-gnoxv");
+    			add_location(div3, file$9, 396, 2, 9816);
+    			attr_dev(div4, "class", "table-results-counter svelte-gnoxv");
+    			add_location(div4, file$9, 400, 3, 10054);
+    			attr_dev(div5, "class", "table-results-counter-container svelte-gnoxv");
+    			add_location(div5, file$9, 399, 2, 10004);
+    			attr_dev(div6, "class", "table-button-container svelte-gnoxv");
+    			add_location(div6, file$9, 395, 1, 9776);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -3652,15 +3631,15 @@ var app = (function () {
 
     			/*div1_binding*/ ctx[25](div1);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, div7, anchor);
-    			append_dev(div7, div3);
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, div3);
     			append_dev(div3, div2);
     			append_dev(div2, t2);
     			append_dev(div2, t3);
     			append_dev(div2, t4);
     			append_dev(div2, t5);
-    			append_dev(div7, t6);
-    			append_dev(div7, div5);
+    			append_dev(div6, t6);
+    			append_dev(div6, div5);
     			append_dev(div5, div4);
     			append_dev(div4, t7);
     			append_dev(div4, t8);
@@ -3668,18 +3647,6 @@ var app = (function () {
     			append_dev(div4, t10);
     			append_dev(div4, t11);
     			append_dev(div4, t12);
-    			append_dev(div7, t13);
-    			append_dev(div7, div6);
-    			append_dev(div6, button0);
-    			/*button0_binding*/ ctx[26](button0);
-    			append_dev(div6, t15);
-    			append_dev(div6, button1);
-    			/*button1_binding*/ ctx[28](button1);
-
-    			dispose = [
-    				listen_dev(button0, "click", /*click_handler*/ ctx[27], false, false, false),
-    				listen_dev(button1, "click", /*click_handler_1*/ ctx[29], false, false, false)
-    			];
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*colHeadings*/ 2) {
@@ -3746,10 +3713,7 @@ var app = (function () {
     			destroy_each(each_blocks, detaching);
     			/*div1_binding*/ ctx[25](null);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div7);
-    			/*button0_binding*/ ctx[26](null);
-    			/*button1_binding*/ ctx[28](null);
-    			run_all(dispose);
+    			if (detaching) detach_dev(div6);
     		}
     	};
 
@@ -3757,14 +3721,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(359:0) {#if hasData}",
+    		source: "(362:0) {#if hasData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (367:6) {:else}
+    // (370:6) {:else}
     function create_else_block(ctx) {
     	let th;
     	let t_value = /*heading*/ ctx[33] + "";
@@ -3774,8 +3738,8 @@ var app = (function () {
     		c: function create() {
     			th = element("th");
     			t = text(t_value);
-    			attr_dev(th, "class", "svelte-vylmxi");
-    			add_location(th, file$9, 367, 7, 8987);
+    			attr_dev(th, "class", "svelte-gnoxv");
+    			add_location(th, file$9, 370, 7, 9031);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
@@ -3793,14 +3757,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(367:6) {:else}",
+    		source: "(370:6) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (365:6) {#if heading === "Filename"}
+    // (368:6) {#if heading === "Filename"}
     function create_if_block_1$3(ctx) {
     	let th;
 
@@ -3808,8 +3772,8 @@ var app = (function () {
     		c: function create() {
     			th = element("th");
     			th.textContent = "View and Edit";
-    			attr_dev(th, "class", "svelte-vylmxi");
-    			add_location(th, file$9, 365, 7, 8941);
+    			attr_dev(th, "class", "svelte-gnoxv");
+    			add_location(th, file$9, 368, 7, 8985);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
@@ -3824,14 +3788,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(365:6) {#if heading === \\\"Filename\\\"}",
+    		source: "(368:6) {#if heading === \\\"Filename\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (364:5) {#each colHeadings as heading}
+    // (367:5) {#each colHeadings as heading}
     function create_each_block_1(ctx) {
     	let if_block_anchor;
 
@@ -3875,14 +3839,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(364:5) {#each colHeadings as heading}",
+    		source: "(367:5) {#each colHeadings as heading}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (372:4) {#each rowData as row}
+    // (375:4) {#each rowData as row}
     function create_each_block$6(ctx) {
     	let tr;
     	let td0;
@@ -3981,36 +3945,36 @@ var app = (function () {
     			td12 = element("td");
     			t24 = text(t24_value);
     			t25 = space();
-    			attr_dev(td0, "class", "svelte-vylmxi");
-    			add_location(td0, file$9, 374, 6, 9180);
-    			attr_dev(td1, "class", "svelte-vylmxi");
-    			add_location(td1, file$9, 375, 6, 9207);
-    			attr_dev(td2, "class", "svelte-vylmxi");
-    			add_location(td2, file$9, 376, 6, 9237);
-    			attr_dev(td3, "class", "svelte-vylmxi");
-    			add_location(td3, file$9, 377, 6, 9264);
-    			attr_dev(td4, "class", "svelte-vylmxi");
-    			add_location(td4, file$9, 378, 6, 9298);
-    			attr_dev(td5, "class", "svelte-vylmxi");
-    			add_location(td5, file$9, 379, 6, 9326);
-    			attr_dev(td6, "class", "svelte-vylmxi");
-    			add_location(td6, file$9, 380, 6, 9354);
-    			attr_dev(td7, "class", "svelte-vylmxi");
-    			add_location(td7, file$9, 381, 6, 9386);
-    			attr_dev(td8, "class", "svelte-vylmxi");
-    			add_location(td8, file$9, 382, 6, 9419);
-    			attr_dev(td9, "class", "td-long-text svelte-vylmxi");
-    			add_location(td9, file$9, 383, 6, 9459);
-    			attr_dev(td10, "class", "svelte-vylmxi");
-    			add_location(td10, file$9, 384, 6, 9511);
-    			attr_dev(button, "class", "td-filename-button svelte-vylmxi");
-    			add_location(button, file$9, 385, 10, 9546);
-    			attr_dev(td11, "class", "svelte-vylmxi");
-    			add_location(td11, file$9, 385, 6, 9542);
-    			attr_dev(td12, "class", "svelte-vylmxi");
-    			add_location(td12, file$9, 386, 6, 9641);
-    			attr_dev(tr, "class", "svelte-vylmxi");
-    			add_location(tr, file$9, 372, 5, 9078);
+    			attr_dev(td0, "class", "svelte-gnoxv");
+    			add_location(td0, file$9, 377, 6, 9224);
+    			attr_dev(td1, "class", "svelte-gnoxv");
+    			add_location(td1, file$9, 378, 6, 9251);
+    			attr_dev(td2, "class", "svelte-gnoxv");
+    			add_location(td2, file$9, 379, 6, 9281);
+    			attr_dev(td3, "class", "svelte-gnoxv");
+    			add_location(td3, file$9, 380, 6, 9308);
+    			attr_dev(td4, "class", "svelte-gnoxv");
+    			add_location(td4, file$9, 381, 6, 9342);
+    			attr_dev(td5, "class", "svelte-gnoxv");
+    			add_location(td5, file$9, 382, 6, 9370);
+    			attr_dev(td6, "class", "svelte-gnoxv");
+    			add_location(td6, file$9, 383, 6, 9398);
+    			attr_dev(td7, "class", "svelte-gnoxv");
+    			add_location(td7, file$9, 384, 6, 9430);
+    			attr_dev(td8, "class", "svelte-gnoxv");
+    			add_location(td8, file$9, 385, 6, 9463);
+    			attr_dev(td9, "class", "td-long-text svelte-gnoxv");
+    			add_location(td9, file$9, 386, 6, 9503);
+    			attr_dev(td10, "class", "svelte-gnoxv");
+    			add_location(td10, file$9, 387, 6, 9555);
+    			attr_dev(button, "class", "td-filename-button svelte-gnoxv");
+    			add_location(button, file$9, 388, 10, 9590);
+    			attr_dev(td11, "class", "svelte-gnoxv");
+    			add_location(td11, file$9, 388, 6, 9586);
+    			attr_dev(td12, "class", "svelte-gnoxv");
+    			add_location(td12, file$9, 389, 6, 9685);
+    			attr_dev(tr, "class", "svelte-gnoxv");
+    			add_location(tr, file$9, 375, 5, 9122);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -4090,7 +4054,7 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(372:4) {#each rowData as row}",
+    		source: "(375:4) {#each rowData as row}",
     		ctx
     	});
 
@@ -4116,7 +4080,13 @@ var app = (function () {
     	let t7;
     	let button2;
     	let t9;
-    	let if_block_anchor;
+    	let t10;
+    	let div5;
+    	let span2;
+    	let t11;
+    	let button3;
+    	let t13;
+    	let button4;
     	let current;
     	let dispose;
 
@@ -4158,33 +4128,49 @@ var app = (function () {
     			button2.textContent = "Apply Filters";
     			t9 = space();
     			if_block.c();
-    			if_block_anchor = empty();
-    			attr_dev(span0, "class", "svelte-vylmxi");
-    			add_location(span0, file$9, 342, 1, 8100);
-    			attr_dev(input, "class", "searchbar svelte-vylmxi");
+    			t10 = space();
+    			div5 = element("div");
+    			span2 = element("span");
+    			t11 = space();
+    			button3 = element("button");
+    			button3.textContent = "Previous";
+    			t13 = space();
+    			button4 = element("button");
+    			button4.textContent = "Next";
+    			attr_dev(span0, "class", "svelte-gnoxv");
+    			add_location(span0, file$9, 345, 1, 8158);
+    			attr_dev(input, "class", "searchbar svelte-gnoxv");
     			attr_dev(input, "placeholder", "🔎 Global search");
     			attr_dev(input, "id", "searchbar");
     			attr_dev(input, "name", "searchbar");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$9, 344, 2, 8125);
-    			attr_dev(div0, "class", "svelte-vylmxi");
-    			add_location(div0, file$9, 343, 1, 8116);
-    			attr_dev(button0, "class", "clear-search-button svelte-vylmxi");
-    			add_location(button0, file$9, 347, 2, 8284);
-    			attr_dev(div1, "class", "svelte-vylmxi");
-    			add_location(div1, file$9, 346, 1, 8275);
-    			attr_dev(div2, "class", "searchbar-container svelte-vylmxi");
-    			add_location(div2, file$9, 341, 0, 8064);
-    			attr_dev(div3, "class", "filter-container svelte-vylmxi");
-    			add_location(div3, file$9, 350, 0, 8383);
-    			attr_dev(span1, "class", "filter-button-filler svelte-vylmxi");
-    			add_location(span1, file$9, 354, 1, 8494);
-    			attr_dev(button1, "class", "filter-button svelte-vylmxi");
-    			add_location(button1, file$9, 355, 1, 8539);
-    			attr_dev(button2, "class", "filter-button svelte-vylmxi");
-    			add_location(button2, file$9, 356, 1, 8618);
-    			attr_dev(div4, "class", "filter-button-container svelte-vylmxi");
-    			add_location(div4, file$9, 353, 0, 8454);
+    			add_location(input, file$9, 347, 2, 8183);
+    			attr_dev(div0, "class", "svelte-gnoxv");
+    			add_location(div0, file$9, 346, 1, 8174);
+    			attr_dev(button0, "class", "clear-search-button svelte-gnoxv");
+    			add_location(button0, file$9, 350, 2, 8342);
+    			attr_dev(div1, "class", "svelte-gnoxv");
+    			add_location(div1, file$9, 349, 1, 8333);
+    			attr_dev(div2, "class", "searchbar-container svelte-gnoxv");
+    			add_location(div2, file$9, 344, 0, 8122);
+    			attr_dev(div3, "class", "filter-container svelte-gnoxv");
+    			add_location(div3, file$9, 353, 0, 8441);
+    			attr_dev(span1, "class", "filler svelte-gnoxv");
+    			add_location(span1, file$9, 357, 1, 8552);
+    			attr_dev(button1, "class", "filter-button svelte-gnoxv");
+    			add_location(button1, file$9, 358, 1, 8583);
+    			attr_dev(button2, "class", "filter-button svelte-gnoxv");
+    			add_location(button2, file$9, 359, 1, 8662);
+    			attr_dev(div4, "class", "filter-button-container svelte-gnoxv");
+    			add_location(div4, file$9, 356, 0, 8512);
+    			attr_dev(span2, "class", "filler svelte-gnoxv");
+    			add_location(span2, file$9, 410, 1, 10481);
+    			attr_dev(button3, "class", "table-button svelte-gnoxv");
+    			add_location(button3, file$9, 411, 1, 10512);
+    			attr_dev(button4, "class", "table-button svelte-gnoxv");
+    			add_location(button4, file$9, 412, 1, 10616);
+    			attr_dev(div5, "class", "nav-button-container svelte-gnoxv");
+    			add_location(div5, file$9, 409, 0, 10446);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4211,7 +4197,15 @@ var app = (function () {
     			append_dev(div4, button2);
     			insert_dev(target, t9, anchor);
     			if_block.m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
+    			insert_dev(target, t10, anchor);
+    			insert_dev(target, div5, anchor);
+    			append_dev(div5, span2);
+    			append_dev(div5, t11);
+    			append_dev(div5, button3);
+    			/*button3_binding*/ ctx[26](button3);
+    			append_dev(div5, t13);
+    			append_dev(div5, button4);
+    			/*button4_binding*/ ctx[28](button4);
     			current = true;
 
     			dispose = [
@@ -4219,7 +4213,9 @@ var app = (function () {
     				listen_dev(input, "keyup", /*handleKeydown*/ ctx[16], false, false, false),
     				listen_dev(button0, "click", /*clearSearch*/ ctx[12], false, false, false),
     				listen_dev(button1, "click", /*clearFilters*/ ctx[14], false, false, false),
-    				listen_dev(button2, "click", /*applyFilters*/ ctx[13], false, false, false)
+    				listen_dev(button2, "click", /*applyFilters*/ ctx[13], false, false, false),
+    				listen_dev(button3, "click", /*click_handler*/ ctx[27], false, false, false),
+    				listen_dev(button4, "click", /*click_handler_1*/ ctx[29], false, false, false)
     			];
     		},
     		p: function update(ctx, dirty) {
@@ -4235,7 +4231,7 @@ var app = (function () {
 
     				if (if_block) {
     					if_block.c();
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    					if_block.m(t10.parentNode, t10);
     				}
     			}
     		},
@@ -4257,7 +4253,10 @@ var app = (function () {
     			if (detaching) detach_dev(div4);
     			if (detaching) detach_dev(t9);
     			if_block.d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
+    			if (detaching) detach_dev(t10);
+    			if (detaching) detach_dev(div5);
+    			/*button3_binding*/ ctx[26](null);
+    			/*button4_binding*/ ctx[28](null);
     			run_all(dispose);
     		}
     	};
@@ -4465,9 +4464,12 @@ var app = (function () {
 
     	onMount(() => {
     		$$invalidate(3, prevButton.disabled = true, prevButton);
+    		$$invalidate(4, nextButton.disabled = true, nextButton);
 
-    		if (filteredResults.length < maxEntriesShown) {
-    			$$invalidate(4, nextButton.disabled = true, nextButton);
+    		if (hasData) {
+    			if (filteredResults.length > maxEntriesShown) {
+    				$$invalidate(4, nextButton.disabled = false, nextButton);
+    			}
     		}
     	});
 
@@ -4642,7 +4644,7 @@ var app = (function () {
     		});
     	}
 
-    	function button0_binding($$value) {
+    	function button3_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			$$invalidate(3, prevButton = $$value);
     		});
@@ -4650,7 +4652,7 @@ var app = (function () {
 
     	const click_handler = () => changePage(-1);
 
-    	function button1_binding($$value) {
+    	function button4_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			$$invalidate(4, nextButton = $$value);
     		});
@@ -4744,9 +4746,9 @@ var app = (function () {
     		populateTable,
     		input_input_handler,
     		div1_binding,
-    		button0_binding,
+    		button3_binding,
     		click_handler,
-    		button1_binding,
+    		button4_binding,
     		click_handler_1
     	];
     }
@@ -4903,7 +4905,7 @@ var app = (function () {
 
     const file$a = "src\\App.svelte";
 
-    // (113:29) 
+    // (103:29) 
     function create_if_block_3$1(ctx) {
     	let t;
     	let current_block_type_index;
@@ -4924,9 +4926,9 @@ var app = (function () {
 
     	function select_block_type_2(ctx, dirty) {
     		if (/*$videoSource*/ ctx[3] === "done") return 0;
-    		if (/*$currentPage*/ ctx[4] === "main") return 1;
-    		if (/*$currentPage*/ ctx[4] === "overview") return 2;
-    		if (/*$currentPage*/ ctx[4] === "viewEditClip") return 3;
+    		if (/*$currentPage*/ ctx[5] === "main") return 1;
+    		if (/*$currentPage*/ ctx[5] === "overview") return 2;
+    		if (/*$currentPage*/ ctx[5] === "viewEditClip") return 3;
     		return 4;
     	}
 
@@ -4995,14 +4997,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(113:29) ",
+    		source: "(103:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:0) {#if isDataSet === false}
+    // (78:0) {#if isDataSet === false}
     function create_if_block$4(ctx) {
     	let div0;
     	let h1;
@@ -5028,13 +5030,13 @@ var app = (function () {
     			div1 = element("div");
     			if (if_block) if_block.c();
     			attr_dev(h1, "class", "svelte-g22xgr");
-    			add_location(h1, file$a, 89, 1, 2484);
+    			add_location(h1, file$a, 79, 1, 2194);
     			attr_dev(div0, "class", "header svelte-g22xgr");
-    			add_location(div0, file$a, 88, 0, 2461);
+    			add_location(div0, file$a, 78, 0, 2171);
     			attr_dev(div1, "class", "startup-child svelte-g22xgr");
-    			add_location(div1, file$a, 92, 1, 2535);
+    			add_location(div1, file$a, 82, 1, 2245);
     			attr_dev(div2, "class", "startup svelte-g22xgr");
-    			add_location(div2, file$a, 91, 0, 2511);
+    			add_location(div2, file$a, 81, 0, 2221);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -5074,14 +5076,14 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(88:0) {#if isDataSet === false}",
+    		source: "(78:0) {#if isDataSet === false}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (148:2) {:else}
+    // (138:2) {:else}
     function create_else_block$1(ctx) {
     	let div_1;
     	let t0;
@@ -5102,11 +5104,11 @@ var app = (function () {
     			br = element("br");
     			t2 = text("💩");
     			attr_dev(br, "class", "svelte-g22xgr");
-    			add_location(br, file$a, 150, 52, 4154);
+    			add_location(br, file$a, 140, 52, 3871);
     			attr_dev(h2, "class", "outro-text svelte-g22xgr");
-    			add_location(h2, file$a, 150, 2, 4104);
+    			add_location(h2, file$a, 140, 2, 3821);
     			attr_dev(div_1, "class", "svelte-g22xgr");
-    			add_location(div_1, file$a, 148, 1, 4081);
+    			add_location(div_1, file$a, 138, 1, 3798);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -5138,17 +5140,17 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(148:2) {:else}",
+    		source: "(138:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (134:44) 
+    // (124:44) 
     function create_if_block_7(ctx) {
     	let div0;
-    	let h2;
+    	let p;
     	let t0;
     	let t1;
     	let t2;
@@ -5173,9 +5175,9 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div0 = element("div");
-    			h2 = element("h2");
-    			t0 = text("Clip: ");
-    			t1 = text(/*$videoPathToEdit*/ ctx[5]);
+    			p = element("p");
+    			t0 = text("Currently editing: ");
+    			t1 = text(/*$videoToEdit*/ ctx[4]);
     			t2 = space();
     			main = element("main");
     			div1 = element("div");
@@ -5184,30 +5186,30 @@ var app = (function () {
     			div3 = element("div");
     			div2 = element("div");
     			create_component(formtemplate.$$.fragment);
-    			attr_dev(h2, "class", "svelte-g22xgr");
-    			add_location(h2, file$a, 135, 4, 3701);
+    			attr_dev(p, "class", "svelte-g22xgr");
+    			add_location(p, file$a, 125, 4, 3411);
     			attr_dev(div0, "class", "svelte-g22xgr");
-    			add_location(div0, file$a, 134, 3, 3689);
-    			if (video.src !== (video_src_value = /*$videoPathToEdit*/ ctx[5])) attr_dev(video, "src", video_src_value);
+    			add_location(div0, file$a, 124, 3, 3399);
+    			if (video.src !== (video_src_value = /*$videoPathToEdit*/ ctx[6])) attr_dev(video, "src", video_src_value);
     			video.autoplay = true;
     			video.loop = true;
     			video.muted = true;
     			attr_dev(video, "class", "svelte-g22xgr");
-    			add_location(video, file$a, 139, 5, 3831);
+    			add_location(video, file$a, 129, 5, 3548);
     			attr_dev(div1, "class", "videoPlayer svelte-g22xgr");
-    			add_location(div1, file$a, 138, 4, 3799);
+    			add_location(div1, file$a, 128, 4, 3516);
     			attr_dev(div2, "class", "form svelte-g22xgr");
-    			add_location(div2, file$a, 142, 5, 3945);
+    			add_location(div2, file$a, 132, 5, 3662);
     			attr_dev(div3, "class", "form-div svelte-g22xgr");
-    			add_location(div3, file$a, 141, 4, 3900);
+    			add_location(div3, file$a, 131, 4, 3617);
     			attr_dev(main, "class", "main svelte-g22xgr");
-    			add_location(main, file$a, 137, 3, 3750);
+    			add_location(main, file$a, 127, 3, 3467);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
-    			append_dev(div0, h2);
-    			append_dev(h2, t0);
-    			append_dev(h2, t1);
+    			append_dev(div0, p);
+    			append_dev(p, t0);
+    			append_dev(p, t1);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, main, anchor);
     			append_dev(main, div1);
@@ -5218,12 +5220,12 @@ var app = (function () {
     			mount_component(formtemplate, div2, null);
     			/*div3_binding*/ ctx[18](div3);
     			current = true;
-    			dispose = listen_dev(main, "load", /*setFormData*/ ctx[7](), false, false, false);
+    			dispose = listen_dev(main, "load", /*setFormData*/ ctx[8](), false, false, false);
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*$videoPathToEdit*/ 32) set_data_dev(t1, /*$videoPathToEdit*/ ctx[5]);
+    			if (!current || dirty & /*$videoToEdit*/ 16) set_data_dev(t1, /*$videoToEdit*/ ctx[4]);
 
-    			if (!current || dirty & /*$videoPathToEdit*/ 32 && video.src !== (video_src_value = /*$videoPathToEdit*/ ctx[5])) {
+    			if (!current || dirty & /*$videoPathToEdit*/ 64 && video.src !== (video_src_value = /*$videoPathToEdit*/ ctx[6])) {
     				attr_dev(video, "src", video_src_value);
     			}
 
@@ -5254,14 +5256,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(134:44) ",
+    		source: "(124:44) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (132:40) 
+    // (122:40) 
     function create_if_block_6(ctx) {
     	let current;
     	const table = new Table_component({ $$inline: true });
@@ -5293,14 +5295,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(132:40) ",
+    		source: "(122:40) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (121:2) {#if $currentPage === 'main'}
+    // (111:2) {#if $currentPage === 'main'}
     function create_if_block_5(ctx) {
     	let main;
     	let div0;
@@ -5333,15 +5335,15 @@ var app = (function () {
     			video.loop = true;
     			video.muted = true;
     			attr_dev(video, "class", "svelte-g22xgr");
-    			add_location(video, file$a, 123, 5, 3350);
+    			add_location(video, file$a, 113, 5, 3060);
     			attr_dev(div0, "class", "videoPlayer svelte-g22xgr");
-    			add_location(div0, file$a, 122, 4, 3318);
+    			add_location(div0, file$a, 112, 4, 3028);
     			attr_dev(div1, "class", "form svelte-g22xgr");
-    			add_location(div1, file$a, 126, 5, 3460);
+    			add_location(div1, file$a, 116, 5, 3170);
     			attr_dev(div2, "class", "form-div svelte-g22xgr");
-    			add_location(div2, file$a, 125, 4, 3415);
+    			add_location(div2, file$a, 115, 4, 3125);
     			attr_dev(main, "class", "main svelte-g22xgr");
-    			add_location(main, file$a, 121, 3, 3293);
+    			add_location(main, file$a, 111, 3, 3003);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
@@ -5383,14 +5385,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(121:2) {#if $currentPage === 'main'}",
+    		source: "(111:2) {#if $currentPage === 'main'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (115:1) {#if $videoSource === 'done'}
+    // (105:1) {#if $videoSource === 'done'}
     function create_if_block_4(ctx) {
     	let div_1;
     	let h2;
@@ -5415,11 +5417,11 @@ var app = (function () {
     			t2 = space();
     			create_component(confetti.$$.fragment);
     			attr_dev(br, "class", "svelte-g22xgr");
-    			add_location(br, file$a, 116, 42, 3177);
+    			add_location(br, file$a, 106, 42, 2887);
     			attr_dev(h2, "class", "outro-text svelte-g22xgr");
-    			add_location(h2, file$a, 116, 2, 3137);
+    			add_location(h2, file$a, 106, 2, 2847);
     			attr_dev(div_1, "class", "svelte-g22xgr");
-    			add_location(div_1, file$a, 115, 1, 3128);
+    			add_location(div_1, file$a, 105, 1, 2838);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -5451,14 +5453,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(115:1) {#if $videoSource === 'done'}",
+    		source: "(105:1) {#if $videoSource === 'done'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (104:39) 
+    // (94:39) 
     function create_if_block_2$1(ctx) {
     	let div_1;
     	let h2;
@@ -5483,15 +5485,15 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "We're anonymizing some data for you";
     			attr_dev(br0, "class", "svelte-g22xgr");
-    			add_location(br0, file$a, 105, 37, 2928);
+    			add_location(br0, file$a, 95, 37, 2638);
     			attr_dev(h2, "class", "intro-text svelte-g22xgr");
-    			add_location(h2, file$a, 105, 3, 2894);
+    			add_location(h2, file$a, 95, 3, 2604);
     			attr_dev(br1, "class", "svelte-g22xgr");
-    			add_location(br1, file$a, 106, 3, 2943);
+    			add_location(br1, file$a, 96, 3, 2653);
     			attr_dev(p, "class", "intro-text svelte-g22xgr");
-    			add_location(p, file$a, 107, 3, 2952);
+    			add_location(p, file$a, 97, 3, 2662);
     			attr_dev(div_1, "class", "svelte-g22xgr");
-    			add_location(div_1, file$a, 104, 2, 2884);
+    			add_location(div_1, file$a, 94, 2, 2594);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div_1, anchor);
@@ -5514,14 +5516,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(104:39) ",
+    		source: "(94:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (94:2) {#if $videoSource === ''}
+    // (84:2) {#if $videoSource === ''}
     function create_if_block_1$4(ctx) {
     	let div0;
     	let h2;
@@ -5553,19 +5555,19 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Take me to the data! 🚀";
     			attr_dev(h2, "class", "intro-text svelte-g22xgr");
-    			add_location(h2, file$a, 95, 3, 2605);
+    			add_location(h2, file$a, 85, 3, 2315);
     			attr_dev(br0, "class", "svelte-g22xgr");
-    			add_location(br0, file$a, 96, 3, 2643);
+    			add_location(br0, file$a, 86, 3, 2353);
     			attr_dev(p, "class", "intro-text svelte-g22xgr");
-    			add_location(p, file$a, 97, 3, 2652);
+    			add_location(p, file$a, 87, 3, 2362);
     			attr_dev(div0, "class", "svelte-g22xgr");
-    			add_location(div0, file$a, 94, 2, 2595);
+    			add_location(div0, file$a, 84, 2, 2305);
     			attr_dev(br1, "class", "svelte-g22xgr");
-    			add_location(br1, file$a, 99, 2, 2734);
+    			add_location(br1, file$a, 89, 2, 2444);
     			attr_dev(button, "class", "load-btn svelte-g22xgr");
-    			add_location(button, file$a, 101, 3, 2752);
+    			add_location(button, file$a, 91, 3, 2462);
     			attr_dev(div1, "class", "svelte-g22xgr");
-    			add_location(div1, file$a, 100, 2, 2742);
+    			add_location(div1, file$a, 90, 2, 2452);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -5579,7 +5581,7 @@ var app = (function () {
     			insert_dev(target, t5, anchor);
     			insert_dev(target, div1, anchor);
     			append_dev(div1, button);
-    			dispose = listen_dev(button, "click", /*loadData*/ ctx[6], false, false, false);
+    			dispose = listen_dev(button, "click", /*loadData*/ ctx[7], false, false, false);
     		},
     		p: noop,
     		d: function destroy(detaching) {
@@ -5596,7 +5598,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(94:2) {#if $videoSource === ''}",
+    		source: "(84:2) {#if $videoSource === ''}",
     		ctx
     	});
 
@@ -5707,15 +5709,15 @@ var app = (function () {
     	let $currentPage;
     	let $videoPathToEdit;
     	validate_store(rootDirectory, "rootDirectory");
-    	component_subscribe($$self, rootDirectory, $$value => $$invalidate(10, $rootDirectory = $$value));
+    	component_subscribe($$self, rootDirectory, $$value => $$invalidate(11, $rootDirectory = $$value));
     	validate_store(videoSource, "videoSource");
     	component_subscribe($$self, videoSource, $$value => $$invalidate(3, $videoSource = $$value));
     	validate_store(videoToEdit, "videoToEdit");
-    	component_subscribe($$self, videoToEdit, $$value => $$invalidate(11, $videoToEdit = $$value));
+    	component_subscribe($$self, videoToEdit, $$value => $$invalidate(4, $videoToEdit = $$value));
     	validate_store(currentPage, "currentPage");
-    	component_subscribe($$self, currentPage, $$value => $$invalidate(4, $currentPage = $$value));
+    	component_subscribe($$self, currentPage, $$value => $$invalidate(5, $currentPage = $$value));
     	validate_store(videoPathToEdit, "videoPathToEdit");
-    	component_subscribe($$self, videoPathToEdit, $$value => $$invalidate(5, $videoPathToEdit = $$value));
+    	component_subscribe($$self, videoPathToEdit, $$value => $$invalidate(6, $videoPathToEdit = $$value));
     	const { dialog } = require("electron").remote;
     	const fs = window.require("fs");
     	let fields = formFields;
@@ -5773,15 +5775,10 @@ var app = (function () {
     		let keys = Object.keys(editClipData);
 
     		for (let i = 0; i < fields.length; i++) {
-    			console.log(fields[i].name);
     			$$invalidate(0, fields[i].value = editClipData[keys[i]], fields);
-    			console.log(`field value: ${fields[i].name} clip data: ${editClipData[keys[i]]}`);
     		}
-    	} // console.log(editableKeys);
-    	// console.log(fields[1].value);
+    	}
 
-    	// console.log(editClipData['Quality']);
-    	// fields[1].value = editClipData['Quality'];
     	function scrollToTop() {
     		div.scrollTo({ top: 0, behavior: "smooth" });
     	}
@@ -5853,6 +5850,7 @@ var app = (function () {
     		isDataSet,
     		div,
     		$videoSource,
+    		$videoToEdit,
     		$currentPage,
     		$videoPathToEdit,
     		loadData,
@@ -5860,7 +5858,6 @@ var app = (function () {
     		scrollToTop,
     		storagePath,
     		$rootDirectory,
-    		$videoToEdit,
     		dialog,
     		fs,
     		setVideo,

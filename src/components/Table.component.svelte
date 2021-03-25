@@ -169,9 +169,12 @@
 
 	onMount(() => {
 		prevButton.disabled = true;
+		nextButton.disabled = true;
 
-		if (filteredResults.length < maxEntriesShown) {
-			nextButton.disabled = true;
+		if (hasData) {
+			if (filteredResults.length > maxEntriesShown) {
+				nextButton.disabled = false;
+			}
 		}
 	})
 	
@@ -352,7 +355,7 @@
 	<Filters filters={filters}/>
 </div>
 <div class="filter-button-container">
-	<span class="filter-button-filler"></span>
+	<span class="filler"></span>
 	<button class="filter-button" on:click={clearFilters}>Clear Filters</button>
 	<button class="filter-button" on:click={applyFilters}>Apply Filters</button>
 </div>
@@ -397,17 +400,18 @@
 		<div class="table-results-counter-container">
 			<div class="table-results-counter">{counter + 1} to {counter + maxEntriesShown > filteredResults.length ? filteredResults.length : counter + maxEntriesShown} entries out of {filteredResults.length} total results</div>
 		</div>
-		<div>
-			<button class="table-button" bind:this={prevButton} on:click={() => changePage(-1)}>Previous</button>
-			<button class="table-button" bind:this={nextButton} on:click={() => changePage(1)}>Next</button>
-		</div>
 	</div>
 {:else}
-<div class="no-results-container">
-	<h2 class="intro-text">🙊🙉🙈</h2>
-	<p class="intro-text">Uh-oh, no results found!</p>
-</div>
+	<div class="no-results-container">
+		<h2 class="intro-text">🙊🙉🙈</h2>
+		<p class="intro-text">Uh-oh, no results found!</p>
+	</div>
 {/if}
+<div class=nav-button-container>
+	<span class="filler"></span>
+	<button class="table-button" bind:this={prevButton} on:click={() => changePage(-1)}>Previous</button>
+	<button class="table-button" bind:this={nextButton} on:click={() => changePage(1)}>Next</button>
+</div>
 
 <style>
 	* {
@@ -450,7 +454,7 @@
 		border: 1px solid #ff264e
 	}
 
-	.filter-button-filler {
+	.filler {
 		grid-column-end: 9;
 	}
 
@@ -508,12 +512,14 @@
 	}
 	
 	.table-button {
-		font-size: 16px;
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		padding-top: 5px;
 		padding-bottom: 5px;
-		padding-left: 20px;
-		padding-right: 20px;
-		margin-right: 0px;
+		width: 90%;
+		font-size: 16px;
 	}
 
 	.table-page-number-container {
@@ -578,5 +584,11 @@
 	.td-long-text {
 		text-align: left;
 		font-style: italic;
+	}
+
+	.nav-button-container {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+		position: relative;
 	}
 </style>

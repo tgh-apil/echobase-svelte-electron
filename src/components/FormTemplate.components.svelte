@@ -23,42 +23,27 @@
     
     function saveData(data) {
         let convertedData = JSON.stringify(data, 0, 2);
+        let currentFile;
 
-        // refactor this shit
         if ($currentPage === 'main') {
-            fs.readdir($rootDirectory + '/storage', (err, files) => {
-                let currentFile = files[0] + '.json';
-                let filePath = $rootDirectory + '/data/' + currentFile;
-    
-                // comment this line out if you don't want to run the python scripts
-                // for machine learning + digit recognition
-                launchPy(files[0], $rootDirectory);
-                
-                fs.writeFile(filePath, convertedData, (err) => {
-                    if (err) throw err;
-                    console.log(`saved file ${currentFile}`);
-                })
-            })
-    
+            currentFile = fs.readdirSync($rootDirectory + '/storage')[0]
+            console.log(`${currentFile} has been saved!`);
             nextClip(storagePath, donePath);
 
         } else if ($currentPage === 'viewEditClip') {
-
-
-            let editedFile = $videoToEdit + '.json';
-            let filePath = $rootDirectory + '/data/' + editedFile;
-
-            // needs to re-write the depth AND the file name...
-            // has to be a better way than re-running the ML model...
-            // works fow now
-            launchPy($videoToEdit, $rootDirectory);
-
-            fs.writeFile(filePath, convertedData, (err) => {
-                if (err) throw err;
-                console.log(`${editedFile} has been edited!`);
-            })
+            currentFile = $videoToEdit;
+            console.log(`${currentFile} has been edited!`);
         }
+        
+        let currentFileDb = currentFile + '.json';
+        let filePath = $rootDirectory + '/data/' + currentFileDb;
 
+        launchPy(currentFile, $rootDirectory);
+
+        fs.writeFile(filePath, convertedData, (err) => {
+            if (err) throw err;
+                console.log(`saved file ${currentFile}`);
+        })
     }
 
     // When submitting, turn our fields representation into a JSON body
@@ -80,7 +65,6 @@
         {/each}
     </div>
     <div>
-        <!-- if current page -->
-        <button type="submit">Submit</button>
+        <button type="submit">{$currentPage === "main" ? "Submit" : "Save Edits"}</button>
     </div>
 </form>
